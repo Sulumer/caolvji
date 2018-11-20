@@ -1,0 +1,29 @@
+/* pages/bianji/bianji.wxss */
+page{
+  height: 100%;
+  width: 100%;
+}
+.bg{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.bg2{
+   margin: 30px auto;
+   width: 80%;
+}
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.image-group {
+  display: flex;
+  white-space: nowrap;
+  margin-top: 30rpx;
+}
+.image-group image {
+  display: inline-block;
+  width: 580rpx;
+  height: 920rpx;
+  margin-right: 20rpx;
+}

@@ -1,0 +1,10 @@
+<view class='storyshare'>
+  <text>故事分享:</text>
+</view>
+<view class='story'>
+  <textarea placeholder='分享您的故事...'></textarea>
+</view>
+  <view>
+   <button class="submit" bindtap="submitClick" >立即分享</button>
+  </view>
+  

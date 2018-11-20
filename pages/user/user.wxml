@@ -1,0 +1,69 @@
+<view class='touxiang'>
+  <image src='/images/图片.png'></image>
+  <text class='mingzi'>XXX</text>
+  <view class="fankuibutton">
+    <button type="default" size='mini' bindtap='btfankui'> 产品反馈 </button>
+  </view>
+</view>
+
+<view class="text1">
+  <text>国家：{{country}}</text>
+  <text>省份：{{province}}</text>
+  <text>城市：{{city}}</text>
+</view>
+
+
+<view class="chengjiu">
+
+
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+</view>
+<view class="chengjiu">
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+
+  <navigator url='../fankui/fankui' hover-class='changestyle'>
+    <view class="chengjiu1">
+      <image src='/images/图片1.png'></image>
+    </view>
+    <view>说走就走</view>
+  </navigator>
+
+</view>
+
+
+<navigator url='../guanyuwomen/guanyuwomen' hover-class='changestyle'>
+  <view class='women'>
+    <text>关于我们?</text>
+  </view>
+</navigator>
