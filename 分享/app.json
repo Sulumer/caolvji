@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/map/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": " ",
+    "navigationBarTextStyle":"black"
+  }
+}
