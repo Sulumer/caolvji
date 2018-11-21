@@ -1,0 +1,27 @@
+<view class="container">
+  <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+  <view>
+    <input class="input" placeholder="请输入省份" bindinput='expInput'/>
+    <button class="comment" bindtap="showCity">确定</button>
+    <image class="icon" src='{{userInfo.avatarUrl}}'></image>
+    <view class="name">{{userInfo.nickName}}</view>
+    <view class="rank">足迹超越<text>{{percentage}}%</text>的用户</view>
+    <view class="senten">世界这么大，多出门走走</view>
+    <button class="button" open-type="share">  <image src='../../image/wechat.png'></image><text>分享给微信好友</text></button>
+    <button class="button2" bindtap="onShow">  <image src='../../image/pyq.png'></image><text>分享给微信好友</text></button>
+    <view class="whiteline"></view>
+    <view class="title">数据统计</view>
+    <view class="data1">走过的国内省份</view>
+    <view class="data2">走过的国内城市</view>
+    <view class="num1"><text>1</text></view>
+    <view class="num2"><text>{{cityNum}}</text></view>
+    <view class="data3">去过的海外国家</view>
+    <view class="data4">发布的旅行照片</view>
+    <view class="num3"><text>1</text></view>
+    <view class="num4"><text>1</text></view>
+    <view class="data5">发布的旅行视频</view>
+    <view class="data6">发布的旅行心情</view>
+    <view class="num5"><text>1</text></view>
+    <view class="num6"><text>1</text></view>
+  </view>
+</view>
