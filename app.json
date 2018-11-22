@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "pages":[
     "pages/map/index"
   ],
@@ -8,5 +9,33 @@
     "navigationBarBackgroundColor": "#eee",
     "navigationBarTitleText": " ",
     "navigationBarTextStyle":"black"
+=======
+  "pages": [
+    "pages/index/index",
+    "pages/map/map",
+    "pages/post/post",
+    "pages/login/login",
+    "pages/record/record",
+    "pages/user/user",
+    "pages/user/fankui/fankui",
+    "pages/record/photoselect/photoselect",
+    "pages/record/storyselect/storyselect",
+    "pages/record/videoselect/videoselect",
+    "pages/record/wordselect/wordselect",
+    "pages/user/storymodel/storymodel",
+    "pages/user/model1/model1",
+    "pages/user/model10/model10",
+    "pages/user/model12/model12",
+    "pages/user/model13/model13",
+    "pages/user/model3/model3",
+    "pages/user/model7/model7",
+    "pages/user/model9/model9"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "草履记",
+    "navigationBarTextStyle": "black"
+>>>>>>> master
   }
 }

@@ -1,0 +1,14 @@
+<view class='storyshare'>
+  <text>故事分享:</text>
+</view>
+<view class='story'>
+  <textarea placeholder='分享您的故事...'></textarea>
+</view>
+<view class="label-box">
+      <text class="label" bindtap="upphoto">上传图片</text>
+      <text class="label" bindtap="upmovie">上传视频</text>
+  </view>
+<view>
+   <button class="submit" bindtap="submitClick" >立即分享</button>
+</view>
+  

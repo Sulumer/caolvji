@@ -1,0 +1,44 @@
+/* pages/find/storyselect/storyselect.wxss */
+
+.storyshare{
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  margin-top: 20PX;
+}
+.story{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+textarea{
+  height:700rpx;
+  width: 90%;
+  border: 1px rgb(0, 0, 0) solid;
+}
+.submit {
+  margin:30rpx 5% 0rpx;
+  width:90%;
+  font-size: 17px;
+  background: rgba(0, 202, 0, 0.5);
+  border: 2px solid #ffffff;
+  color: #eeeeee;
+}
+  .label-box {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-between;
+  padding: 0px 50px 0px 50px;
+}
+.label-box .label {
+  
+  width: 200rpx;
+  height: 50rpx;
+  border: 1px solid #070707;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 80px;
+  font-size: 19rpx;
+}

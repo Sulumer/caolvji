@@ -8,9 +8,19 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
+<<<<<<< HEAD
 	"libVersion": "2.4.0",
 	"appid": "wx9b7fad9a8e55ffa9",
 	"projectname": "Share",
+=======
+	"libVersion": "2.3.2",
+	"appid": "wxcf8e298028850573",
+	"projectname": "%E8%8D%89%E5%B1%A5%E8%AE%B0",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+>>>>>>> master
 	"condition": {
 		"search": {
 			"current": -1,
