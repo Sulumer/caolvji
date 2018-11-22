@@ -1,15 +1,4 @@
 {
-<<<<<<< HEAD
-  "pages":[
-    "pages/map/index"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "backgroundColor": "#eee",
-    "navigationBarBackgroundColor": "#eee",
-    "navigationBarTitleText": " ",
-    "navigationBarTextStyle":"black"
-=======
   "pages": [
     "pages/index/index",
     "pages/map/map",
@@ -36,6 +25,5 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "草履记",
     "navigationBarTextStyle": "black"
->>>>>>> master
   }
 }
