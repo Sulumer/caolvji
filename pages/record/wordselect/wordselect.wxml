@@ -1,4 +1,0 @@
-    <view class="doingTask">
-        <input class="enterWords" bindinput="wordsClick" placeholder="分享心情文字..." focus />
-        <button class="submit" bindtap="submitClick" >立即分享</button>
-    </view>

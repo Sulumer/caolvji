@@ -77,35 +77,39 @@ Page({
     ec: {
       onInit: initChart
     },
-   
-  },
-
-  onReady() {
-  },
-  /**
-   * 页面的初始数据
-   */
-  data2: {
-    //用户个人信息
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: {
       avatarUrl: "",//用户头像
-      nickName: "",//用户昵称
-    }
+      nickName: "",//用户昵称     
+    },
+    provinceNum: {},
+    cityNum: {},
+    countryNum: {},
+    photoNum: {},
+    videoNum: {},
+    moodNum: {},
   },
-  /**
-   *点击添加地址事件
-   */
   add_address_fun: function () {
     wx.navigateTo({
       url: 'add_address/add_address',
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var provinceNum = options.kind;
+    var cityNum = options.kind;
+    var countryNum = options.kind;
+    var photoNum = options.kind;
+    var videoNum = options.kind;
+    var moodNum = options.kind;
     var that = this;
+    this.setData({
+      provinceNum: 1,
+      cityNum: 1,
+      countryNum: 1,
+      photoNum: 1,
+      videoNum: 1,
+      moodNum: 1,
+    })
     /**
      * 获取用户信息
      */
@@ -120,59 +124,20 @@ Page({
         })
       }
     })
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console(res.userInfo)
+            }
+          })
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  },
-
-  
   //获取输入框的内容，并赋值到text中
-  
   expInput: function (e) {  
     province = e.detail.value;
   },
@@ -184,31 +149,6 @@ Page({
     setTimeout(function () {
       chart.setOption(options);  //赋值后再设置一次option
     }, 10);
-  },
-  data:{
-    provinceNum: {},
-    cityNum: {},
-    countryNum: {},
-    photoNum: {},
-    videoNum: {},
-    moodNum: {},
-  },
-  onLoad: function (options) {
-    var provinceNum = options.kind;
-    var cityNum = options.kind;
-    var countryNum = options.kind;
-    var photoNum = options.kind;
-    var videoNum = options.kind;
-    var moodNum = options.kind;
-    this.setData({
-      provinceNum: 1,
-      cityNum: 1,
-      countryNum: 1,
-      photoNum : 1,
-      videoNum: 1,
-      moodNum: 1,
-    })
-
   },
 })
 

@@ -27,6 +27,8 @@ ec-canvas
 }
 .icon
 {
+  overflow:hidden;
+  display:block;
   border-radius: 100%;
   width: 100rpx;
   height: 100rpx;
@@ -35,6 +37,8 @@ ec-canvas
 }
 .name
 {
+  overflow:hidden;
+  display:block;
   margin-top: -80rpx;
   margin-left: 180rpx;
 }
@@ -59,7 +63,7 @@ ec-canvas
 .button
 {
   margin-top: 50rpx;
-  margin-left:20rpx;
+  margin-left:400rpx;
   background-color: #F5F5F5;
   width: 45%;
   border: #F5F5F5;
@@ -75,7 +79,7 @@ ec-canvas
   height: 50rpx;
   border-radius: 100%;
 }
-.button2
+/*.button2
 {
   margin-top: -90rpx;
   margin-left: 390rpx;
@@ -92,7 +96,7 @@ ec-canvas
   width: 50rpx;
   height: 50rpx;
   border-radius: 100%;
-}
+}*/
 .whiteline
 {
   margin-top: 20rpx;
