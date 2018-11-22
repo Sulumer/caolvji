@@ -1,23 +1,16 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"description": "ECharts 图表示例",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"postcss": true,
-		"minified": true,
+		"postcss": false,
+		"minified": false,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.2",
-	"appid": "wxcf8e298028850573",
-	"projectname": "%E8%8D%89%E9%A9%B4%E8%BF%B9",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"libVersion": "2.4.0",
+	"appid": "wx9b7fad9a8e55ffa9",
+	"projectname": "Share",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -27,13 +20,22 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "map",
+					"pathName": "pages/map/index"
+				}
+			]
 		}
 	}
 }

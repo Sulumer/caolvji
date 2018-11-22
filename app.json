@@ -1,20 +1,12 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/post/post",
-    "pages/login/login",
-    "pages/record/record",
-    "pages/user/user",
-    "pages/user/fankui/fankui",
-    "pages/record/photoselect/photoselect",
-    "pages/record/storyselect/storyselect",
-    "pages/record/videoselect/videoselect",
-    "pages/record/wordselect/wordselect"
+    "pages/map/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": " ",
     "navigationBarTextStyle":"black"
   }
 }
