@@ -1,0 +1,7 @@
+<view class='container0'>
+  <image src='../../../images/模板9.jpg'></image>
+
+  <button class='but'  bindtap='click'>
+    <view class='wenzi'>版式</view>
+  </button>
+</view>

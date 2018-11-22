@@ -9,7 +9,7 @@
 <view class="text1">
   <text>国家：{{country}}</text>
   <text>省份：{{province}}</text>
-  <!-- <text>城市：{{city}}</text> -->
+  <text>城市：{{city}}</text>
 </view>
 
 
