@@ -1,4 +1,9 @@
-    <view class="doingTask">
+<view class="doingTask">
         <input class="enterWords" bindinput="wordsClick" placeholder="分享心情文字..." focus />
+  <view class="label-box">
+      <text class="label" bindtap="upphoto">上传图片</text>
+      <text class="label" bindtap="upmovie">上传视频</text>
+  </view>
         <button class="submit" bindtap="submitClick" >立即分享</button>
-    </view>
+</view>
+
