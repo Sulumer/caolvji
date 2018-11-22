@@ -27,6 +27,8 @@ ec-canvas
 }
 .icon
 {
+  overflow:hidden;
+  display:block;
   border-radius: 100%;
   width: 100rpx;
   height: 100rpx;
@@ -35,6 +37,8 @@ ec-canvas
 }
 .name
 {
+  overflow:hidden;
+  display:block;
   margin-top: -80rpx;
   margin-left: 180rpx;
 }

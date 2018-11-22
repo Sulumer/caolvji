@@ -77,15 +77,7 @@ Page({
     ec: {
       onInit: initChart
     },
-   
-  },
-  onReady() {
-  },
-  /**
-   * 页面的初始数据
-   */
-  data2: {
-    //用户个人信息
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: {
       avatarUrl: "",//用户头像
       nickName: "",//用户昵称     
@@ -97,9 +89,6 @@ Page({
     videoNum: {},
     moodNum: {},
   },
-  /**
-   *点击添加地址事件
-   */
   add_address_fun: function () {
     wx.navigateTo({
       url: 'add_address/add_address',
@@ -133,6 +122,18 @@ Page({
           [avatarUrl]: res.userInfo.avatarUrl,
           [nickName]: res.userInfo.nickName,
         })
+      }
+    })
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console(res.userInfo)
+            }
+          })
+        }
       }
     })
   },

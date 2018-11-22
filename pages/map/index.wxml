@@ -2,9 +2,9 @@
   <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
   <view>
     <input class="input" placeholder="请输入省份" bindinput='expInput'/>
-    <button class="comment" bindtap="showCity">确定</button>
-    <image class="icon" src='{{userInfo.avatarUrl}}'></image>
-    <view class="name">{{userInfo.nickName}}</view>
+    <button class="comment" bindtap="showCity">确定</button>.
+    <open-data class="icon" type="userAvatarUrl"></open-data>
+    <open-data  class="name" type="userNickName"></open-data>
     <view class="rank">足迹超越<text>{{percentage}}%</text>的用户</view>
     <view class="senten">世界这么大，多出门走走</view>
     <button class="button" open-type="share">  <image src='../../image/wechat.png'></image><text>分享给微信好友</text></button>
