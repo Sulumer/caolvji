@@ -2,9 +2,26 @@ Page({
   data: {
     
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-
+  userinfo: function(e){
+    console.log(e.detail)
+    wx.setStorageSync("userinfo", e.detail)
+    if(e.detail.errMsg == "getUserInfo:ok"){
+      wx.navigateTo({
+        url: "/pages/index/index"
+      })
+    }
+    else{
+      wx.showLoading({
+        title: '授权失败！',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1500)
+    }
+  },
+  onLoad: function() {
+    // 查看是否授权
+    
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成

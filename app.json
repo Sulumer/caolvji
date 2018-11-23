@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/map/map",
     "pages/post/post",
     "pages/login/login",
     "pages/record/record",
@@ -22,7 +23,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "草履记",
     "navigationBarTextStyle": "black"
   }
 }
