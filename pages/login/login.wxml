@@ -1,8 +1,0 @@
-<view>
-  <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
-  <open-data type="userAvatarUrl"></open-data>
-  <open-data type="userNickName"></open-data>
-  <!-- 需要使用 button 来授权登录 -->
-  <button open-type="getUserInfo" bindgetuserinfo="userinfo">授权登录</button>
-  <button open-type="openSetting">打开设置</button>
-</view>
