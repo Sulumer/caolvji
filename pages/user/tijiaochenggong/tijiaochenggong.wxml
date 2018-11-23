@@ -1,0 +1,13 @@
+<view class="group">
+
+    <icon type="success" size="{{iconsize}}"/>
+
+</view>
+
+
+<view class='group1'>
+  <text>提交成功！</text>
+</view>
+<view class='group2'>
+   <button type='default' bindtap='fankui' >返回个人中心</button>
+  </view>

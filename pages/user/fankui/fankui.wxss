@@ -1,0 +1,42 @@
+input{
+  border:1px solid black;
+  width: 65%;
+  border-radius: 10px;
+}
+.wenti{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20PX;
+}
+.ziti{
+  font-size: 12px;
+}
+.xiangxiwenti{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+textarea{
+  width: 300px;
+  border: 1px black solid;
+}
+.buju{
+  display: flex;
+  flex-direction: row;
+  
+}
+.shangchuan image{
+  width: 100px;
+  height: 100px;
+}
+.shangchuan{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.tupian image{
+  width: 100px;
+  height: 100px;
+}

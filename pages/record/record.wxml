@@ -1,0 +1,57 @@
+
+<!--pages/find/find.wxml-->
+<!-- <view class="tab">
+  <text class="{{active==0?'active':''}}" bindtap="hotClick">热门</text>
+  <text class="{{active==1?'active':''}}" bindtap="aroundClick">周边</text>
+  <text class="{{active==2?'active':''}}" bindtap="hongkongClick">香港</text>
+  <text class="{{active==3?'active':''}}" bindtap="aomenClick">澳门</text>
+  <text class="icon"></text>
+</view> -->
+<view class='imagesize' bindtap="photoClick">
+  <text class="title">照片</text>
+  <image src="/images/photo.png" class='in-image'   >
+  </image>
+</view>
+<view class='imagesize' bindtap="videoClick">
+  <text class="title">视频</text>
+  <image src="/images/movie.png" class='in-image'   >
+  </image>
+</view>
+<view class='imagesize' bindtap="wordsClick">
+  <text class="title">文字</text>
+  <image src="/images/words.png" class='in-image'   >
+  </image>
+</view>
+<view class='imagesize' bindtap="storyClick">
+  <text class="title">短故事</text>
+  <image src="/images/story.png" class='in-image'   >
+  </image>
+</view>
+
+<!-- 
+<view class="view-box">
+  <view class="view">
+    <view class="img">
+      <text class="title">照片</text>
+      <image src="/images/icon/12.png"></image>
+    </view>
+  </view>
+  <view class="view">
+    <view class="img">
+      <text class="title">视频</text>
+      <image src="/images/movie.png"></image>
+    </view>
+  </view>
+  <view class="view">
+    <view class="img">
+      <text class="title">文字</text>
+      <image src="/images/icon/12.png"></image>
+    </view>
+  </view>
+  <view class="view">
+    <view class="img">
+      <text class="title">短故事</text>
+      <image src="/images/icon/12.png"></image>
+    </view>
+  </view>
+</view> -->
