@@ -2,7 +2,7 @@
 {
   background: #F5F5F5;
   width: 750rpx;
-  height: 2100rpx;
+  height: 2300rpx;
   flex-direction: column;
 }
 ec-canvas 

@@ -88,6 +88,7 @@ Page({
     photoNum: {},
     videoNum: {},
     moodNum: {},
+    rankPercent: {},
   },
   add_address_fun: function () {
     wx.navigateTo({
@@ -101,6 +102,7 @@ Page({
     var photoNum = options.kind;
     var videoNum = options.kind;
     var moodNum = options.kind;
+    var rankPercent = options.kind;
     var that = this;
     this.setData({
       provinceNum: 1,
@@ -109,6 +111,7 @@ Page({
       photoNum: 1,
       videoNum: 1,
       moodNum: 1,
+      rankPercent: 100,
     })
     /**
      * 获取用户信息
