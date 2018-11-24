@@ -1,16 +1,32 @@
+var app = getApp()
 Page({
   data: {
     
   },
   userinfo: function(e){
     console.log(e.detail)
-    wx.setStorageSync("userinfo", e.detail)
-    if(e.detail.errMsg == "getUserInfo:ok"){
-      wx.navigateTo({
-        url: "/pages/index/index"
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      // 请求获取用户信息
+      wx.request({
+        url: app.globalData.Service + 'user/oauth', //仅为示例，并非真实的接口地址
+        method: 'POST',
+        data: {
+          code: e.detail.signature,
+          encryptedData: e.detail.encryptedData,
+          ivStr: e.detail.iv
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.log(res.data)
+          wx.navigateTo({
+            url: '/pages/index/index',
+          })
+        }
       })
     }
-    else{
+    else {
       wx.showLoading({
         title: '授权失败！',
       })
@@ -18,6 +34,7 @@ Page({
         wx.hideLoading()
       }, 1500)
     }
+    // wx.setStorageSync("userinfo", e.detail)
   },
   onLoad: function() {
     // 查看是否授权
