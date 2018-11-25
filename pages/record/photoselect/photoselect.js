@@ -1,4 +1,5 @@
 var that;
+var app = getApp()
 Page({
   data: {
     labelcount :0,
@@ -12,17 +13,43 @@ Page({
   chooseImage: function () {
     // 选择图片
     wx.chooseImage({
-      count: 9, // 默认9
+      count: 1, // 默认9
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
-        console.log(tempFilePaths);
+        console.log("tempFilePaths",tempFilePaths[0]);
         that.setData({
           images: that.data.images.concat(tempFilePaths)
         });
+        console.log("images",that.images[0])
+        //获取S-TOKEN
+        wx.getStorage({
+          key: 'S-TOKEN',
+          success(res) {
+            console.log("S-TOKEN",res.data)
+            // console.log("images",that.images)
+            //上传照片获取位置
+            wx.uploadFile({
+              url: app.globalData.Service + 'photo/upload', //仅为示例，非真实的接口地址
+              filePath: tempFilePaths[0],
+              name: 'photo',
+              formData: {
+                'user': 'test'
+              },
+              header: {
+                "S-TOKEN": res.data,
+                'content-type': 'application/json' // 默认值
+              },
+              success(res) {
+                const data = res.data
+                console.log("uploadsuccess",data)
+              }
+            })
+          }
+        })
       }
     })
   },
