@@ -38,3 +38,36 @@ page {
     line-height: 45px;
     border: solid 1px whitesmoke;
 }
+
+/* 预览 */
+.preview-warp{
+  display: flex;
+  align-items: center; /*垂直居中*/
+  justify-content: center; /*居中对齐*/
+  position: relative;
+  background-color: #fff;
+}
+.prew_video{
+    display: flex;
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*居中对齐*/
+    position: relative;
+    background-color: #fff;
+}
+.prew_video[hidden]{
+    display: none;
+}
+.prew_video .play{
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.submitBtn {
+    margin-top: 10px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    height: 100rpx;
+    width: 80%;
+
+}
