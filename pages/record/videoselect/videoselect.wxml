@@ -1,27 +1,18 @@
-<view>
-    <form bindsubmit='upload'>
-
-        <radio-group name="bgmId">
-
-
-          <block wx:for="{{bgmList}}">
-            <view class='container'>
-          <audio name="{{item.name}}" author="{{item.author}}" src="{{serverUrl}}{{item.path}}" style='width:300px' id="myAudio" controls loop></audio>
-          <radio style='margin-top:20px;' value='{{item.id}}'></radio>
-        </view>
-          </block>
-
-
-        </radio-group>
-
-        <view class="inputView">
+<view class="inputView">
             <label class="loginLabel">视频描述：</label>
             <input name="desc" class="inputText" placeholder="说点什么吧" />
-        </view>
-
+</view>
+<!-- 图片预览 -->
+<view class='preview-warp' wx:if="{{urls}}">
+  <image  src='{{urls}}' />
+</view>
+<view class="prew_video" hidden="{{chooesVideo==''}}">
+  <video bindfullscreenchange="bindVideoScreenChange" src="{{chooesVideo}}" ></video>
+</view>
         <!-- 提交 -->
-        <button class="submitBtn" type="primary" form-type='submit' bindtap="uploadVideo">上传视频</button>
+        <button class="submitBtn" bindtap="uploadVideo">选择视频</button>
         
-        <button class="gobackBtn" type="warn" form-type='reset'>重置</button>
-    </form>
+        <!-- <button class="gobackBtn" type="warn" form-type='reset'>重置</button> -->
+<view>
+   <button class="submitBtn" type="primary" form-type='submit'  bindtap="submitClick" >立即分享</button>
 </view>
