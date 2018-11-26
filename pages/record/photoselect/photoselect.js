@@ -20,7 +20,7 @@ Page({
     // 选择图片
     wx.chooseImage({
       count: 1, // 默认9
-      sizeType: ['compressed'],
+      sizeType: ['origin'],
       sourceType: ['album', 'camera'],
       // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
@@ -75,11 +75,14 @@ Page({
                         'content-type': 'application/json', // 默认值
                       },
                       success(pos_res) {
-                        console.log("pos_res.data.error", pos_res.data.error)
-                        if (pos_res.data.error == 'no exif data') {
+                        console.log("pos_res", pos_res.data)
+                        if (pos_res.data.error != null) {
                           wx.showLoading({
                             title: '获取信息失败！',
                           })
+                          setTimeout(function () {
+                            wx.hideLoading()
+                          }, 1500)
                         } else {
                           setTimeout(function() {
                             wx.hideLoading()
