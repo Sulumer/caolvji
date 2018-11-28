@@ -20,19 +20,36 @@ page{
   top:0;
 }
 .img-plus-style {
-  height: 100rpx;
-  width: 100rpx;
+  height: 30px;
+  width: 30px;
   z-index: 100;
+  /* background-color: white; */
+  /* align-items: center; */
 }
- 
+
 .img-style {
-  height: 100rpx;
-  width: 100rpx;
+  height: 50px;
+  width: 50px;
   position: absolute;
   bottom: 250rpx;
   right: 100rpx;
   opacity: 0;
+  border-radius: 40px;
+  background-color: white; 
 }
+
+.img-style2 {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 250rpx;
+  right: 100rpx;
+  opacity: 0;
+  border-radius: 40px;
+  color: white; 
+}
+
+
 
 .bt1{
   position: absolute;
@@ -41,6 +58,11 @@ page{
   /* z-index: 100; */
   left: 10%;
   bottom: 60px;
+  border-radius: 40px;
+  background-color: white;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
 .bt2{
   position: absolute;
@@ -48,6 +70,11 @@ page{
   width: 100rpx;
   bottom: 60px;
   left: 45vw;
+  border-radius: 40px;
+  background-color: white;
+  display: flex;
+   justify-content:center;
+  align-items: center;
 }
 .bt3{
   position: absolute;
@@ -56,4 +83,20 @@ page{
   /* z-index: 100; */
   right: 10%;
   bottom: 60px;
+  border-radius: 40px;
+  background-color: white;
+  display: flex;
+  justify-content:center; 
+  align-items: center;
+}
+
+
+.bt4{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 40px;
+  background-color: white;
+  display: flex;
+  justify-content:center; 
+  align-items: center;
 }
