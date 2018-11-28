@@ -4,7 +4,11 @@ Page({
     
   },
   userinfo: function(e){
-    console.log("userinfo",e.detail)
+    console.log("userinfo",e.detail.userinfo)
+    wx.setStorage({
+      key: 'userinfo',
+      data: 'e.detail.userinfo',
+    })
     if (e.detail.errMsg == "getUserInfo:ok") {
       // 请求获取用户信息
       wx.login({
@@ -38,7 +42,6 @@ Page({
                   url: app.globalData.Service + '/user/me', //仅为示例，并非真实的接口地址
                   method: 'GET',
                   data: {
-                    
                   },
                   header: {
                     "S-TOKEN" : res.header["S-TOKEN"],
@@ -47,14 +50,17 @@ Page({
                   success(resme) {
                     // console.log("resme.data.data", resme.data.data)
                     console.log("useId", resme.data.data.userId)
+                    //保存id到全局变量
+                    // app.globalData.userId = resme.data.data.userId
+                    // console.log("app", app.globalData.userId)
                     //缓存useId
                     wx.setStorage({
-                      key: "useId",
+                      key: "userId",
                       data: resme.data.data.userId
                     })
                   }
                 })
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '/pages/index/index',
                 })
               }

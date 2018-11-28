@@ -6,7 +6,11 @@ Page({
     content: "",
     latitude: "",
     longitude: "",
-    location: "",
+    address: "所在位置",
+    photoid: "",
+    phototime: 123,
+    city: "",
+    province: "",
     images: [],
     uploadedImages: [],
     //imageWidth: getApp().screenWidth / 4 - 10
@@ -31,7 +35,7 @@ Page({
         that.setData({
           images: that.data.images.concat(tempFilePaths)
         });
-        // console.log("images", that.images[0])
+        console.log("images", that.data.images[0])
         //获取S-TOKEN
         wx.getStorage({
           key: 'S-TOKEN',
@@ -52,12 +56,13 @@ Page({
                 "S-TOKEN": resStorage.data
               },
               success(res_oos) {
-                console.log("res_oos", res_oos.data.error)
+
+                console.log("res_oos", res_oos.data)
                 if (res_oos.data.error == "None") {
                   wx.showLoading({
                     title: '请重试！'
                   })
-                  setTimeout(function () {
+                  setTimeout(function() {
                     wx.hideLoading()
                   }, 1500)
                 } else {
@@ -76,6 +81,7 @@ Page({
                       'token': res_oos.data.data.uploadToken
                     },
                     success: function(r) {
+                      console.log("r", r)
                       wx.request({
                         url: 'http://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
                         method: 'GET',
@@ -93,14 +99,16 @@ Page({
                               wx.hideLoading()
                             }, 1500)
                           } else {
-                            console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
-                            console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
-                            that.setData({
-                              latitude: pos_res.data.GPSLatitude.val,
-                              longitude: pos_res.data.GPSLongitude.val
-                            })
-                            console.log("latitude", that.latitude)
-                            console.log("longitude", that.longitude)
+                          //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
+                          //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
+                            // that.setData({
+                            //   photoid: res_oos.data.data.id,
+                            //   latitude: pos_res.data.GPSLatitude.val,
+                            //   longitude: pos_res.data.GPSLongitude.val,
+                            // })
+                            // console.log("photoid", that.data.photoid)
+                            // console.log("latitude", that.data.latitude)
+                            // console.log("longitude", that.data.longitude)
                             wx.request({
                               url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
                               method: 'GET',
@@ -109,8 +117,13 @@ Page({
                                 'content-type': 'application/json', // 默认值
                               },
                               success(position) {
-                                console.log("position",position.data)
-                                if (position.data.code == 200){
+                                console.log("position", position.data)
+                                that.setData({
+                                  photoid: res_oos.data.data.id,
+                                  latitude: position.data.latitude,
+                                  longitude: position.data.longitude,
+                                })
+                                if (position.data.code == 200) {
                                   wx.request({
                                     url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
                                     method: 'GET',
@@ -120,28 +133,31 @@ Page({
                                     },
                                     success(pos) {
                                       console.log("pos", pos.data)
-                                      if(pos.data.status == 0){
-                                      console.log("address", pos.data.result.address)
-                                      console.log("nation", pos.data.result.address_component.nation)
-                                      console.log("province", pos.data.result.address_component.province)
-                                      console.log("city", pos.data.result.address_component.city)
-                                      }
-                                      else{
+                                      if (pos.data.status == 0) {
+                                        that.setData({
+                                          address: pos.data.result.address,
+                                          city: pos.data.result.address_component.city,
+                                          province: pos.data.result.address_component.province
+                                        })
+                                        console.log("address", pos.data.result.address)
+                                        console.log("nation", pos.data.result.address_component.nation)
+                                        console.log("province", pos.data.result.address_component.province)
+                                        console.log("city", pos.data.result.address_component.city)
+                                      } else {
                                         wx.showLoading({
                                           title: '加载失败！',
                                         })
-                                        setTimeout(function () {
+                                        setTimeout(function() {
                                           wx.hideLoading()
                                         }, 1500)
                                       }
                                     }
                                   })
-                                }
-                                else{
+                                } else {
                                   wx.showLoading({
                                     title: '加载失败！',
                                   })
-                                  setTimeout(function () {
+                                  setTimeout(function() {
                                     wx.hideLoading()
                                   }, 1500)
                                 }
@@ -215,7 +231,50 @@ Page({
     this.setData({
       labelcount: temp
     });
+  },
+
+  uploadPhoto: function() {
+    that = this;
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success(s) {
+        console.log("stoken", s.data)
+        console.log("province",that.data.province)
+        console.log("city",that.data.city)
+        console.log("photoid", that.data.photoid)
+        console.log("phototime", that.data.phototime)
+        console.log("latitude", that.data.latitude)
+        console.log("longitude", that.data.longitude)
+        wx.request({
+          url: app.globalData.Service + 'photo/update?',
+          method: 'POST',
+          data: {
+            "id": that.data.photoid,
+            "phototime": that.data.phototime,
+            "latitude": that.data.latitude,
+            "longitude": that.data.longitude,
+            "province": that.data.province,
+            "city": that.data.city
+          },
+          header: {
+            'content-type': 'application/json', // 默认值
+            'S-TOKEN': s.data
+          },
+          success(res) {
+            console.log("status",res.data)
+            if(res.data.text == 'update success!'){
+              wx.showToast({
+                title: '发布成功！',
+              })
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1500)
+            }
+          }
+        })
+      }
+    })
   }
-
-
 })

@@ -1,15 +1,14 @@
-
 Page({
   data: {
     flag: true,
     showUpload: true,
-    isPopping: false,//是否已经弹出
-    animPlus: {},//旋转动画
-    animCollect: {},//item位移,透明度
-    animTranspond: {},//item位移,透明度
-    animInput: {},//item位移,透明度
-    homeActionLeftDistance:'100rpx',
-    windowWidth:'',
+    isPopping: false, //是否已经弹出
+    animPlus: {}, //旋转动画
+    animCollect: {}, //item位移,透明度
+    animTranspond: {}, //item位移,透明度
+    animInput: {}, //item位移,透明度
+    homeActionLeftDistance: '100rpx',
+    windowWidth: '',
     markers: [{
       iconPath: "/images/1542206356985.png",
       id: 0,
@@ -25,11 +24,10 @@ Page({
          padding: "5",
          display: "byclick",
         borderWidth: "15",
-        borderColor:"#3399FF",
+        borderColor: "#3399FF",
 
-       },
-   
-
+         
+      },
     }],
     polyline: [{
       points: [{
@@ -56,7 +54,7 @@ Page({
     }],
   },
   //页面跳转
-  navi: function(e){
+  navi: function(e) {
     console.log(e.currentTarget.dataset.path)
     var path = e.currentTarget.dataset.path
     console.log(path)
@@ -65,13 +63,13 @@ Page({
     })
   },
   //点击弹出
-  ct: function (e) {
+  ct: function(e) {
     wx.navigateTo({
       url: '/pages/post/post'
     })
     console.log("头上文字被点击", e)
   },
-  plus: function () {
+  plus: function() {
     // this.setData({
     //   maskFlag: false,
     //   oilchooseFlag: true
@@ -90,22 +88,22 @@ Page({
       })
     }
   },
-  input: function () {
+  input: function() {
     console.log("input")
   },
-  transpond: function () {
+  transpond: function() {
     console.log("transpond")
   },
-  collect: function () {
+  collect: function() {
     console.log("collect")
   },
 
   //弹出动画
-  popp: function () {
+  popp: function() {
     //plus顺时针旋转
     var animationPlus = wx.createAnimation({
-      duration: 500,//动画持续时间
-      timingFunction: 'ease-out'//结束时减速
+      duration: 500, //动画持续时间
+      timingFunction: 'ease-out' //结束时减速
     })
     var animationcollect = wx.createAnimation({
       duration: 500,
@@ -119,8 +117,8 @@ Page({
       duration: 500,
       timingFunction: 'ease-out'
     })
-    animationPlus.rotateZ(180).step();//在z轴旋转180度
-    animationcollect.translate(0, -20).rotateZ(360).opacity(1).step();//opacity时透明度
+    animationPlus.rotateZ(180).step(); //在z轴旋转180度
+    animationcollect.translate(0, -20).rotateZ(360).opacity(1).step(); //opacity时透明度
     animationTranspond.translate(0, -120).rotateZ(360).opacity(1).step();
     animationInput.translate(0, -220).rotateZ(360).opacity(1).step();
     this.setData({
@@ -131,7 +129,7 @@ Page({
     })
   },
   //收回动画
-  takeback: function () {
+  takeback: function() {
     //plus逆时针旋转
     var animationPlus = wx.createAnimation({
       duration: 500,
@@ -160,7 +158,7 @@ Page({
       animInput: animationInput.export(),
     })
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     // 生命周期函数--监听页面加载
     wx.showLoading({
@@ -184,12 +182,12 @@ Page({
     wx.getStorage({
       key: 'S-TOKEN',
       success(resStorage) {
-        setTimeout(function () {
-            wx.hideLoading()
-          }, 2)
+        setTimeout(function() {
+          wx.hideLoading()
+        }, 2)
       },
-      fail(resStorage){
-        wx.navigateTo({
+      fail(resStorage) {
+        wx.redirectTo({
           url: '/pages/login/login'
         })
       }
@@ -198,25 +196,25 @@ Page({
     //   }
     // })
   },
-  onReady: function () {
+  onReady: function() {
     // 生命周期函数--监听页面初次渲染完成
   },
-  onShow: function () {
+  onShow: function() {
     // 生命周期函数--监听页面显示
   },
-  onHide: function () {
+  onHide: function() {
     // 生命周期函数--监听页面隐藏
   },
-  onUnload: function () {
+  onUnload: function() {
     // 生命周期函数--监听页面卸载
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     // 页面相关事件处理函数--监听用户下拉动作
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
     // 页面上拉触底事件的处理函数
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     // 用户点击右上角分享
     return {
       title: 'title', // 分享标题
@@ -224,7 +222,7 @@ Page({
       path: 'path' // 分享路径
     }
   },
-  oilConfirm: function () {
+  oilConfirm: function() {
     this.setData({
       maskFlag: true,
       oilchooseFlag: false
@@ -239,5 +237,5 @@ Page({
   controltap(e) {
     console.log(e.controlId)
   },
-  
+
 })
