@@ -1,8 +1,9 @@
+/* pages/find/find.wxss */
 
 .imagesize text{
   position: absolute;
     display: block;
-    width:100%;
+    width: 100%;
     text-align: center;
     line-height: 350rpx;
     font-size: 50rpx;
