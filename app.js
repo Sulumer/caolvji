@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    Service: "https://demo.yyf-blog.com/"
   }
 })

@@ -1,0 +1,8 @@
+<!--components/intro/intro.wxml-->
+<cover-view class='intro-main'>
+  <cover-view class='intro-container'>
+    
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='loginbtn'> 授权 </button>
+    
+  </cover-view>
+</cover-view>

@@ -22,8 +22,21 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#62c0c0",
     "navigationBarTitleText": "草履记",
     "navigationBarTextStyle": "black"
+  },
+  "preloadRule": {
+    "ec-canvas": {
+      "network": "all",
+      "packages": [
+        "_APP_",
+        "ec-canvas"
+      ]
+    }
+  },
+  "networdkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   }
 }

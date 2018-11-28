@@ -47,7 +47,7 @@ Page({
   },
   storyClick() {
     wx.navigateTo({
-      url: 'storyselect/storyselect'
+      url: '/pages/user/storymodel/storymodel'
     })
   },
   hotClick() {
