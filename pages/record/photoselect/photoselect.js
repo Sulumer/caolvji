@@ -17,6 +17,7 @@ Page({
     // console.log(objectId);
   },
   chooseImage: function() {
+    that = this;
     // 选择图片
     wx.chooseImage({
       count: 1, // 默认9
@@ -51,50 +52,113 @@ Page({
                 "S-TOKEN": resStorage.data
               },
               success(res_oos) {
-                console.log("uploadToken", res_oos.data.data.uploadToken)
-                console.log("key", res_oos.data.data.key)
-                //上传照片
-                wx.uploadFile({
-                  url: 'http://up.qiniu.com',
-                  filePath: tempFilePaths[0],
-                  name: 'file',
-                  header: {
-                    "Content-Type": "multipart/form-data"
-                  },
-                  formData: {
-                    'key': res_oos.data.data.key,
-                    'token': res_oos.data.data.uploadToken
-                  },
-                  success: function(r) {
-                    
-                    wx.request({
-                      url: 'http://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
-                      method: 'GET',
-                      data: {},
-                      header: {
-                        'content-type': 'application/json', // 默认值
-                      },
-                      success(pos_res) {
-                        console.log("pos_res", pos_res.data)
-                        if (pos_res.data.error != null) {
-                          wx.showLoading({
-                            title: '获取信息失败！',
-                          })
-                          setTimeout(function () {
-                            wx.hideLoading()
-                          }, 1500)
-                        } else {
-                          setTimeout(function() {
-                            wx.hideLoading()
-                          }, 1500)
+                console.log("res_oos", res_oos.data.error)
+                if (res_oos.data.error == "None") {
+                  wx.showLoading({
+                    title: '请重试！'
+                  })
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 1500)
+                } else {
+                  console.log("uploadToken", res_oos.data.data.uploadToken)
+                  console.log("key", res_oos.data.data.key)
+                  //上传照片
+                  wx.uploadFile({
+                    url: 'http://up.qiniu.com',
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    header: {
+                      "Content-Type": "multipart/form-data"
+                    },
+                    formData: {
+                      'key': res_oos.data.data.key,
+                      'token': res_oos.data.data.uploadToken
+                    },
+                    success: function(r) {
+                      wx.request({
+                        url: 'http://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
+                        method: 'GET',
+                        data: {},
+                        header: {
+                          'content-type': 'application/json', // 默认值
+                        },
+                        success(pos_res) {
+                          console.log("pos_res", pos_res.data)
+                          if (pos_res.data.error != null) {
+                            wx.showLoading({
+                              title: '获取信息失败！',
+                            })
+                            setTimeout(function() {
+                              wx.hideLoading()
+                            }, 1500)
+                          } else {
+                            console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
+                            console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
+                            that.setData({
+                              latitude: pos_res.data.GPSLatitude.val,
+                              longitude: pos_res.data.GPSLongitude.val
+                            })
+                            console.log("latitude", that.latitude)
+                            console.log("longitude", that.longitude)
+                            wx.request({
+                              url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
+                              method: 'GET',
+                              data: {},
+                              header: {
+                                'content-type': 'application/json', // 默认值
+                              },
+                              success(position) {
+                                console.log("position",position.data)
+                                if (position.data.code == 200){
+                                  wx.request({
+                                    url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
+                                    method: 'GET',
+                                    data: {},
+                                    header: {
+                                      'content-type': 'application/json', // 默认值
+                                    },
+                                    success(pos) {
+                                      console.log("pos", pos.data)
+                                      if(pos.data.status == 0){
+                                      console.log("address", pos.data.result.address)
+                                      console.log("nation", pos.data.result.address_component.nation)
+                                      console.log("province", pos.data.result.address_component.province)
+                                      console.log("city", pos.data.result.address_component.city)
+                                      }
+                                      else{
+                                        wx.showLoading({
+                                          title: '加载失败！',
+                                        })
+                                        setTimeout(function () {
+                                          wx.hideLoading()
+                                        }, 1500)
+                                      }
+                                    }
+                                  })
+                                }
+                                else{
+                                  wx.showLoading({
+                                    title: '加载失败！',
+                                  })
+                                  setTimeout(function () {
+                                    wx.hideLoading()
+                                  }, 1500)
+                                }
+                              }
+                            })
+                            setTimeout(function() {
+                              wx.hideLoading()
+                            }, 1500)
+                          }
                         }
-                      }
-                    })
-                    wx.showLoading({
-                      title: '正在获取信息！',
-                    })
-                  }
-                })
+                      })
+                      wx.showLoading({
+                        title: '正在获取信息！',
+                      })
+                    }
+                  })
+                }
               }
             })
           }

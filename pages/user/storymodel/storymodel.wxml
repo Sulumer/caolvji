@@ -11,9 +11,9 @@
       <image src='../../../images/模板12.jpg' bindtap='clickimage12'></image>
   </view>
 
-  <view class='container00' >
+  <!-- <view class='container00' >
       <image src='../../../images/模板13.jpg' bindtap='clickimage13'></image>
-  </view>
+  </view> -->
 
   <view class='container00' >
       <image src='../../../images/模板3.jpg' bindtap='clickimage3'></image>

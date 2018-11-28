@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 0 24rpx;
   padding-bottom: 20rpx;
-  background: #98d361;
+  /* background: #98d361; */
   align-items: center;
 }
 
@@ -16,7 +16,7 @@
   height: 48rpx;
   text-align: center;
   line-height: 48rpx;
-  background: #addc81;
+  /* background: #addc81; */
   color: #eee;
   font-size: 22rpx;
   border-radius: 80rpx;
@@ -32,7 +32,7 @@ background-size: 9rpx 19rpx;
 
 .tab .active {
   background: #fff;
-  color: #98d361;
+  /* color: #98d361; */
 }
 
 .view-box {
@@ -76,7 +76,7 @@ background-size: 9rpx 19rpx;
   text-align: center;
   line-height: 350rpx;
   font-size: 50rpx;
-  color: #2d9abb83;
+  color: #000;
   font-weight: bold;
 }
 
