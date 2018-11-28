@@ -1,5 +1,12 @@
 <view class="doingTask">
         <input class="enterWords" bindinput="wordsClick" placeholder="分享心情文字..." focus />
+        <!-- 图片预览 -->
+<view class='preview-warp' wx:if="{{urls}}">
+  <image  src='{{urls}}' />
+</view>
+<view class="prew_video" hidden="{{chooesVideo==''}}">
+  <video bindfullscreenchange="bindVideoScreenChange" src="{{chooesVideo}}" ></video>
+</view>
   <view class="label-box">
       <text class="label" bindtap="upphoto">上传图片</text>
       <text class="label" bindtap="upmovie">上传视频</text>
