@@ -7,6 +7,8 @@ Page({
     latitude: "",
     longitude: "",
     location: "",
+    address: "所在位置",
+    photoid: "",
     images: [],
     uploadedImages: [],
     //imageWidth: getApp().screenWidth / 4 - 10
@@ -52,12 +54,13 @@ Page({
                 "S-TOKEN": resStorage.data
               },
               success(res_oos) {
-                console.log("res_oos", res_oos.data.error)
+
+                console.log("res_oos", res_oos.data)
                 if (res_oos.data.error == "None") {
                   wx.showLoading({
                     title: '请重试！'
                   })
-                  setTimeout(function () {
+                  setTimeout(function() {
                     wx.hideLoading()
                   }, 1500)
                 } else {
@@ -96,11 +99,13 @@ Page({
                             console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
                             console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
                             that.setData({
+                              photoid: res_oos.data.data.id,
                               latitude: pos_res.data.GPSLatitude.val,
-                              longitude: pos_res.data.GPSLongitude.val
+                              longitude: pos_res.data.GPSLongitude.val,
                             })
-                            console.log("latitude", that.latitude)
-                            console.log("longitude", that.longitude)
+                            console.log("photoid", that.data.photoid)
+                            console.log("latitude", that.data.latitude)
+                            console.log("longitude", that.data.longitude)
                             wx.request({
                               url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
                               method: 'GET',
@@ -109,8 +114,8 @@ Page({
                                 'content-type': 'application/json', // 默认值
                               },
                               success(position) {
-                                console.log("position",position.data)
-                                if (position.data.code == 200){
+                                console.log("position", position.data)
+                                if (position.data.code == 200) {
                                   wx.request({
                                     url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
                                     method: 'GET',
@@ -120,28 +125,29 @@ Page({
                                     },
                                     success(pos) {
                                       console.log("pos", pos.data)
-                                      if(pos.data.status == 0){
-                                      console.log("address", pos.data.result.address)
-                                      console.log("nation", pos.data.result.address_component.nation)
-                                      console.log("province", pos.data.result.address_component.province)
-                                      console.log("city", pos.data.result.address_component.city)
-                                      }
-                                      else{
+                                      if (pos.data.status == 0) {
+                                        that.setData({
+                                          address: pos.data.result.address
+                                        })
+                                        console.log("address", pos.data.result.address)
+                                        console.log("nation", pos.data.result.address_component.nation)
+                                        console.log("province", pos.data.result.address_component.province)
+                                        console.log("city", pos.data.result.address_component.city)
+                                      } else {
                                         wx.showLoading({
                                           title: '加载失败！',
                                         })
-                                        setTimeout(function () {
+                                        setTimeout(function() {
                                           wx.hideLoading()
                                         }, 1500)
                                       }
                                     }
                                   })
-                                }
-                                else{
+                                } else {
                                   wx.showLoading({
                                     title: '加载失败！',
                                   })
-                                  setTimeout(function () {
+                                  setTimeout(function() {
                                     wx.hideLoading()
                                   }, 1500)
                                 }
@@ -215,7 +221,46 @@ Page({
     this.setData({
       labelcount: temp
     });
-  }
+  },
 
+  uploadPhoto: function() {
+    that = this;
+    ws.getStorage({
+      key: 'useId',
+      success(res) {
+        ws.getStorage({
+          key: 'S-TOKEN',
+          success(s) {
+            console.log("stoken", s.data)
+            console.log("userid", res.data)
+            console.log("photoid", that.data.photoid)
+            console.log("latitude", that.data.latitude)
+            console.log("longitude", that.data.longitude)
+            wx.request({
+              url: app.globalData.Service + 'photo/map?',
+              method: 'GET',
+              data: {
+                "id": res.data,
+                "imgUrl": that.data.photoid,
+                "latitude": that.data.latitude,
+                "longitude": that.data.longitude
+
+              },
+              header: {
+                'content-type': 'application/json', // 默认值
+                'S-TOKEN': s.data
+              },
+              success() {
+
+              }
+            })
+          }
+        })
+      }
+
+    })
+
+
+  }
 
 })

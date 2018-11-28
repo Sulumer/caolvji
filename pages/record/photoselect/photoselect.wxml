@@ -11,13 +11,14 @@
 </view>
 <view class="page-body-info" bindtap="chooseLocation">
           <image src="/images/icon/dw.png"class="page-body-img"></image>
-          <text class="page-body-text" name="address">所在位置</text>
+          <!-- <text class="page-body-text" name="address">所在位置</text> -->
+          <text>{{address}}</text>
   </view>
-   <view class="label-box">
+   <!-- <view class="label-box">
       <text class="label" bindtap="addlabel"  wx:if="{{labelcount > -1}}">添加标签1</text>
       <text class="label" bindtap="addlabel"  wx:if="{{labelcount > 0}}">添加标签2</text>
       <text class="label" bindtap="addlabel"  wx:if="{{labelcount > 1}}">添加标签3</text>
-    </view>
+    </view> -->
 <view>
 </view>
     <button class="submitBtn" type="primary" form-type='submit' bindtap="uploadPhoto">立即发布</button>
