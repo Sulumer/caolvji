@@ -219,13 +219,13 @@ Page({
                   width: 70,
                   height: 70,
                   callout: {
-                    content: dic.province || '',
+                    content: dic.address || dic.province + dic.city,
                     fontSize: 14,
                     bgColor: "#FFF",
                     borderWidth: 1,
                     borderColor: "#CCC",
                     padding: 4,
-                    display: "ALWAYS",
+                    display: "byclick",
                     textAlign: "center"
                   }
                 };

@@ -13,6 +13,7 @@ Page({
     province: "",
     flag: false,
     images: [],
+    try: 0,
     uploadedImages: [],
     //imageWidth: getApp().screenWidth / 4 - 10
   },
@@ -38,151 +39,202 @@ Page({
         });
         console.log("images", that.data.images[0])
         //获取S-TOKEN
-        wx.getStorage({
-          key: 'S-TOKEN',
-          success(resStorage) {
-            console.log("S-TOKEN", resStorage.data)
-            //获取上传凭证
-            wx.request({
-              url: app.globalData.Service + 'photo/upload', //仅为示例，并非真实的接口
-              method: 'POST',
-              data: {
-                "label": "福州大学",
-                "latitude": "",
-                "longitude": "",
-                "province": ""
-              },
-              header: {
-                'content-type': 'application/json', // 默认值
-                "S-TOKEN": resStorage.data
-              },
-              success(res_oos) {
-
-                console.log("res_oos", res_oos.data)
-                if (res_oos.data.error == "None") {
-                  wx.showLoading({
-                    title: '请重试！'
-                  })
-                  setTimeout(function() {
+        that.analysis()
+      }
+    })
+  },
+  analysis: function() {
+    var that = this
+    wx.showLoading({
+      title: '正在上传照片',
+    })
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success(resStorage) {
+        console.log("S-TOKEN", resStorage.data)
+        //获取上传凭证
+        wx.request({
+          url: app.globalData.Service + 'photo/upload', //仅为示例，并非真实的接口
+          method: 'POST',
+          data: {
+            "label": "福州大学",
+            "latitude": "",
+            "longitude": "",
+            "province": ""
+          },
+          header: {
+            'content-type': 'application/json', // 默认值
+            "S-TOKEN": resStorage.data
+          },
+          success(res_oos) {
+            console.log("res_oos", res_oos.data)
+            if (res_oos.data.error == "None") {
+              that.retry()
+            } else {
+              console.log("uploadToken", res_oos.data.data.uploadToken)
+              console.log("key", res_oos.data.data.key)
+              //上传照片
+              wx.uploadFile({
+                url: 'http://up.qiniu.com',
+                filePath: that.data.images[0],
+                name: 'file',
+                header: {
+                  "Content-Type": "multipart/form-data"
+                },
+                formData: {
+                  'key': res_oos.data.data.key,
+                  'token': res_oos.data.data.uploadToken
+                },
+                success: function(r) {
+                  console.log("r", r)
+                  setTimeout(function () {
                     wx.hideLoading()
-                  }, 1500)
-                } else {
-                  console.log("uploadToken", res_oos.data.data.uploadToken)
-                  console.log("key", res_oos.data.data.key)
-                  //上传照片
-                  wx.uploadFile({
-                    url: 'http://up.qiniu.com',
-                    filePath: tempFilePaths[0],
-                    name: 'file',
+                  }, 2)
+                  wx.showLoading({
+                    title: '正在获取照片信息',
+                  })
+                  wx.request({
+                    url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
+                    method: 'GET',
+                    data: {},
                     header: {
-                      "Content-Type": "multipart/form-data"
+                      'content-type': 'application/json', // 默认值
                     },
-                    formData: {
-                      'key': res_oos.data.data.key,
-                      'token': res_oos.data.data.uploadToken
-                    },
-                    success: function(r) {
-                      console.log("r", r)
-                      wx.request({
-                        url: 'http://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
-                        method: 'GET',
-                        data: {},
-                        header: {
-                          'content-type': 'application/json', // 默认值
-                        },
-                        success(pos_res) {
-                          console.log("pos_res", pos_res.data)
-                          if (pos_res.data.error != null) {
-                            wx.showLoading({
-                              title: '获取信息失败！',
+                    success(pos_res) {
+                      console.log("pos_res", pos_res.data)
+                      if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
+                        that.setData({
+                          try: 0
+                        })
+                        // setTimeout(function () {
+                        //   wx.hideLoading()
+                        // }, 2)
+                        wx.showLoading({
+                          title: '查无位置信息！',
+                        })
+                        setTimeout(function () {
+                          wx.hideLoading()
+                        }, 1500)
+                      } else {
+                        //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
+                        //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
+                        // that.setData({
+                        //   photoid: res_oos.data.data.id,
+                        //   latitude: pos_res.data.GPSLatitude.val,
+                        //   longitude: pos_res.data.GPSLongitude.val,
+                        // })
+                        // console.log("photoid", that.data.photoid)
+                        // console.log("latitude", that.data.latitude)
+                        // console.log("longitude", that.data.longitude)
+                        wx.request({
+                          url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
+                          method: 'GET',
+                          data: {},
+                          header: {
+                            'content-type': 'application/json', // 默认值
+                          },
+                          success(position) {
+                            console.log("position", position.data)
+                            that.setData({
+                              photoid: res_oos.data.data.id,
+                              latitude: position.data.latitude,
+                              longitude: position.data.longitude,
                             })
-                            setTimeout(function() {
-                              wx.hideLoading()
-                            }, 1500)
-                          } else {
-                          //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
-                          //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
-                            // that.setData({
-                            //   photoid: res_oos.data.data.id,
-                            //   latitude: pos_res.data.GPSLatitude.val,
-                            //   longitude: pos_res.data.GPSLongitude.val,
-                            // })
-                            // console.log("photoid", that.data.photoid)
-                            // console.log("latitude", that.data.latitude)
-                            // console.log("longitude", that.data.longitude)
-                            wx.request({
-                              url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
-                              method: 'GET',
-                              data: {},
-                              header: {
-                                'content-type': 'application/json', // 默认值
-                              },
-                              success(position) {
-                                console.log("position", position.data)
-                                that.setData({
-                                  photoid: res_oos.data.data.id,
-                                  latitude: position.data.latitude,
-                                  longitude: position.data.longitude,
-                                })
-                                if (position.data.code == 200) {
-                                  wx.request({
-                                    url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
-                                    method: 'GET',
-                                    data: {},
-                                    header: {
-                                      'content-type': 'application/json', // 默认值
-                                    },
-                                    success(pos) {
-                                      console.log("pos", pos.data)
-                                      if (pos.data.status == 0) {
-                                        that.setData({
-                                          flag: true,
-                                          address: pos.data.result.address,
-                                          city: pos.data.result.address_component.city,
-                                          province: pos.data.result.address_component.province
-                                        })
-                                        console.log("address", pos.data.result.address)
-                                        console.log("nation", pos.data.result.address_component.nation)
-                                        console.log("province", pos.data.result.address_component.province)
-                                        console.log("city", pos.data.result.address_component.city)
-                                      } else {
-                                        wx.showLoading({
-                                          title: '加载失败！',
-                                        })
-                                        setTimeout(function() {
-                                          wx.hideLoading()
-                                        }, 1500)
-                                      }
-                                    }
-                                  })
-                                } else {
-                                  wx.showLoading({
-                                    title: '加载失败！',
-                                  })
-                                  setTimeout(function() {
-                                    wx.hideLoading()
-                                  }, 1500)
+                            if (position.data.code == 200) {
+                              wx.request({
+                                url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
+                                method: 'GET',
+                                data: {},
+                                header: {
+                                  'content-type': 'application/json', // 默认值
+                                },
+                                success(pos) {
+                                  console.log("pos", pos.data)
+                                  if (pos.data.status == 0) {
+                                    // setTimeout(function () {
+                                    //   wx.hideLoading()
+                                    // }, 2)
+                                    wx.showLoading({
+                                      title: '获取信息成功',
+                                    })
+                                    setTimeout(function () {
+                                      wx.hideLoading()
+                                    }, 500)
+                                    that.setData({
+                                      flag: true,
+                                      try: 0,
+                                      address: pos.data.result.address,
+                                      city: pos.data.result.address_component.city,
+                                      province: pos.data.result.address_component.province
+                                    })
+                                    console.log("address", pos.data.result.address)
+                                    console.log("nation", pos.data.result.address_component.nation)
+                                    console.log("province", pos.data.result.address_component.province)
+                                    console.log("city", pos.data.result.address_component.city)
+                                  } else {
+                                    that.retry();
+                                  }
+                                },
+                                fail: function() {
+                                  that.retry();
                                 }
-                              }
-                            })
-                            setTimeout(function() {
-                              wx.hideLoading()
-                            }, 1500)
+                              })
+                            } else {
+                              that.retry();
+                            }
+                          },
+                          fail: function() {
+                            that.retry();
                           }
-                        }
-                      })
-                      wx.showLoading({
-                        title: '正在获取信息！',
-                      })
+                        })
+                        // setTimeout(function () {
+                        //   wx.hideLoading()
+                        // }, 2)
+                      }
                     }
                   })
+                },
+                fail: function() {
+                  console.log("upfail")
+                  // setTimeout(function () {
+                  //   wx.hideLoading()
+                  // }, 2)
+                  that.retry();
                 }
-              }
-            })
+              })
+            }
+          },
+          fail: function() {
+            that.retry();
           }
         })
       }
     })
+  },
+  retry: function() {
+    if (that.try > 3) {
+      wx.showLoading({
+        title: '正在为您重新加载',
+      })
+      setTimeout(function() {
+        wx.hideLoading()
+      }, 500)
+      that.setData({
+        try: 0
+      })
+      that.analysis()
+    } else {
+      that.setData({
+        try: that.try+1
+      })
+      wx.showLoading({
+        title: '加载失败！',
+      })
+      setTimeout(function() {
+        wx.hideLoading()
+      }, 500)
+      that.analysis()
+    }
   },
   // 图片预览
   previewImage: function(e) {
@@ -241,13 +293,13 @@ Page({
       key: 'S-TOKEN',
       success(s) {
         console.log("stoken", s.data)
-        console.log("province",that.data.province)
-        console.log("city",that.data.city)
+        console.log("province", that.data.province)
+        console.log("city", that.data.city)
         console.log("photoid", that.data.photoid)
         console.log("phototime", that.data.phototime)
         console.log("latitude", that.data.latitude)
         console.log("longitude", that.data.longitude)
-        console.log("address",that.data.address)
+        console.log("address", that.data.address)
         wx.request({
           url: app.globalData.Service + 'photo/update?',
           method: 'POST',
@@ -265,12 +317,12 @@ Page({
             'S-TOKEN': s.data
           },
           success(res) {
-            console.log("status",res.data)
-            if(res.data.text == 'update success!'){
+            console.log("status", res.data)
+            if (res.data.text == 'update success!') {
               wx.showToast({
                 title: '发布成功！',
               })
-              setTimeout(function () {
+              setTimeout(function() {
                 wx.navigateBack({
                   delta: 1
                 })
@@ -281,11 +333,11 @@ Page({
       }
     })
   },
-  warn: function(){
+  warn: function() {
     wx.showLoading({
       title: '格式错误！',
     })
-    setTimeout(function () {
+    setTimeout(function() {
       wx.hideLoading()
     }, 1500)
   }
