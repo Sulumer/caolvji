@@ -15,7 +15,7 @@
   flex-direction:row;
   justify-content: center;
  
-  padding-top: 110rpx;
+  padding-top: 50rpx;
 }
 .mingzi{
   display: flex;
@@ -31,7 +31,7 @@
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  padding-top: 110rpx;
+  padding-top: 150rpx;
 
 }
 .chengjiu{
@@ -46,7 +46,7 @@
   width: 140rpx;
 }
 .women{
-  margin-top: 50rpx;
+  margin-top: 80rpx;
   color: rgba(14, 44, 214, 0.973);
   font-size: 25rpx;
   text-align: center;

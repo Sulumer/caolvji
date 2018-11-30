@@ -6,7 +6,7 @@ var province = "";
 var provinceList = [];
 let chart = null;
 var degree = 0;
-var options = {
+var optionsMap = {
   tooltip: {
     trigger: 'item'
   },
@@ -40,7 +40,7 @@ var options = {
         areaColor: '#fff',
       },
       emphasis: {
-        areaColor: '#389BB7',
+        areaColor: '#00FFFF',
         borderWidth: 0
       }
     },
@@ -59,7 +59,7 @@ function initChart(canvas, width, height) {
 
   echarts.registerMap('china', geoJson);
 
-  var option = options;
+  var option = optionsMap;
   chart.setOption(option);
   return chart;
 }
@@ -101,6 +101,7 @@ Page({
     var photoNum = options.kind;
     var videoNum = options.kind;
     var moodNum = options.kind;
+    var percentage = options.kind;
     var that = this;
     this.setData({
       provinceNum: 1,
@@ -109,7 +110,40 @@ Page({
       photoNum: 1,
       videoNum: 1,
       moodNum: 1,
+      percentage: 100,
     })
+    // 获取用户足迹 重新绘图
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success(resStorage) {
+        console.log("S-TOKEN:",resStorage.data)
+
+        wx.request({
+          url: app.globalData.Service + 'photo/mark',
+          method: "GET",
+          header: {
+            "S-TOKEN": resStorage.data,
+            'content-type': 'application/json' // 默认值
+          },
+          success(res) {
+            //console.log("res -> ",res)
+            var pList = res.data.data;
+            for(var i=0;i<pList.length;i++){
+              var p = pList[i].province;
+              var n = pList[i].num;
+              if (typeof p == "undefined" || p == null || p == ""){
+                continue;
+              }else{
+                var province_data = { name: p, value: n };
+                provinceList.push(province_data);
+              }
+            }
+            chart.setOption(optionsMap); 
+          }
+        })
+
+        }
+      }),
     /**
      * 获取用户信息
      */
@@ -137,6 +171,7 @@ Page({
       }
     })
   },
+  
   //获取输入框的内容，并赋值到text中
   expInput: function (e) {  
     province = e.detail.value;

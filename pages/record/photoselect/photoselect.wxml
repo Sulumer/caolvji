@@ -21,4 +21,5 @@
     </view> -->
 <view>
 </view>
-    <button class="submitBtn" type="primary" form-type='submit' bindtap="uploadPhoto">立即发布</button>
+    <button wx:if="{{flag}}" class="submitBtn1" type="primary" form-type='submit' bindtap="uploadPhoto">立即发布</button>
+    <button wx:if="!{{flag}}"class="submitBtn2" bindtap="warn">立即发布</button>

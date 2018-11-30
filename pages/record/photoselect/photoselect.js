@@ -11,6 +11,7 @@ Page({
     phototime: 123,
     city: "",
     province: "",
+    flag: false,
     images: [],
     uploadedImages: [],
     //imageWidth: getApp().screenWidth / 4 - 10
@@ -135,6 +136,7 @@ Page({
                                       console.log("pos", pos.data)
                                       if (pos.data.status == 0) {
                                         that.setData({
+                                          flag: true,
                                           address: pos.data.result.address,
                                           city: pos.data.result.address_component.city,
                                           province: pos.data.result.address_component.province
@@ -245,6 +247,7 @@ Page({
         console.log("phototime", that.data.phototime)
         console.log("latitude", that.data.latitude)
         console.log("longitude", that.data.longitude)
+        console.log("address",that.data.address)
         wx.request({
           url: app.globalData.Service + 'photo/update?',
           method: 'POST',
@@ -254,7 +257,8 @@ Page({
             "latitude": that.data.latitude,
             "longitude": that.data.longitude,
             "province": that.data.province,
-            "city": that.data.city
+            "city": that.data.city,
+            "address": that.data.address
           },
           header: {
             'content-type': 'application/json', // 默认值
@@ -276,5 +280,13 @@ Page({
         })
       }
     })
+  },
+  warn: function(){
+    wx.showLoading({
+      title: '格式错误！',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 1500)
   }
 })

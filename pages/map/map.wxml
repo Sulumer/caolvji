@@ -1,8 +1,7 @@
 <view class="container">
-  <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
-  <view>
-    <input class="input" placeholder="请输入省份" bindinput='expInput'/>
-    <button class="comment" bindtap="showCity">确定</button>.
+  <view class="title0">足迹地图</view>
+  <ec-canvas class="canvas" id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+  <view> 
     <open-data class="icon" type="userAvatarUrl"></open-data>
     <open-data  class="name" type="userNickName"></open-data>
     <view class="rank">足迹超越<text>{{percentage}}%</text>的用户</view>

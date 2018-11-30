@@ -73,16 +73,6 @@ Page({
       })
     }
   },
-  input: function () {
-    console.log("input")
-  },
-  transpond: function () {
-    console.log("transpond")
-  },
-  collect: function () {
-    console.log("collect")
-  },
-
   //弹出动画
   popp: function () {
     //plus顺时针旋转
@@ -144,8 +134,16 @@ Page({
     })
   },
   onLoad: function (options) {
+
+  },
+  onReady: function () {
+    // 生命周期函数--监听页面初次渲染完成
+  },
+
+
+
+  onShow: function () {
     var that = this
-    // 生命周期函数--监听页面加载
     wx.showLoading({
       title: '加载中',
     })
@@ -167,74 +165,38 @@ Page({
     wx.getStorage({
       key: 'S-TOKEN',
       success(resStorage) {
-        setTimeout(function () {
-            wx.hideLoading()
-          }, 2)
-      },
-      fail(resStorage){
-        wx.navigateTo({
-          url: '/pages/login/login'
+        wx.getLocation({
+          type: 'wgs84',
+          success: function (res) {
+            var la = (res.latitude).toFixed(6);
+            var lon = (res.longitude).toFixed(6);
+            that.setData({
+              latitude: la,
+              longitude: lon,
+            });
+            console.log("当前位置", res.latitude, res.longitude);
+          },
+          fail: function (res) {
+            console.log("wu当前位置")
+          }
         })
-      }
-    })
-    //     }
-    //   }
-    // })
-   
-
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-
-
-
-  onShow: function () {
-    var that = this
-
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        var la = (res.latitude).toFixed(6);
-        var lon = (res.longitude).toFixed(6);
-        that.setData({
-          latitude: la,
-          longitude: lon,
-        });
-        console.log("当前位置", res.latitude, res.longitude);
-      },
-      fail: function (res) {
-        console.log("wu当前位置")
-      }
-    })
-
-
-   
-    // 生命周期函数--监听页面显示
-    wx.getStorage({
-      key: 'S-TOKEN',
-      success(resmes) {
-        console.log(resmes.data)
         wx.request({
-          url: app.globalData.Service + '/photo/map', 
+          url: app.globalData.Service + '/photo/map',
           method: "GET",
           data: {
           },
           header: {
             'content-type': 'application/json', // 默认值
-            "S-TOKEN": resmes.data
+            "S-TOKEN": resStorage.data
           },
           success(res) {
-            
-           
-           
             console.log("nnd", res.data.data);
             dataArray = res.data.data;
             var markers = new Array()
-            for (var i = 0; i < dataArray.length; i++){
+            for (var i = 0; i < dataArray.length; i++) {
               var dic = dataArray[i];
-              
-              if(dic.latitude!=null){
+
+              if (dic.latitude != null) {
                 var laa = (dic.latitude).toFixed(6);
                 var lonn = (dic.longitude).toFixed(6);
                 // dic.iconPath = dic.imgUrl+ "?imageslim";
@@ -257,7 +219,7 @@ Page({
                   width: 70,
                   height: 70,
                   callout: {
-                    content: dic.province|| '',
+                    content: dic.province || '',
                     fontSize: 14,
                     bgColor: "#FFF",
                     borderWidth: 1,
@@ -267,7 +229,7 @@ Page({
                     textAlign: "center"
                   }
                 };
-                console.log("经纬度", laa,lonn);
+                console.log("经纬度", laa, lonn);
                 markers.push(marker);
               }
               that.setData(
@@ -277,9 +239,19 @@ Page({
             console.log("markers", that.data.markers);
           }
         })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2)
+      },
+      fail(resStorage) {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
       }
     })
-   
+    //     }
+    //   }
+    // })
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏

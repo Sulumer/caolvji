@@ -87,11 +87,20 @@
   font-size: 19rpx;
 }
 
-.submitBtn {
+.submitBtn1 {
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100rpx;
   width: 80%;
+}
+.submitBtn2 {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 80%;
+  background-color: lightgray;
 }
