@@ -13,7 +13,7 @@ Page({
    */
   fankui:function(){
     wx.redirectTo({
-      url: '/pages/user/tijiaochenggong/tijiaochenggong',
+      url: '../tijiaochenggong/tijiaochenggong',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

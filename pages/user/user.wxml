@@ -1,36 +1,42 @@
-<view class='touxiang'>
-  <image src='/images/图片.png'></image>
-  <text class='mingzi'>XXX</text>
-  <view class="fankuibutton">
-    <button type="default" size='mini' bindtap='btfankui'> 产品反馈 </button>
-  </view>
-</view>
+<view class='toptop'>
 
-<view class="text1">
+  <view class='touxiang'>
+    <image src='/images/图片.png'></image>
+  </view>
+
+  <text class='mingzi'>{{name}}</text>
+
+  <view class="text1">
   <text>国家：{{country}}</text>
   <text>省份：{{province}}</text>
   <text>城市：{{city}}</text>
 </view>
 
+</view>
+
+
+
+
+
 
 <view class="chengjiu">
 
 
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
@@ -38,21 +44,21 @@
   </navigator>
 </view>
 <view class="chengjiu">
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
-  <navigator url='../fankui/fankui' hover-class='changestyle'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
       <image src='/images/图片1.png'></image>
     </view>
@@ -62,8 +68,12 @@
 </view>
 
 
-<navigator url='../guanyuwomen/guanyuwomen' hover-class='changestyle'>
-  <view class='women'>
+
+<view class='women'>
+  <navigator url='fankui/fankui' hover-class='changestyle'>
+    <text>产品反馈|</text>
+  </navigator>
+  <navigator url='guanyuwomen/guanyuwomen' hover-class='changestyle'>
     <text>关于我们?</text>
-  </view>
-</navigator>
+  </navigator>
+</view>

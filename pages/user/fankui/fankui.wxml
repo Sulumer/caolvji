@@ -1,9 +1,11 @@
 <!--pages/fankui/fankui.wxml-->
+
 <view class='wenti'>
-  <text>问题 ：</text>
-  <input placeholder='您要反馈什么问题' placeholder-class='ziti'></input>
+  <text class='wenti1'>您的问题 ：</text>
+  <input class='wenti2' placeholder='您要反馈什么问题' placeholder-class='ziti'></input>
 </view>
-<view class='wenti'>
+
+<view class='contact'>
   <text>联系方式 ：</text>
   <input placeholder='请填写手机号/微信号/邮箱/QQ' placeholder-class='ziti'></input>
 </view>

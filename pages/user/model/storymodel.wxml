@@ -1,0 +1,7 @@
+<view class='container'>
+  <view wx:for="{{model}}">
+    <view class='model' >
+      <image src='{{item.url}}'  data-id='{{item.id}}' data-url="{{item.url}}" data-title="{{item.title}}" bindtap='clickimage'></image>
+    </view>
+  </view>
+</view>

@@ -5,51 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    model: [
+      {
+        id: 1,
+        url: '/images/model/model1.jpg',
+        title: '模板1',
+      },
+      {
+        id: 2,
+        url: '/images/model/model2.jpg',
+        title: '模板2',
+      },
+      {
+        id: 3,
+        url: '/images/model/model3.jpg',
+        title: '模板3',
+      }, {
+        id: 4,
+        url: '/images/model/model4.jpg',
+        title: '模板4',
+      },
+      {
+        id: 5,
+        url: '/images/model/model5.jpg',
+        title: '模板5',
+      }, {
+        id: 6,
+        url: '/images/model/model6.jpg',
+        title: '模板6',
+      },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  clickimage1: function () {
+  clickimage: function (res) {
+    // console.log(res)
+    var id = res.currentTarget.dataset.id;
+    var title = res.currentTarget.dataset.title;
+    var url = res.currentTarget.dataset.url;
     wx.navigateTo({
-      url: '../model1/model1',
-    })
-  },
-
-  clickimage10: function () {
-    wx.navigateTo({
-      url: '../model10/model10',
-    })
-  },
-
-  clickimage12: function () {
-    wx.navigateTo({
-      url: '../model12/model12',
-    })
-  },
-
-  clickimage13: function () {
-    wx.navigateTo({
-      url: '../model13/model13',
-    })
-  },
-
-  clickimage3: function () {
-    wx.navigateTo({
-      url: '../model3/model3',
-    })
-  },
-
-  clickimage7: function () {
-    wx.navigateTo({
-      url: '../model7/model7',
-    })
-  },
-
-  clickimage9: function () {
-    wx.navigateTo({
-      url: '../model9/model9',
+      url: "/pages/user/model/model?id=" + id + "&url=" + url + "&title=" + title
     })
   },
   onLoad: function (options) {

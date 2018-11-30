@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-   
+    name:'陈瀚霖',
     country:"234",
     province:"数量",
     city:"33",

@@ -1,23 +1,26 @@
-// pages/user/model3/model3.js
+// pages/muban1/muban1.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: '',
+    title: '',
+    url: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  click: function () {
-    wx.redirectTo({
-      url: '../storymodel/storymodel',
-    })
-  },
   onLoad: function (options) {
-
+    var that = this
+    // console.log(options)
+    that.setData({
+      id: options.id,
+      title: options.title,
+      url: options.url
+    })
   },
 
   /**

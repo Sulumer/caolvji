@@ -1,25 +1,34 @@
 input{
   border:1px solid black;
-  width: 65%;
-  border-radius: 10px;
+  width: 60%;
+  border-radius: 10rpx;
 }
+
 .wenti{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 20PX;
+  margin-bottom: 25rpx;
+  margin-top: 50rpx;
 }
+
+.contact{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .ziti{
-  font-size: 12px;
+  font-size: 25rpx;
 }
 .xiangxiwenti{
-  margin-top: 20px;
+  margin-top: 40rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 textarea{
-  width: 300px;
+  width: 90%;
   border: 1px black solid;
 }
 .buju{
@@ -28,15 +37,15 @@ textarea{
   
 }
 .shangchuan image{
-  width: 100px;
-  height: 100px;
+  width: 300rpx;
+  height: 300rpx;
 }
 .shangchuan{
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
 }
 .tupian image{
-  width: 100px;
-  height: 100px;
+  width: 100rpx;
+  height: 100rpx;
 }

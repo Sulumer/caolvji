@@ -1,6 +1,6 @@
 <!-- <view class='mask' hidden='{{maskFlag}}' catchtap='oilConfirm' ></view> -->
 <view class="bg"  >
-<map class="mapcontainer" longitude="119.1924740000" latitude="26.0510520000" markers='{{markers}}' bindcallouttap="ct">
+<map class="mapcontainer" longitude="{{longitude}}" latitude="{{latitude}}" markers='{{markers}}' bindcallouttap="ct">
   
 </map>
   <cover-view class="bt1">

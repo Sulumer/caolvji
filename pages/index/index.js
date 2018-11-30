@@ -1,7 +1,10 @@
+var dataArray = new Array()
 var that;
 var app = getApp()
 Page({
   data: {
+    latitude: "",
+    longitude: "",
     flag: true,
     showUpload: true,
     isPopping: false,//是否已经弹出
@@ -33,29 +36,7 @@ Page({
 
     // }],
     markers:[],
-    polyline: [{
-      points: [{
-        longitude: 113.3245211,
-        latitude: 23.10229
-      }, {
-        longitude: 113.324520,
-        latitude: 23.21229
-      }],
-      color: "#FF0000DD",
-      width: 2,
-      dottedLine: true
-    }],
-    controls: [{
-      id: 1,
-      iconPath: '/resources/location.png',
-      position: {
-        left: 0,
-        top: 300 - 50,
-        width: 50,
-        height: 50
-      },
-      clickable: true
-    }],
+
   },
   //页面跳转
   navi: function(e){
@@ -199,19 +180,43 @@ Page({
     //     }
     //   }
     // })
+   
+
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
   },
+
+
+
   onShow: function () {
     var that = this
+
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var la = (res.latitude).toFixed(6);
+        var lon = (res.longitude).toFixed(6);
+        that.setData({
+          latitude: la,
+          longitude: lon,
+        });
+        console.log("当前位置", res.latitude, res.longitude);
+      },
+      fail: function (res) {
+        console.log("wu当前位置")
+      }
+    })
+
+
+   
     // 生命周期函数--监听页面显示
     wx.getStorage({
       key: 'S-TOKEN',
       success(resmes) {
         console.log(resmes.data)
         wx.request({
-          url: app.globalData.Service + 'photo/map?', //仅为示例，并非真实的接口地址
+          url: app.globalData.Service + '/photo/map', 
           method: "GET",
           data: {
           },
@@ -220,11 +225,56 @@ Page({
             "S-TOKEN": resmes.data
           },
           success(res) {
-            // console.log("index",res.data.data)
-            that.setData({
-              markers: res.data.data
-            })
-            console.log("markers", that.data.markers)
+            
+           
+           
+            console.log("nnd", res.data.data);
+            dataArray = res.data.data;
+            var markers = new Array()
+            for (var i = 0; i < dataArray.length; i++){
+              var dic = dataArray[i];
+              
+              if(dic.latitude!=null){
+                var laa = (dic.latitude).toFixed(6);
+                var lonn = (dic.longitude).toFixed(6);
+                // dic.iconPath = dic.imgUrl+ "?imageslim";
+                // dic.width=70;
+                // dic.height=70;
+                //dic.callout.content=dic.province;
+                //dic.callout.fontSize= "16";
+                let marker = {
+                  iconPath: dic.imgUrl + "?imageslim",
+                  id: dic.id || 0,
+                  //name: point.placeName || '',
+                  //title: point.placeName || '',
+                  latitude: laa,
+                  longitude: lonn,
+                  // label: {
+                  //   x: -24,
+                  //   y: -26,
+                  //   content: dic.province,
+                  // },
+                  width: 70,
+                  height: 70,
+                  callout: {
+                    content: dic.province|| '',
+                    fontSize: 14,
+                    bgColor: "#FFF",
+                    borderWidth: 1,
+                    borderColor: "#CCC",
+                    padding: 4,
+                    display: "ALWAYS",
+                    textAlign: "center"
+                  }
+                };
+                console.log("经纬度", laa,lonn);
+                markers.push(marker);
+              }
+              that.setData(
+                { markers: markers }
+              )
+            }
+            console.log("markers", that.data.markers);
           }
         })
       }
@@ -266,5 +316,4 @@ Page({
   controltap(e) {
     console.log(e.controlId)
   },
-  
 })
