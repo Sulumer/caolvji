@@ -104,7 +104,7 @@ var app = getApp()
 var count = 0;
 Page({
   data: {
-    chooesVideo: '',    //上传视频地址
+    chooesVideo: 'https://cstdio.cn/caolvji/clj.mp4',    //上传视频地址
     tipHide: false,
     chooseTypeHide: true,
   },
@@ -152,6 +152,16 @@ Page({
       this.videoContext.pause();
     }
     this.setData(play);
+  },
+  submitClick: function(e){
+    wx.showLoading({
+      title: '正在上传',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 3000)
+    wx.redirectTo({
+      url: '/pages/record/record',
+    })
   }
-
 })

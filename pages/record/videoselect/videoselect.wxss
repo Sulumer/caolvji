@@ -53,6 +53,7 @@ page {
     justify-content: center; /*居中对齐*/
     position: relative;
     background-color: #fff;
+    margin-top: 30rpx;
 }
 .prew_video[hidden]{
     display: none;
