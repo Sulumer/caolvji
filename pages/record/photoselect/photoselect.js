@@ -93,6 +93,7 @@ Page({
                   wx.showLoading({
                     title: '正在获取照片信息',
                   })
+                  var up_flag = false;
                   wx.request({
                     url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
                     method: 'GET',
@@ -101,6 +102,7 @@ Page({
                       'content-type': 'application/json', // 默认值
                     },
                     success(pos_res) {
+                      up_flag = true;
                       console.log("pos_res", pos_res.data)
                       if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
                         that.setData({
@@ -195,11 +197,18 @@ Page({
                   })
                 },
                 fail: function() {
+                  up_flag = true;
                   console.log("upfail")
                   // setTimeout(function () {
                   //   wx.hideLoading()
                   // }, 2)
                   that.retry();
+                },
+                complete: function() {
+                  console.log("up_false:",up_flag)
+                  if(up_flag == false){
+                    that.retry();
+                  }
                 }
               })
             }
@@ -214,7 +223,7 @@ Page({
   retry: function() {
     if (that.try > 3) {
       wx.showLoading({
-        title: '正在为您重新加载',
+        title: '正在为您重试',
       })
       setTimeout(function() {
         wx.hideLoading()

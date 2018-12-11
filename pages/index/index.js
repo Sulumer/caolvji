@@ -193,7 +193,7 @@ Page({
             console.log("nnd", res.data.data);
             dataArray = res.data.data;
             var markers = new Array()
-            for (var i = 0; i < dataArray.length; i++) {
+            for (var i = 0; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
               var dic = dataArray[i];
 
               if (dic.latitude != null) {
