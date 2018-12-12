@@ -30,22 +30,33 @@ input{
 textarea{
   width: 90%;
   border: 1px black solid;
+  height: 400rpx;
 }
-.buju{
-  display: flex;
-  flex-direction: row;
-  
-}
+
 .shangchuan image{
-  width: 300rpx;
-  height: 300rpx;
+  width: 200rpx;
+  height: 200rpx;
 }
 .shangchuan{
+  display: flex;
+  flex-direction: row;
   margin-top: 20rpx;
-  margin-left: 20rpx;
+  margin-left: 5%;
   margin-bottom: 20rpx;
 }
-.tupian image{
-  width: 100rpx;
-  height: 100rpx;
+.tupian{
+  width: 200rpx;
+  padding-left: 5%;
+  height: 200rpx;
+}
+.buttonstyle{
+  margin-top: 30rpx;
+  width: 90%;
+}
+
+
+.weui-textarea-counter{
+  color: #b3b3b3;
+  font-size: 14px;
+  margin-left: 490rpx;
 }

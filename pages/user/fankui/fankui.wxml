@@ -11,25 +11,25 @@
 </view>
 
 <view class='xiangxiwenti'>
-  <textarea placeholder='请详细描述您的问题'></textarea>
+  <textarea placeholder='请详细描述您的问题' maxlength='100' bindinput="handleContentInput"></textarea>
 </view>
+<view class="weui-textarea-counter">可输入字数{{contentCount}}/100</view>
 
-<view class='buju'>
+
   <view class="shangchuan">
+    
     <image src='/images/图片2.png' bindtap='xuanzezhaopian'></image>
-
-
-    <view>
-      <view wx:for='{{imgs}}' wx:for-key='item' wx:for-index='id' class='tupian'>
-        <image src='{{item}}' bindtap='previewImg'></image>
-      </view>
+    
+    <view wx:for='{{imgs}}' wx:for-key='item' wx:for-index='id' class='tupian' mode="aspectFill">
+      <image src='{{item}}' bindtap='previewImg'></image>
     </view>
-  </view>
+
+  
 
 </view>
 
 
 
 <view>
-  <button type='primary' bindtap='fankui'>提交</button>
+  <button class='buttonstyle' type='primary' bindtap='fankui'>提交</button>
 </view>
