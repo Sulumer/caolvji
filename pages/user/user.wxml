@@ -1,7 +1,7 @@
 <view class='toptop'>
 
   <view class='touxiang'>
-    <image src='/images/图片.png'></image>
+    <image src='/images/avar.png'></image>
   </view>
 
   <text class='mingzi'>{{name}}</text>
@@ -24,21 +24,21 @@
 
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
@@ -46,21 +46,21 @@
 <view class="chengjiu">
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
 
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <view class="chengjiu1">
-      <image src='/images/图片1.png'></image>
+      <image src='/images/achievement.png'></image>
     </view>
     <view>说走就走</view>
   </navigator>
