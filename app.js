@@ -1,6 +1,6 @@
 //app.js
 App({
   globalData: {
-    Service: "https://demo.yyf-blog.com/"
+    Service: "https://demo.yyf-blog.com/footprint/"
   }
 })

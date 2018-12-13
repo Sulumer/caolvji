@@ -181,7 +181,7 @@ Page({
           }
         })
         wx.request({
-          url: app.globalData.Service + '/photo/map',
+          url: app.globalData.Service + 'photo/map',
           method: "GET",
           data: {
           },

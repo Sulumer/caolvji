@@ -13,6 +13,7 @@ Page({
     city: "",
     province: "",
     flag: false,
+    up_flag: false,
     images: [],
     try: 0,
     uploadedImages: [],
@@ -87,6 +88,9 @@ Page({
                   'token': res_oos.data.data.uploadToken
                 },
                 success: function(r) {
+                  that.setData({
+                    up_flag: true
+                  })
                   console.log("r", r)
                   setTimeout(function () {
                     wx.hideLoading()
@@ -94,7 +98,6 @@ Page({
                   wx.showLoading({
                     title: '正在获取照片信息',
                   })
-                  var up_flag = false;
                   wx.request({
                     url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
                     method: 'GET',
@@ -103,7 +106,6 @@ Page({
                       'content-type': 'application/json', // 默认值
                     },
                     success(pos_res) {
-                      up_flag = true;
                       console.log("pos_res", pos_res.data)
                       if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
                         that.setData({
@@ -200,7 +202,9 @@ Page({
                   })
                 },
                 fail: function() {
-                  up_flag = true;
+                  that.setData({
+                    up_flag: true
+                  })
                   console.log("upfail")
                   // setTimeout(function () {
                   //   wx.hideLoading()
@@ -208,9 +212,14 @@ Page({
                   that.retry();
                 },
                 complete: function() {
-                  console.log("up_false:",up_flag)
-                  if(up_flag == false){
+                  console.log("up_false:", that.data.up_flag)
+                  if (that.data.up_flag == false){
                     that.retry();
+                  }
+                  else{
+                    that.setData({
+                      up_flag: false
+                    })
                   }
                 }
               })
