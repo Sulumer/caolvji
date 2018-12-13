@@ -1,4 +1,4 @@
-/* pages/find/find.wxss */
+ /* pages/find/find.wxss */
 
 /*选项*/
 
@@ -74,7 +74,7 @@ background-size: 9rpx 19rpx;
   text-align: center;
   line-height: 350rpx;
   font-size: 50rpx;
-  color: #000;
+  color:#62c0c0;
   font-weight: bold;
 }
 
