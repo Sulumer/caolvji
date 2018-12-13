@@ -1,4 +1,5 @@
 var that;
+var time = require('../../../utils/util.js');
 var app = getApp()
 Page({
   data: {
@@ -8,7 +9,7 @@ Page({
     longitude: "",
     address: "所在位置",
     photoid: "",
-    phototime: 123,
+    phototime: "",
     city: "",
     province: "",
     flag: false,
@@ -128,6 +129,7 @@ Page({
                         // console.log("photoid", that.data.photoid)
                         // console.log("latitude", that.data.latitude)
                         // console.log("longitude", that.data.longitude)
+                        console.log("datetime", pos_res.data.DateTime.val)
                         wx.request({
                           url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
                           method: 'GET',
@@ -141,6 +143,7 @@ Page({
                               photoid: res_oos.data.data.id,
                               latitude: position.data.latitude,
                               longitude: position.data.longitude,
+                              phototime: pos_res.data.DateTime.val
                             })
                             if (position.data.code == 200) {
                               wx.request({
@@ -305,7 +308,7 @@ Page({
         console.log("province", that.data.province)
         console.log("city", that.data.city)
         console.log("photoid", that.data.photoid)
-        console.log("phototime", that.data.phototime)
+        console.log("phototime", time.formatTimeTwo(that.data.phototime))
         console.log("latitude", that.data.latitude)
         console.log("longitude", that.data.longitude)
         console.log("address", that.data.address)
@@ -314,7 +317,7 @@ Page({
           method: 'POST',
           data: {
             "id": that.data.photoid,
-            "phototime": that.data.phototime,
+            "phototime": time.formatTimeTwo(that.data.phototime),
             "latitude": that.data.latitude,
             "longitude": that.data.longitude,
             "province": that.data.province,
