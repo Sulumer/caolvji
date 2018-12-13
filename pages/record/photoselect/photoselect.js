@@ -154,11 +154,12 @@ Page({
                                 photoid: res_oos.data.data.id,
                                 latitude: position.data.latitude,
                                 longitude: position.data.longitude,
-                                phototime: pos_res.data.DateTime.val,
+                                phototime: new Date((pos_res.data.DateTime.val.replace(/:/, "/")).replace(/:/, "/")).getTime(),
                                 address: position.data.address,
                                 city: position.data.city,
                                 province: position.data.province
                               })
+                              // console.log("phototime", that.data.phototime)
                               // console.log("address", position.data.result.address)
                               // console.log("nation", position.data.result.address_component.nation)
                               // console.log("province", position.data.result.address_component.province)
@@ -290,7 +291,7 @@ Page({
         console.log("province", that.data.province)
         console.log("city", that.data.city)
         console.log("photoid", that.data.photoid)
-        // console.log("phototime", time.formatTimeTwo(that.data.phototime))
+        console.log("phototime", that.data.phototime)
         console.log("latitude", that.data.latitude)
         console.log("longitude", that.data.longitude)
         console.log("address", that.data.address)
@@ -299,7 +300,7 @@ Page({
           method: 'POST',
           data: {
             "id": that.data.photoid,
-            // "phototime": time.formatTimeTwo(that.data.phototime),
+            "phototime": that.data.phototime,
             "latitude": that.data.latitude,
             "longitude": that.data.longitude,
             "province": that.data.province,
