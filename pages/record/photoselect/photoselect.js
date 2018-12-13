@@ -92,7 +92,7 @@ Page({
                     up_flag: true
                   })
                   console.log("r", r)
-                  setTimeout(function () {
+                  setTimeout(function() {
                     wx.hideLoading()
                   }, 2)
                   wx.showLoading({
@@ -117,7 +117,7 @@ Page({
                         wx.showLoading({
                           title: '查无位置信息！',
                         })
-                        setTimeout(function () {
+                        setTimeout(function() {
                           wx.hideLoading()
                         }, 1500)
                       } else {
@@ -141,51 +141,28 @@ Page({
                           },
                           success(position) {
                             console.log("position", position.data)
-                            that.setData({
-                              photoid: res_oos.data.data.id,
-                              latitude: position.data.latitude,
-                              longitude: position.data.longitude,
-                              phototime: pos_res.data.DateTime.val
-                            })
                             if (position.data.code == 200) {
-                              wx.request({
-                                url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + position.data.latitude + ',' + position.data.longitude + '&key=' + position.data.key + '&get_posi=1',
-                                method: 'GET',
-                                data: {},
-                                header: {
-                                  'content-type': 'application/json', // 默认值
-                                },
-                                success(pos) {
-                                  console.log("pos", pos.data)
-                                  if (pos.data.status == 0) {
-                                    // setTimeout(function () {
-                                    //   wx.hideLoading()
-                                    // }, 2)
-                                    wx.showLoading({
-                                      title: '获取信息成功',
-                                    })
-                                    setTimeout(function () {
-                                      wx.hideLoading()
-                                    }, 500)
-                                    that.setData({
-                                      flag: true,
-                                      try: 0,
-                                      address: pos.data.result.address,
-                                      city: pos.data.result.address_component.city,
-                                      province: pos.data.result.address_component.province
-                                    })
-                                    console.log("address", pos.data.result.address)
-                                    console.log("nation", pos.data.result.address_component.nation)
-                                    console.log("province", pos.data.result.address_component.province)
-                                    console.log("city", pos.data.result.address_component.city)
-                                  } else {
-                                    that.retry();
-                                  }
-                                },
-                                fail: function() {
-                                  that.retry();
-                                }
+                              wx.showLoading({
+                                title: '获取信息成功',
                               })
+                              setTimeout(function() {
+                                wx.hideLoading()
+                              }, 500)
+                              that.setData({
+                                flag: true,
+                                try: 0,
+                                photoid: res_oos.data.data.id,
+                                latitude: position.data.latitude,
+                                longitude: position.data.longitude,
+                                phototime: pos_res.data.DateTime.val,
+                                address: position.data.address,
+                                city: position.data.city,
+                                province: position.data.province
+                              })
+                              // console.log("address", position.data.result.address)
+                              // console.log("nation", position.data.result.address_component.nation)
+                              // console.log("province", position.data.result.address_component.province)
+                              // console.log("city", position.data.result.address_component.city)
                             } else {
                               that.retry();
                             }
@@ -194,9 +171,6 @@ Page({
                             that.retry();
                           }
                         })
-                        // setTimeout(function () {
-                        //   wx.hideLoading()
-                        // }, 2)
                       }
                     }
                   })
@@ -213,10 +187,9 @@ Page({
                 },
                 complete: function() {
                   console.log("up_false:", that.data.up_flag)
-                  if (that.data.up_flag == false){
+                  if (that.data.up_flag == false) {
                     that.retry();
-                  }
-                  else{
+                  } else {
                     that.setData({
                       up_flag: false
                     })
@@ -235,7 +208,7 @@ Page({
   retry: function() {
     if (that.try > 3) {
       wx.showLoading({
-        title: '正在为您重试',
+        title: '加载失败',
       })
       setTimeout(function() {
         wx.hideLoading()
@@ -243,13 +216,13 @@ Page({
       that.setData({
         try: 0
       })
-      that.analysis()
+      // that.analysis()
     } else {
       that.setData({
         try: that.try+1
       })
       wx.showLoading({
-        title: '加载失败！',
+        title: '正在为您重试',
       })
       setTimeout(function() {
         wx.hideLoading()
@@ -317,7 +290,7 @@ Page({
         console.log("province", that.data.province)
         console.log("city", that.data.city)
         console.log("photoid", that.data.photoid)
-        console.log("phototime", time.formatTimeTwo(that.data.phototime))
+        // console.log("phototime", time.formatTimeTwo(that.data.phototime))
         console.log("latitude", that.data.latitude)
         console.log("longitude", that.data.longitude)
         console.log("address", that.data.address)
@@ -326,7 +299,7 @@ Page({
           method: 'POST',
           data: {
             "id": that.data.photoid,
-            "phototime": time.formatTimeTwo(that.data.phototime),
+            // "phototime": time.formatTimeTwo(that.data.phototime),
             "latitude": that.data.latitude,
             "longitude": that.data.longitude,
             "province": that.data.province,
