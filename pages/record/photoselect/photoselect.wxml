@@ -10,9 +10,11 @@
     </view>
 </view>
 <view class="page-body-info" bindtap="chooseLocation">
+        <view class="label-box">
           <image src="/images/icon/dw.png"class="page-body-img"></image>
           <!-- <text class="page-body-text" name="address">所在位置</text> -->
-          <text>{{address}}</text>
+          <text class="page-body-text">{{address}}</text>
+        </view>
   </view>
    <!-- <view class="label-box">
       <text class="label" bindtap="addlabel"  wx:if="{{labelcount > -1}}">添加标签1</text>
