@@ -53,29 +53,31 @@
   padding: 0 8rpx 0 10rpx;
 }
 
+.label-box {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+}
+
 .page-body-img {
-  position: relative;
-  padding-left: 80rpx;
+  /* display: flex; */
+  /* margin-top: 10px;
+  padding-left: 5rpx; */
+  margin-left: 80rpx;
   width: 50rpx;
   height: 60rpx;
-  margin-top: 10px;
 }
 
 .page-body-text {
-  margin-top: 10px;
-  position: absolute;
+  /*  */
   padding-left: 30rpx;
   line-height: 60rpx;
   font-size: 40rpx;
 }
 
-.label-box {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
-  padding: 0px 50px 0px 50px;
-}
+
 
 .label-box .label {
   width: 154rpx;
