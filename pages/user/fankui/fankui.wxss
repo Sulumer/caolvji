@@ -1,7 +1,7 @@
 input{
-  border:1px solid black;
+  border:1px solid gray;
   width: 60%;
-  border-radius: 10rpx;
+  border-radius: 8rpx;
 }
 
 .wenti{
@@ -23,7 +23,7 @@ input{
   margin-left: 10rpx;
 }
 .ziti1{
-  margin-left: 100rpx;
+  font-size: 25rpx;
 }
 .xiangxiwenti{
   margin-top: 40rpx;
@@ -31,9 +31,13 @@ input{
   flex-direction: row;
   justify-content: center;
 }
+.test{
+  padding: 15rpx;
+}
 textarea{
-  width: 90%;
-  border: 1px black solid;
+  width: 85%;
+  border: 1px gray solid;
+  border-radius: 8rpx;
   height: 400rpx;
 }
 
@@ -62,5 +66,6 @@ textarea{
 .weui-textarea-counter{
   color: #b3b3b3;
   font-size: 14px;
+  margin-top: 10rpx;
   margin-left: 490rpx;
 }

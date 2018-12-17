@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgs:[
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      '/images/achievement.png',
+      
+    ]
   },
 
   /**

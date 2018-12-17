@@ -2,7 +2,7 @@
 
 <view class='wenti'>
   <text class='wenti1'>您的问题 ：</text>
-  <input class='wenti2' placeholder='您要反馈什么问题' placeholder-class='ziti'></input>
+  <input class='wenti2' placeholder='您要反馈什么问题' placeholder-class='ziti' ></input>
 </view>
 
 <view class='contact'>
@@ -11,7 +11,7 @@
 </view>
 
 <view class='xiangxiwenti'>
-  <textarea placeholder='请详细描述您的问题' placeholder-class='ziti1' maxlength='100' bindinput="handleContentInput"></textarea>
+  <textarea class="test" placeholder='请详细描述您的问题' placeholder-class='ziti1' maxlength='100' bindinput="handleContentInput"></textarea>
 </view>
 <view class="weui-textarea-counter">可输入字数{{contentCount}}/100</view>
 

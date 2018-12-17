@@ -23,7 +23,7 @@ button{
 }
 .image-group image {
   display: inline-block;
-  width: 580rpx;
+  width: 100%;
   height: 920rpx;
   margin-right: 20rpx;
 }
