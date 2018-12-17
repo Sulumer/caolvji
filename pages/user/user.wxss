@@ -45,6 +45,7 @@
   height: 140rpx;
   width: 140rpx;
 }
+
 .women{
   margin-top: 80rpx;
   color: rgba(14, 44, 214, 0.973);

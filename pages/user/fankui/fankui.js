@@ -44,7 +44,9 @@ Page({
     
   },
   previewImg: function(e) {
-    var current = e.target.dataset.src;
+    var current = e.target.dataset.id;
+    console.log("curent:", e)
+   
     wx.previewImage({
       urls: this.data.imgs,
       current: current,
