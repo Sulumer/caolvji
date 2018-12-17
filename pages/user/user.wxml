@@ -14,60 +14,18 @@
 
 </view>
 
-
-
-
-
-
-<view class="chengjiu">
-
-
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
+<view class='chengjiu'>
+  <view wx:for='{{achieve}}' class='chengjiu1'>
+    <image src='{{item.src}}' bindtap='link'></image>
     <view>说走就走</view>
-  </navigator>
-
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
-    <view>说走就走</view>
-  </navigator>
-
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
-    <view>说走就走</view>
-  </navigator>
+  </view>
 </view>
-<view class="chengjiu">
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
+<view class='chengjiu'>
+  <view wx:for='{{achieve1}}' class='chengjiu1'>
+    <image src='{{item.src}}' bindtap='link'></image>
     <view>说走就走</view>
-  </navigator>
-
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
-    <view>说走就走</view>
-  </navigator>
-
-  <navigator url='fankui/fankui' hover-class='changestyle'>
-    <view class="chengjiu1">
-      <image src='/images/achievement.png'></image>
-    </view>
-    <view>说走就走</view>
-  </navigator>
-
+  </view>
 </view>
-
-
 
 <view class='women'>
   <navigator url='fankui/fankui' hover-class='changestyle'>

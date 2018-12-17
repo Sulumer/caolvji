@@ -9,10 +9,53 @@ Page({
     province:"数量",
     city:"33",
     autoplay:false,
-    currentTab: 0, 
+    achieve:[
+      {
+        id:1,
+        url:'fankui/fankui',
+        src:'/images/achievement.png',
+        content:'说走就走'
+      },
+      {
+        id: 2,
+        url: 'fankui/fankui',
+        src: '/images/achievement.png',
+        content: '说走就走'
+      },
+      {
+        id: 3,
+        url: 'fankui/fankui',
+        src: '/images/achievement.png',
+        content: '说走就走'
+      },
+    ],
+    achieve1:[
+      {
+        id: 4,
+        url: 'fankui/fankui',
+        src: '/images/achievement.png',
+        content: '说走就走'
+      },
+      {
+        id: 5,
+        url: 'fankui/fankui',
+        src: '/images/achievement.png',
+        content: '说走就走'
+      },
+      {
+        id: 6,
+        url: 'fankui/fankui',
+        src: '/images/achievement.png',
+        content: '说走就走'
+      },
+    ],
     //ctx=wx.createCanvasContext('firstCanvas')
   },
-  
+  link:function(){
+      wx.navigateTo({
+        url: 'fankui/fankui',
+      })
+  },
   btfankui:function(){
     //console.log(res),
     wx.navigateTo({

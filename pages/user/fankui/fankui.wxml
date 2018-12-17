@@ -11,7 +11,7 @@
 </view>
 
 <view class='xiangxiwenti'>
-  <textarea placeholder='请详细描述您的问题' maxlength='100' bindinput="handleContentInput"></textarea>
+  <textarea placeholder='请详细描述您的问题' placeholder-class='ziti1' maxlength='100' bindinput="handleContentInput"></textarea>
 </view>
 <view class="weui-textarea-counter">可输入字数{{contentCount}}/100</view>
 
@@ -21,7 +21,7 @@
     <image src='/images/upload.png' bindtap='xuanzezhaopian'></image>
     
     <view wx:for='{{imgs}}' wx:for-key='item' wx:for-index='id' class='tupian' mode="aspectFill">
-      <image src='{{item}}' bindtap='previewImg'></image>
+      <image src='{{item}}' id='{{item}}' ii='1'bindtap='previewImg'></image>
     </view>
 
   

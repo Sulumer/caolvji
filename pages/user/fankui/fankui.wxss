@@ -20,6 +20,10 @@ input{
 
 .ziti{
   font-size: 25rpx;
+  margin-left: 10rpx;
+}
+.ziti1{
+  margin-left: 100rpx;
 }
 .xiangxiwenti{
   margin-top: 40rpx;
