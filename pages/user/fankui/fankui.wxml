@@ -17,11 +17,11 @@
 
 
   <view class="shangchuan">
-    
+     
     <image src='/images/upload.png' bindtap='xuanzezhaopian'></image>
     
     <view wx:for='{{imgs}}' wx:for-key='item' wx:for-index='id' class='tupian' mode="aspectFill">
-      <image src='{{item}}' id='{{item}}' ii='1'bindtap='previewImg'></image>
+      <image src='{{item}}' id='{{item}}' ii='1' bindtap='previewImg'></image>
     </view>
 
   

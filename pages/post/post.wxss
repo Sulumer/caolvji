@@ -1,16 +1,28 @@
 /* pages/bianji/bianji.wxss */
-page{
-  height: 100%;
-  width: 100%;
-}
-.bg{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
 .bg2{
    margin: 30px auto;
    width: 80%;
+}
+.addImgs{
+  width: 90%;
+  height: 920rpx;
+  margin-top: 30rpx;
+  margin-left: 5%;
+  justify-content: center;
+  background: #f2f2f2;
+}
+.addIcon{
+  height: 920rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 80rpx;
+}
+.delete{
+  position: relative;
+  bottom:920rpx;
+  left:680rpx;
 }
 button{
   margin-top: 30rpx;
@@ -18,12 +30,11 @@ button{
 }
 .image-group {
   display: flex;
-  white-space: nowrap;
+  flex-direction: row;
+  justify-content: center;
   margin-top: 30rpx;
 }
-.image-group image {
-  display: inline-block;
-  width: 100%;
+.image-group image{
+  width: 90%;
   height: 920rpx;
-  margin-right: 20rpx;
 }
