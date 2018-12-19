@@ -6,6 +6,7 @@ Page({
    */
   data: {
     imgs: []
+
   },
   chooseimgs: function() {
     var that=this;
