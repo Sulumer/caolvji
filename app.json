@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/user/model/storymodel",
+    
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
@@ -12,7 +12,7 @@
     "pages/record/storyselect/storyselect",
     "pages/record/videoselect/videoselect",
     "pages/record/wordselect/wordselect",
-    
+    "pages/user/model/storymodel",
     "pages/user/model/model"
   ],
   "window": {

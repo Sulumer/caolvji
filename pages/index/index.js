@@ -204,6 +204,9 @@ Page({
                 // dic.height=70;
                 //dic.callout.content=dic.province;
                 //dic.callout.fontSize= "16";
+                var link = "";
+                if (dic.imgUrl != null) link = dic.imgUrl + "?imageslim";
+                if (dic.imgUrl == null) link = "/imgahes/icon/make.png";
                 let marker = {
                   iconPath: dic.imgUrl + "?imageslim",
                   id: dic.id || 0,
