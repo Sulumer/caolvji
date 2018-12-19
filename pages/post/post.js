@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgs: []
-
+    id:'',
+    imgs: [],
+    address: ''
   },
   chooseimgs: function() {
     var that=this;
@@ -39,7 +40,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    console.log("options",options)
+    var imgs = this.data.imgs
+    console.log("img",imgs)
+    imgs.push(options.img)
+    this.setData({
+      imgs: imgs,
+      address: options.address
+    })
+    console.log("img2",this.data.imgs)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

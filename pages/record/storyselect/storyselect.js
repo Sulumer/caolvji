@@ -61,6 +61,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
+  },
+  submitClick: function(){
+    wx.showToast({
+      title: '发布成功！',
+    })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1500)
   }
 })

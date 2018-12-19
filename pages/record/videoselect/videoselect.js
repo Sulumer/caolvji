@@ -104,33 +104,33 @@ var app = getApp()
 var count = 0;
 Page({
   data: {
-    chooesVideo: 'https://cstdio.cn/caolvji/clj.mp4',    //上传视频地址
+    chooesVideo: 'https://cstdio.cn/caolvji/clj.mp4', //上传视频地址
     tipHide: false,
     chooseTypeHide: true,
   },
 
   /**
-     * 生命周期函数--监听页面加载
-     */
-  onLoad: function (options) {
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
     console.log(options.status)
   },
   /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-  onReady: function (res) {
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function(res) {
     this.videoContext = wx.createVideoContext('prew_video');
   },
   /**
    * 上传视频
    */
-  uploadVideo: function () {
+  uploadVideo: function() {
     let that = this
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
       maxDuration: 60,
       camera: 'back',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           chooesVideo: res.tempFilePath
         })
@@ -139,9 +139,9 @@ Page({
   },
 
   /**
-     * 全屏改变
-     */
-  bindVideoScreenChange: function (e) {
+   * 全屏改变
+   */
+  bindVideoScreenChange: function(e) {
     var status = e.detail.fullScreen;
     var play = {
       playVideo: false
@@ -153,15 +153,20 @@ Page({
     }
     this.setData(play);
   },
-  submitClick: function(e){
+  submitClick: function(e) {
     wx.showLoading({
       title: '正在上传',
     })
-    setTimeout(function () {
+    setTimeout(function() {
       wx.hideLoading()
     }, 3000)
-    wx.redirectTo({
-      url: '/pages/record/record',
+    wx.showToast({
+      title: '发布成功！',
     })
+    setTimeout(function() {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1500)
   }
 })

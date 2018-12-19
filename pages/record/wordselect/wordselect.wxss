@@ -16,7 +16,7 @@
   margin:30rpx 5% 0rpx;
   width:90%;
   font-size: 17px;
-  background: rgba(0, 202, 0, 0.5);
+  background: #09bb07;
   border: 2px solid #ffffff;
   color: #eeeeee;
 }

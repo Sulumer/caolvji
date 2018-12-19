@@ -1,7 +1,7 @@
 <view class='toptop'>
 
   <view class='touxiang'>
-    <image src='/images/avar.png'></image>
+    <image src='{{avar}}'></image>
   </view>
 
   <text class='mingzi'>{{name}}</text>
