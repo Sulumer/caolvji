@@ -5,7 +5,7 @@
     </view>
     <view class="prew_video" hidden="{{chooesVideo==''}}">
       <video bindfullscreenchange="bindVideoScreenChange" src="{{chooesVideo}}" ></video>
-    </view>
+  </view>
   <view class="label-box">
       <text class="label" bindtap="upphoto">上传图片</text>
       <text class="label" bindtap="upmovie">上传视频</text>
