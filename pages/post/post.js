@@ -19,7 +19,6 @@ Page({
         that.setData({
             imgs:imgs
         })
-
       }
     })
   },
@@ -35,7 +34,6 @@ Page({
     })
     console.log(e);
     console.log(this.data.imgs);
-  
   },
   /**
    * 生命周期函数--监听页面加载
@@ -43,7 +41,6 @@ Page({
   onLoad: function(options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
