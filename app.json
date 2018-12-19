@@ -1,10 +1,9 @@
 {
   "pages":[
-    
+    "pages/login/login",
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
-    "pages/login/login",
     "pages/record/record",
     "pages/user/user",
     "pages/user/fankui/fankui",

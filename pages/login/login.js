@@ -86,7 +86,14 @@ Page({
   },
   onLoad: function() {
     // 查看是否授权
-    
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success: function(res) {
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
+      },
+    })
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成

@@ -1,13 +1,23 @@
 <view class="bg">
-  <scroll-view class="image-group" scroll-x="true">
-    <image src="/images/1542206356985.png"></image>
-    <image src="/images/1542206356985.png"></image>
-    <image src="/images/1542206356985.png"></image>
-    <image src="/images/1542206356985.png"></image>
-    <image src="/images/1542206356985.png"></image>
-    <image src="/images/1542206356985.png"></image>
-  </scroll-view>
-  <view class="bg2">
-    <button type="primary" bindtap='choosepits'>上传照片</button>
+
+  <view class='outer' style='height:950rpx'>
+    <view class='addImgs' wx:if='{{imgs.length<1}}' bindtap='chooseimgs'>
+      <view class='addIcon' >+</view>
+    </view>
+
+    <swiper indicator-dots="true" style='height:920rpx'>
+      <block wx:for="{{imgs}}" wx:for-index='index' >
+        <swiper-item >
+          <view class='image-group'>  <image src="{{item}}" /> </view>
+          <view class='delete' bindtap='deleteImgs' data-index='{{index}}'>X</view>
+        </swiper-item>
+      </block>
+    </swiper>
+
   </view>
+
+  <view class="bg2">
+    <button type="primary" bindtap='chooseimgs'>上传照片</button>
+  </view>
+
 </view>

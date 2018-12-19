@@ -1,8 +1,21 @@
 <view>
   <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
-  <open-data type="userAvatarUrl"></open-data>
-  <open-data type="userNickName"></open-data>
+  <!-- <open-data type="userAvatarUrl"></open-data> -->
+  <!-- <open-data type="userNickName"></open-data> -->
+  <view class="info">
+    <image src='/images/logo.png'></image>
+    <text>旅游·足迹·故事</text>
+    <text>点亮世界的每个角落</text>
+  </view>
   <!-- 需要使用 button 来授权登录 -->
-  <button open-type="getUserInfo" bindgetuserinfo="userinfo">授权登录</button>
-  <button open-type="openSetting">打开设置</button>
+  <view class='login-info'>
+    <button class="submit" open-type="getUserInfo" bindgetuserinfo="userinfo">开 启 我 的 旅 游 世 界</button>
+    <!-- <button open-type="openSetting">打开设置</button> -->
+  </view>
+
+  <view class='footer'>
+    <text>Copyright © 草履记 版权所有</text>
+  </view>
+
+
 </view>
