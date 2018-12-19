@@ -1,10 +1,10 @@
 {
   "pages":[
     "pages/login/login",
+    "pages/user/model/storymodel",
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
-    
     "pages/record/record",
     "pages/user/user",
     "pages/user/fankui/fankui",
@@ -12,7 +12,7 @@
     "pages/record/storyselect/storyselect",
     "pages/record/videoselect/videoselect",
     "pages/record/wordselect/wordselect",
-    "pages/user/model/storymodel",
+    
     "pages/user/model/model"
   ],
   "window": {
