@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
+    "pages/photo/photo",
     "pages/record/record",
     "pages/user/user",
     "pages/user/fankui/fankui",
@@ -11,8 +12,8 @@
     "pages/record/storyselect/storyselect",
     "pages/record/videoselect/videoselect",
     "pages/record/wordselect/wordselect",
-    "pages/user/model/storymodel",
-    "pages/user/model/model"
+    "pages/model/storymodel",
+    "pages/model/model"
   ],
   "window": {
     "backgroundTextStyle": "light",

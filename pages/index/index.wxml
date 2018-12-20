@@ -4,9 +4,9 @@
   
 </map>
   <cover-view class="bt1">
-    <cover-image bindtap="navi" data-path="map" src="/images/icon/switch.png" class="img-plus-style"/>
+    <cover-image bindtap="navi" data-path="model" src="/images/icon/switch.png" class="img-plus-style"/>
   </cover-view>
-  <cover-view bindtap="navi" data-path="record" class="bt2" id='home-action-wrapper' style="left:{{windowWidth}}">
+  <cover-view bindtap="navi" data-path="photo" class="bt2" id='home-action-wrapper' style="left:{{windowWidth}}">
     <cover-image src="/images/icon/position.png" class="img-plus-style"/>
   </cover-view>
   <cover-view class="bt3">
