@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.3.2",
 	"appid": "wxcf8e298028850573",
-	"projectname": "%E8%8D%89%E5%B1%A5%E8%AE%B0",
+	"projectname": "clj",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
