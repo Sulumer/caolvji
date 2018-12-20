@@ -76,6 +76,16 @@ Page({
       this.videoContext.pause();
     }
     this.setData(play);
+  },
+  submitClick: function () {
+    wx.showToast({
+      title: '发布成功！',
+    })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1500)
   }
 
 })

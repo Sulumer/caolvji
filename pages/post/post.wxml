@@ -2,13 +2,14 @@
 
   <view class='outer' style='height:950rpx'>
     <view class='addImgs' wx:if='{{imgs.length<1}}' bindtap='chooseimgs'>
-      <view class='addIcon' >+</view>
+      <view class='addIcon'>+</view>
     </view>
 
     <swiper indicator-dots="true" style='height:920rpx'>
-      <block wx:for="{{imgs}}" wx:for-index='index' >
-        <swiper-item >
-          <view class='image-group'>  <image src="{{item}}" /> </view>
+      <block wx:for="{{imgs}}" wx:for-index='index'>
+        <swiper-item>
+          <view class='image-group'>
+            <image src="{{item}}" /> </view>
           <view class='delete' bindtap='deleteImgs' data-index='{{index}}'>X</view>
         </swiper-item>
       </block>

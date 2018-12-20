@@ -49,10 +49,12 @@ Page({
   },
   //点击弹出
   ct: function (e) {
+    var data = this.data.markers[e.markerId]
     wx.navigateTo({
-      url: '/pages/post/post'
+      url: '/pages/post/post?id=' + e.markerId + '&address=' + data.callout.content + '&img=' + data.iconPath
     })
-    console.log("头上文字被点击", e)
+    console.log("头上文字被点击", e.markerId)
+    console.log("this.maker", data)
   },
   plus: function () {
     // this.setData({
@@ -205,11 +207,11 @@ Page({
                 //dic.callout.content=dic.province;
                 //dic.callout.fontSize= "16";
                 var link = "";
-                if (dic.imgUrl != null) link = dic.imgUrl + "?imageslim";
-                if (dic.imgUrl == null) link = "/imgahes/icon/make.png";
+                if (dic.imgUrl != undefined) link = dic.imgUrl + "?imageslim";
+                else if (dic.imgUrl == undefined) link = "/images/icon/make.png";
                 let marker = {
-                  iconPath: dic.imgUrl + "?imageslim",
-                  id: dic.id || 0,
+                  iconPath: link,
+                  id: i || 0,
                   //name: point.placeName || '',
                   //title: point.placeName || '',
                   latitude: laa,
