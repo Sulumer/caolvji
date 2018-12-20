@@ -65,7 +65,7 @@
   /* display: flex; */
   /* margin-top: 10px;
   padding-left: 5rpx; */
-  margin-left: 80rpx;
+  margin-left: 60rpx;
   width: 50rpx;
   height: 60rpx;
 }
