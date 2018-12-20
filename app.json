@@ -5,14 +5,8 @@
     "pages/map/map",
     "pages/post/post",
     "pages/photo/photo",
-    "pages/record/record",
     "pages/user/user",
     "pages/user/fankui/fankui",
-    "pages/record/photoselect/photoselect",
-    "pages/record/storyselect/storyselect",
-    "pages/record/videoselect/videoselect",
-    "pages/record/wordselect/wordselect",
-    "pages/model/storymodel",
     "pages/model/model"
   ],
   "window": {

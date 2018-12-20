@@ -1,4 +1,5 @@
 // pages/muban1/muban1.js
+var app = getApp()
 Page({
 
   /**
@@ -39,11 +40,41 @@ Page({
     var url = '/images/model/model4.jpg'
     var title = '草履记'
     var back_img = "background-image: url(" + url + ")";
+    var startTime = 0
+    var endTime = 0
     console.log("za", back_img)
     that.setData({
       id: id,
       title: title,
       url: back_img
+    })
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success(resStorage) {
+        console.log("S-TOKEN", resStorage.data)
+        wx.getStorage({
+          key: 'userinfo',
+          success: function (res) {
+            console.log("res", res.data)
+            that.setData({
+              avatarUrl: res.data.avatarUrl,
+              nickName: res.data.nickName
+            });
+            wx.request({
+              url: app.globalData.Service + 'photo/count?startTime=' + startTime + '&endTime=' + endTime,
+              method: 'GET',
+              data: {},
+              header: {
+                'S-TOKEN': resStorage.data,
+                'content-type': 'application/json' // 默认值
+              },
+              success(result) {
+                console.log("result", result)
+              }
+            })
+          },
+        })
+      }
     })
   },
 
