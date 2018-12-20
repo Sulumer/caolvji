@@ -87,12 +87,17 @@
   flex-direction: row;
   /* justify-content: left; */
 }
-.storytxt{
-  height:350rpx;
+.storytext1{
+  padding-top:30rpx;
+  padding-left: 9%;
+  height:300rpx;
   width: 82%;
-  border: 1px #62c0c0 solid;
+  /* border: 1px #62c0c0 solid; */
   border-radius: 15rpx;
-  margin-bottom: 150rpx;
+  font-style:oblique;
+  font-weight:100;
+  font-size:20px;
+  font-family: "Times New Roman";
 }
 
 
@@ -117,6 +122,7 @@
 }
 
 /* 预览 */
+
 .preview-warp{
   display: flex;
   padding-top: 3%;
@@ -152,13 +158,11 @@
   justify-content: center;  
   width: 24%;
   text-align: center;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
   margin-left: 35%;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-  border: 1px solid #62c0c0;
+  /* border: 1px solid #62c0c0; */
   border-radius: 30px;
+  font-size: 40rpx;
+  margin-bottom:50rpx;
 } 
 
 .story1{
@@ -168,15 +172,39 @@
   display: flex;
   flex-direction: row;
   /* justify-content: left; */
-  
+  /* font-style:oblique;
+  font-weight:400 bold; */
 }
-.story1txt{
-  margin-top:30rpx;
+.storytext2{
+  margin-top:50rpx;
   margin-left: 30rpx;
   height:550rpx;
-  width: 36%;
-  border: 1px #62c0c0 solid;
+  width: 40%;
+  /* border: 1px #62c0c0 solid; */
   border-radius: 15rpx;
+  font-style:oblique;
+  font-weight:300;
+  font-size:20px;
+}
+.story1_2{
+  font-style:oblique;
+  font-weight:700;
+  font-size:23px;
+}
+.storytext3{
+  margin-top:50rpx;
+  height:550rpx;
+  width: 40%;
+  /* border: 1px #62c0c0 solid; */
+  border-radius: 15rpx;
+  font-style:oblique;
+  font-weight:300;
+  font-size:20px;
+}
+.story3_2{
+  font-style:oblique;
+  font-weight:500;
+  font-size:23px;
 }
 .preview-box{
   margin-left: 5%;
@@ -211,4 +239,36 @@
 
 .header-container{
   
+}
+
+.view{
+  height:70rpx;
+}
+
+.photo1{
+  padding-top: 50rpx;
+  padding-left: 4%;
+  padding-right: 4%;
+  width:92%;
+  height: 500rpx;
+}
+
+.photo2{
+  padding-top: 50rpx;
+  /* padding-left: 4%;
+  padding-right: 4%; */
+  width:52%;
+  height: 550rpx;
+}
+.photo3{
+  padding-top: 50rpx;
+  padding-left: 30rpx;
+  /* padding-left: 4%;
+  padding-right: 4%; */
+  width:52%;
+  height: 550rpx;
+}
+
+.bottom{
+  height: 200rpx;
 }
