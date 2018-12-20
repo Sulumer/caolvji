@@ -21,12 +21,16 @@ Page({
     });
   },
   fankui: function() {
-    wx.redirectTo({
-      url: '../tijiaochenggong/tijiaochenggong',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+    wx.showToast({
+      title: '谢谢您的支持!',
+      icon: 'success',
+      duration: 2000
     })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1000)
   },
   xuanzezhaopian: function() {
     var that = this;
@@ -56,7 +60,7 @@ Page({
     })
   },
   onLoad: function(options) {
-
+    
   },
 
   /**

@@ -1,0 +1,27 @@
+<view class="gallery">
+    <view class="item" wx:for="{{images}}" wx:key="">
+        <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" />
+
+        <!-- 删除按钮 -->
+        <view class="delete" bindtap="delete" data-index="{{index}}">X</view>
+    </view>
+    <view class="item" bindtap="chooseImage"  wx:if="{{images.length < 1}}">
+        <view class='addIcon' >+</view >
+    </view>
+</view>
+<view class="page-body-info" bindtap="chooseLocation">
+        <view class="label-box">
+          <image src="/images/icon/dw.png"class="page-body-img"></image>
+          <!-- <text class="page-body-text" name="address">所在位置</text> -->
+          <text class="page-body-text">{{address}}</text>
+        </view>
+  </view>
+   <!-- <view class="label-box">
+      <text class="label" bindtap="addlabel"  wx:if="{{labelcount > -1}}">添加标签1</text>
+      <text class="label" bindtap="addlabel"  wx:if="{{labelcount > 0}}">添加标签2</text>
+      <text class="label" bindtap="addlabel"  wx:if="{{labelcount > 1}}">添加标签3</text>
+    </view> -->
+<view>
+</view>
+    <button wx:if="{{flag}}" class="submitBtn1" type="primary" form-type='submit' bindtap="uploadPhoto">立即发布</button>
+    <button wx:if="{{!flag}}"class="submitBtn2" bindtap="warn">立即发布</button>

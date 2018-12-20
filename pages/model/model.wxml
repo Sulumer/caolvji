@@ -1,0 +1,77 @@
+<!-- <view class='container0'>
+  <image src='{{url}}'></image> -->
+     <!-- <cover-view class="bt3">
+    <cover-image src="/images/icon/plus.png" class="img-plus-style" animation="{{animPlus}}"  bindtap="plus"  />
+  </cover-view> -->
+<!-- 
+  <button class='but' bindtap='click'>
+    <view class='wenzi'>版式</view>
+  </button> -->
+<!-- </view> -->
+
+<!-- <image class='container0' src='{{url}}'>
+</image>
+<input class="enterWords" bindinput="wordsClick" placeholder="分享心情文字..." focus /> -->
+
+<view style="{{url}}" class="header-container">
+  
+
+  <!-- <cover-view>
+  <cover-image src="/images/icon/plus.png"></cover-image>
+  </cover-view> -->
+  <text class='bt'>标题</text>
+  <view class='preview-box'>
+    <view class='preview-warp' wx:if="{{urls}}">
+        <image  src='{{urls}}' />
+      </view>
+      <view class="prew_video" hidden="{{chooesVideo==''}}">
+        <video bindfullscreenchange="bindVideoScreenChange" src="{{chooesVideo}}" ></video>
+    </view>
+    <!-- <view class='preview-warp' wx:if="{{urls}}">
+        <image  src='{{urls}}' />
+      </view>
+      <view class="prew_video" hidden="{{chooesVideo==''}}">
+        <video bindfullscreenchange="bindVideoScreenChange" src="{{chooesVideo}}" ></video>
+    </view> -->
+  </view>
+  <view class="label-box">
+      <text class="label" bindtap="upphoto">上传图片</text>
+      <text class="label" bindtap="upmovie">上传视频</text>
+  </view>
+  <view class='story'>
+      <textarea class='storytxt' placeholder='分享您的故事...'></textarea>
+  </view>
+  <view class='preview-box'>
+    <view class='preview-warp' wx:if="{{urls1}}">
+        <image  src='{{urls1}}' />
+      </view>
+      <textarea class='story1txt' placeholder='分享您的故事...'></textarea>
+  </view>
+
+
+   <view class="label-box">
+      <text class="label" bindtap="upphoto1">上传图片</text>
+  </view>
+
+
+  <view class='preview-box2'>
+    <textarea class='story1txt' placeholder='分享您的故事...'></textarea>
+    <view class='preview-warp1' wx:if="{{urls2}}">
+        <image  src='{{urls2}}' />
+      </view>
+      
+  </view>
+
+  <view class="label-box">
+      <text class="label2" bindtap="upphoto2">上传图片</text>
+  </view>
+
+
+  <!-- <view class="container">
+     <view class='story'>
+      <textarea placeholder='分享您的故事...'></textarea>
+     </view> -->
+
+  <!-- </view> -->
+
+</view>

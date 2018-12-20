@@ -1,10 +1,10 @@
 <view class='toptop'>
 
   <view class='touxiang'>
-    <image src='{{avar}}'></image>
+    <image src='{{avatarUrl}}'></image>
   </view>
 
-  <text class='mingzi'>{{name}}</text>
+  <text class='mingzi'>{{nickName}}</text>
 
   <view class="text1">
     <text>国家：{{country}}</text>

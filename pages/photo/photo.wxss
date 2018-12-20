@@ -1,0 +1,108 @@
+/* pages/index/index.wxss */
+
+/*画廊*/
+
+.gallery {
+  width: 700rpx;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*每张图片所占容器*/
+
+.item {
+  position: relative;
+  margin: 10rpx 5rpx;
+  width: 620rpx;
+  height: 780rpx;
+}
+
+.item image {
+  width: 100%;
+  height: 100%;
+}
+
+/*add按钮*/
+
+.item .addIcon {
+  position: relative;
+  width: 620rpx;
+  height: 780rpx;
+  text-align: center;
+  line-height: 730rpx;
+  font-size: 80rpx;
+  background: #f2f2f2;
+  color: #555;
+}
+
+/*删除按钮*/
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* background:#ccc; */
+  opacity: 1;
+  height: 36rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+  padding: 0 8rpx 0 10rpx;
+}
+
+.label-box {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+}
+
+.page-body-img {
+  /* display: flex; */
+  /* margin-top: 10px;
+  padding-left: 5rpx; */
+  margin-left: 80rpx;
+  width: 50rpx;
+  height: 60rpx;
+}
+
+.page-body-text {
+  /*  */
+  padding-left: 30rpx;
+  line-height: 60rpx;
+  font-size: 40rpx;
+}
+
+
+
+.label-box .label {
+  width: 154rpx;
+  height: 50rpx;
+  border: 1px solid #070707;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 80px;
+  font-size: 19rpx;
+}
+
+.submitBtn1 {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 80%;
+}
+.submitBtn2 {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 80%;
+  background-color: lightgray;
+}

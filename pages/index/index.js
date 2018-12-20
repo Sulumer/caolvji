@@ -14,6 +14,7 @@ Page({
     animInput: {},//item位移,透明度
     homeActionLeftDistance:'100rpx',
     windowWidth:'',
+    d:0,
     // markers: [{
     //   iconPath: "/images/1542206356985.png",
     //   id: 0,
@@ -195,9 +196,10 @@ Page({
             console.log("nnd", res.data.data);
             dataArray = res.data.data;
             var markers = new Array()
-            for (var i = 0; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
+            var d = that.data.d
+            for (var i = d; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
+              d++;
               var dic = dataArray[i];
-
               if (dic.latitude != null) {
                 var laa = (dic.latitude).toFixed(6);
                 var lonn = (dic.longitude).toFixed(6);
@@ -206,11 +208,11 @@ Page({
                 // dic.height=70;
                 //dic.callout.content=dic.province;
                 //dic.callout.fontSize= "16";
-                var link = "";
-                if (dic.imgUrl != undefined) link = dic.imgUrl + "?imageslim";
-                else if (dic.imgUrl == undefined) link = "/images/icon/make.png";
+                // var link = "";
+                // if (dic.imgUrl != undefined) link = dic.imgUrl + "?imageslim";
+                // else if (dic.imgUrl == undefined) link = "/images/icon/make.png";
                 let marker = {
-                  iconPath: link,
+                  iconPath: "/images/icon/make.png",
                   id: i || 0,
                   //name: point.placeName || '',
                   //title: point.placeName || '',
@@ -221,8 +223,8 @@ Page({
                   //   y: -26,
                   //   content: dic.province,
                   // },
-                  width: 70,
-                  height: 70,
+                  width: 35,
+                  height: 35,
                   callout: {
                     content: dic.address || dic.province + dic.city,
                     fontSize: 14,
@@ -242,6 +244,9 @@ Page({
               )
             }
             console.log("markers", that.data.markers);
+            that.setData({
+              d: d
+            })
           }
         })
         setTimeout(function () {
