@@ -32,11 +32,17 @@ Page({
   onLoad: function (options) {
     var that = this
     // console.log(options)
-    var back_img = "background-image: url(" + options.url + ")";
+    // var id = options.id
+    // var url = options.url
+    // var title = options.title
+    var id = 4
+    var url = '/images/model/model4.jpg'
+    var title = '草履记'
+    var back_img = "background-image: url(" + url + ")";
     console.log("za",back_img)
     that.setData({
-      id: options.id,
-      title: options.title,
+      id: id,
+      title: title,
       url: back_img
     })
   },
