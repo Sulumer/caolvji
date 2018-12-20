@@ -1,27 +1,22 @@
 .container
 {
-  background: #F5F5F5;
+  background: #f5f5f5;
   width: 100%;
-  height: 2000rpx;
-  flex-direction: column;
-  position:relative;
-  z-index: -2;
+  height: 100vh;
 }
 .title0
 {
-  margin-top: -140rpx;
+  margin-top: -150rpx;
   font-size: 52rpx;
   font-weight: bold;
-  color:#000000;
+  color:#000000;        
   border: 10rpx solid #62c0c0;
   padding: 10rpx;
   border-radius: 50rpx;
 }
 .canvas 
 {
-  margin-top: -400rpx;
-  position:relative;
-  z-index: -1;
+  margin-top: -150rpx;
   width: 900rpx;
   height: 900rpx;
 }
@@ -32,22 +27,22 @@
   border-radius: 100%;
   width: 100rpx;
   height: 100rpx;
-  margin-top: -300rpx;
-  margin-left: 40rpx;
+  margin-top: -100rpx;
+  margin-left: 0rpx;
 }
 .name
 {
   overflow:hidden;
   display:block;
-  margin-top: -80rpx;
-  margin-left: 180rpx;
+  margin-top: -70rpx;
+  margin-left: 160rpx;
 }
 .rank
 {
   font-weight: bold;
   font-size:62rpx;
   margin-top:50rpx;
-  margin-left: 30rpx;
+  margin-left: 0rpx;
 }
 .rank text
 {
@@ -56,148 +51,21 @@
 .senten
 {
   margin-top: 10rpx;
-  margin-left: 40rpx;
+  margin-left: 0rpx;
   font-size:30rpx;
   color: #696969;
 }
 .button
 {
-  margin-top: 50rpx;
-  margin-left:400rpx;
-  background-color: #F5F5F5;
-  width: 45%;
-  border: #F5F5F5;
-  
+  background: #d1f4fd;
+  margin-top: 40rpx;
+  margin-left: 500rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
-.button text
+.pic
 {
-  font-size:28rpx;
-}
-.button image
-{
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 100%;
-}
-/*.button2
-{
-  margin-top: -90rpx;
-  margin-left: 390rpx;
-  background-color: #F5F5F5;
-  width: 45%;
-  border: #F5F5F5;
-}
-.button2 text
-{
-  font-size:28rpx;
-}
-.button2 image
-{
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 100%;
-}*/
-.whiteline
-{
-  margin-top: 20rpx;
-  background-color: white;
-  width: 750rpx;
-  height: 20rpx;
-}
-.title
-{
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-  font-size:60rpx;
-  font-weight: bold;
-}
-.data1
-{
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.data2
-{
-  margin-top: -40rpx;
-  margin-left: 400rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.data3
-{
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.data4
-{
-  margin-top: -40rpx;
-  margin-left: 400rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.data5
-{
-  margin-top: 20rpx;
-  margin-left: 20rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.data6
-{
-  margin-top: -40rpx;
-  margin-left: 400rpx;
-  font-size: 35rpx;
-  font-weight: bold;
-}
-.num1
-{
-  margin-top:20rpx;
-  margin-left:20rpx;
-  font-size:50rpx;
-  font-weight: bold;
-  color:gold;
-}
-.num2
-{
-   margin-top: -70rpx;
-  margin-left: 400rpx;
-  font-size: 55rpx;
-  font-weight: bold;
-  color:gold;
-}
-.num3
-{
-  margin-top:20rpx;
-  margin-left:20rpx;
-  font-size:50rpx;
-  font-weight: bold;
-  color:gold;
-}
-.num4
-{
-   margin-top: -70rpx;
-  margin-left: 400rpx;
-  font-size: 55rpx;
-  font-weight: bold;
-  color:gold;
-}
-.num5
-{
-  margin-top:20rpx;
-  margin-left:20rpx;
-  font-size:50rpx;
-  font-weight: bold;
-  color:gold;
-}
-.num6
-{
-   margin-top: -70rpx;
-  margin-left: 400rpx;
-  font-size: 55rpx;
-  font-weight: bold;
-  color:gold;
+  margin-left: -25rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
