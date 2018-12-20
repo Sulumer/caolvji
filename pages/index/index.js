@@ -223,8 +223,8 @@ Page({
                   //   y: -26,
                   //   content: dic.province,
                   // },
-                  width: 70,
-                  height: 70,
+                  width: 35,
+                  height: 35,
                   callout: {
                     content: dic.address || dic.province + dic.city,
                     fontSize: 14,
