@@ -1,10 +1,10 @@
 <view class='toptop'>
 
   <view class='touxiang'>
-    <image src='{{avar}}'></image>
+    <image src='{{avatarUrl}}'></image>
   </view>
 
-  <text class='mingzi'>{{name}}</text>
+  <text class='mingzi'>{{nickName}}</text>
 
   <view class="text1">
     <text>国家：{{country}}</text>
@@ -20,14 +20,14 @@
     <view>说走就走</view>
   </view>
 </view>
-<view class='chengjiu'>
+<!-- <view class='chengjiu'>
   <view wx:for='{{achieve1}}' class='chengjiu1'>
     <image src='{{item.src}}' bindtap='link'></image>
     <view>说走就走</view>
   </view>
-</view>
+</view> -->
 
-<view class='women'>
+<view class='footer'>
   <navigator url='fankui/fankui' hover-class='changestyle'>
     <text>产品反馈|</text>
   </navigator>

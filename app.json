@@ -1,18 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/login/login",
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
-    "pages/record/record",
+    "pages/photo/photo",
     "pages/user/user",
     "pages/user/fankui/fankui",
-    "pages/record/photoselect/photoselect",
-    "pages/record/storyselect/storyselect",
-    "pages/record/videoselect/videoselect",
-    "pages/record/wordselect/wordselect",
-    "pages/user/model/storymodel",
-    "pages/user/model/model"
+    "pages/model/model",
+    "pages/model_test/model_test"
   ],
   "window": {
     "backgroundTextStyle": "light",

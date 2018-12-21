@@ -14,6 +14,8 @@ Page({
     animInput: {},//item位移,透明度
     homeActionLeftDistance:'100rpx',
     windowWidth:'',
+    d:0,
+    amarkers:[],
     // markers: [{
     //   iconPath: "/images/1542206356985.png",
     //   id: 0,
@@ -136,7 +138,7 @@ Page({
     })
   },
   onLoad: function (options) {
-
+    // var amarkers = new Array()
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -194,10 +196,12 @@ Page({
           success(res) {
             console.log("nnd", res.data.data);
             dataArray = res.data.data;
-            var markers = new Array()
-            for (var i = 0; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
+            // var amarkers = new Array()
+            var am=that.data.amarkers
+            var d = that.data.d
+            for (var i = d; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
+              d++;
               var dic = dataArray[i];
-
               if (dic.latitude != null) {
                 var laa = (dic.latitude).toFixed(6);
                 var lonn = (dic.longitude).toFixed(6);
@@ -206,11 +210,11 @@ Page({
                 // dic.height=70;
                 //dic.callout.content=dic.province;
                 //dic.callout.fontSize= "16";
-                var link = "";
-                if (dic.imgUrl != undefined) link = dic.imgUrl + "?imageslim";
-                else if (dic.imgUrl == undefined) link = "/images/icon/make.png";
+                // var link = "";
+                // if (dic.imgUrl != undefined) link = dic.imgUrl + "?imageslim";
+                // else if (dic.imgUrl == undefined) link = "/images/icon/make.png";
                 let marker = {
-                  iconPath: link,
+                  iconPath: "/images/icon/make.png",
                   id: i || 0,
                   //name: point.placeName || '',
                   //title: point.placeName || '',
@@ -221,8 +225,8 @@ Page({
                   //   y: -26,
                   //   content: dic.province,
                   // },
-                  width: 70,
-                  height: 70,
+                  width: 35,
+                  height: 35,
                   callout: {
                     content: dic.address || dic.province + dic.city,
                     fontSize: 14,
@@ -235,13 +239,19 @@ Page({
                   }
                 };
                 console.log("经纬度", laa, lonn);
-                markers.push(marker);
+                am.push(marker);
               }
               that.setData(
-                { markers: markers }
+                { markers: am }
               )
             }
+            // that.setData({
+            //   amarkers: am
+            // })
             console.log("markers", that.data.markers);
+            that.setData({
+              d: d
+            })
           }
         })
         setTimeout(function () {

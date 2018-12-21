@@ -4,10 +4,10 @@ Page({
     
   },
   userinfo: function(e){
-    console.log("userinfo",e.detail.userinfo)
+    console.log("userinfo",e.detail.userInfo)
     wx.setStorage({
       key: 'userinfo',
-      data: 'e.detail.userinfo',
+      data: e.detail.userInfo,
     })
     if (e.detail.errMsg == "getUserInfo:ok") {
       // 请求获取用户信息
