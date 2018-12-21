@@ -10,7 +10,8 @@ Page({
     province: "5",
     city: "33",
     autoplay: false,
-    achieve: [{
+    achieve: [
+      {
         id: 1,
         url: 'fankui/fankui',
         src: '/images/achievement.png',
@@ -28,8 +29,7 @@ Page({
         src: '/images/achievement.png',
         content: '说走就走'
       },
-    ],
-    achieve1: [{
+      {
         id: 4,
         url: 'fankui/fankui',
         src: '/images/achievement.png',
