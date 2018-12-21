@@ -69,6 +69,9 @@ Page({
             wx.showLoading({
               title: '登录失败！',
             })
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 2000)
             console.log('登录失败！' + res.errMsg)
           }
         }
@@ -88,9 +91,33 @@ Page({
     // 查看是否授权
     wx.getStorage({
       key: 'S-TOKEN',
-      success: function(res) {
-        wx.redirectTo({
-          url: '/pages/index/index',
+      success: function (resStorage) {
+        wx.request({
+          url: app.globalData.Service + 'user/me',
+          method: 'GET',
+          data: {},
+          header: {
+            'S-TOKEN': resStorage.data,
+            'content-type': 'application/json' // 默认值
+          },
+          success(result) {
+            console.log("result", result)
+            console.log("status", result.statusCode)
+            var code = result.statusCode
+            if(code == 200){
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
+            }
+            else if(code == 401 || code == 500){
+              wx.showLoading({
+                title: '请重新登录！',
+              })
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 2000)
+            }
+          }
         })
       },
     })

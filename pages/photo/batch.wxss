@@ -1,0 +1,17 @@
+.con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  margin-top: 20rpx;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.txt{
+  margin-top: 10rpx;
+  width: 80%;
+  text-indent:2em;
+}

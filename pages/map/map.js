@@ -96,9 +96,9 @@ function initChart(canvas, width, height) {
 Page({
   onShareAppMessage: function (res) {
     return {
-      title: '分享',
-      success: function () { },
-      fail: function () { }
+      title: '听说你还没用过它？', // 分享标题
+      desc: '一款可以记录足迹，分享旅游故事的产品', // 分享描述
+      path: '/pages/login/login' // 分享路径
     }
   },
   data: {

@@ -106,3 +106,16 @@
   width: 80%;
   background-color: lightgray;
 }
+
+.footer{
+  position: fixed;
+  bottom: 50rpx;
+  font-size: 15px;
+  display:flex;
+  width:100%;
+  justify-content:center;
+}
+
+.footer text{
+  font-size: 12px;
+}

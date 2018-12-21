@@ -192,7 +192,8 @@ Page({
             "S-TOKEN": resStorage.data
           },
           success(res) {
-            console.log("nnd", res.data.data);
+            console.log("nnd", res);
+            console.log("status!!",res.statusCode)
             dataArray = res.data.data;
             // var amarkers = new Array()
             var am=that.data.amarkers

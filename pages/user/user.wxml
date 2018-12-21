@@ -7,17 +7,18 @@
   <text class='mingzi'>{{nickName}}</text>
 
   <view class="text1">
-    <text>国家：{{country}}</text>
-    <text>省份：{{province}}</text>
-    <text>城市：{{city}}</text>
+    <text>国家：{{countryNum}}</text>
+    <text>省份：{{proNum}}</text>
+    <text>城市：{{cityNum}}</text>
   </view>
 
 </view>
 
 <view class='chengjiu'>
-  <view wx:for='{{achieve}}' class='chengjiu1'>
-    <image src='{{item.src}}' bindtap='link' class='left'></image>
-    <view class='left'>{{item.content}}</view>
+  <view wx:for='{{achievement}}' class='chengjiu1'>
+    <image wx:if="{{item.status}}" src='{{item.icon_up}}' bindtap='link' class='left'></image>
+    <image wx:if="{{!item.status}}" src='{{item.icon_down}}' bindtap='link' class='left'></image>
+    <view class='left'>{{item.name}}</view>
   </view>
 </view>
 <!-- <view class='chengjiu'>

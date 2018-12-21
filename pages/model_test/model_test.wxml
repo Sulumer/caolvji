@@ -13,7 +13,7 @@
 </image>
 <input class="enterWords" bindinput="wordsClick" placeholder="分享心情文字..." focus /> -->
 
-<view style="{{url}}" class="header-container">
+<view style="{{back_img}}" class="header-container">
 
   <view class='view'></view>
 
@@ -64,7 +64,7 @@
     <!-- <view class='preview-warp1' wx:if="{{urls2}}">
         <image  src='{{urls2}}' />
       </view> -->
-    <image class='photo3' model='scaleToFill' src="{{userData['img2']}}"></image>
+    <image class='photo3' model='scaleToFill' src="{{userData['img1']}}"></image>
 
   </view>
 
@@ -94,7 +94,7 @@
     <!-- <view class='preview-warp1' wx:if="{{urls2}}">
         <image  src='{{urls2}}' />
       </view> -->
-    <image class='photo3' model='scaleToFill' src="/images/model/model4.jpg"></image>
+    <image class='photo3' model='scaleToFill' src="{{userData['img3']}}"></image>
 
   </view>
   <view class='fg' />
@@ -104,7 +104,7 @@
     <!-- <view class='preview-warp' wx:if="{{urls1}}">
         <image  src='{{urls1}}' />
       </view> -->
-    <image class='photo2' model='scaleToFill' src="/images/model/model3.jpg"></image>
+    <image class='photo2' model='scaleToFill' src="{{userData['img4']}}"></image>
     <view class='storytext2'>
       <text class='story5_1'>{{story5_1}}</text>
       <text class="story5_2">{{userData['story5_2']}}</text>
@@ -124,11 +124,11 @@
     <!-- <view class='preview-warp1' wx:if="{{urls2}}">
         <image  src='{{urls2}}' />
       </view> -->
-    <image class='photo3' model='scaleToFill' src="/images/model/model4.jpg"></image>
+    <image class='photo3' model='scaleToFill' src="{{userData['img5']}}"></image>
 
   </view>
 
-  <image class='photo6' model='scaleToFill' src="/images/model/model3.jpg"></image>
+  <image class='photo6' model='scaleToFill' src="{{userData['img6']}}"></image>
 
   <view class='fg' />
 

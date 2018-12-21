@@ -1,0 +1,14 @@
+<view class='con'>
+  <view style='margin-top:30rpx;'></view>
+  <text class="title">使用须知</text>
+  <text class='txt'>目前批量上传工具仅有电脑端桌面版程序，使用前请按以下步骤操作。</text>
+  <text class="title">Step1</text>
+  <text class='txt'>点击下方按钮复制网址，使用PC端浏览器打开完成下载。</text>
+  <button class="sub-button" bindtap='Copy' data-para="url">点击复制批量程序下载网址</button>
+  <view style='margin-top:20rpx;'></view>
+  <text class="title">Step2</text>
+  <text class='txt'>仔细阅读工具使用指南。使用前须整理照片至一个文件夹，使用时点击以下按钮复制您的ID，同时保证网络顺畅。</text>
+  <view style='margin-top:20rpx;'></view>
+  <button class="sub-button" bindtap='Copy' data-para='openid'>点击复制用户ID</button>
+  
+</view>

@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    back_img:"https://foot.yyf-blog.com/userstory/bg/storybg.jpg?slim",
     chooesVideo: '',    //上传视频地址
     tipHide: false,
     chooseTypeHide: true,
     id: '',
     title: '',
-    url: '',
     count: '',
     startTime: 0,
     endTime: 999,
@@ -73,16 +73,16 @@ Page({
     // var url = options.url
     // var title = options.title
     var id = 4
-    var url = '/images/model/model2.jpg'
+    var back_img = this.data.back_img
     var title = '草履记'
     var startTime = 0
     var endTime = 0
-    var back_img = "background-image: url(" + url + ")";
+    var back_img = "background-image: url(" + back_img + ")";
     console.log("za", back_img)
     that.setData({
       id: id,
       title: title,
-      url: back_img
+      back_img: back_img
     })
     wx.getStorage({
       key: 'S-TOKEN',
@@ -117,12 +117,12 @@ Page({
                 userData['story4_2'] = r[17]
                 userData['story5_2'] = r[16]
                 userData['story6_2'] = r[18]
-                userData['img1'] = r[5]
-                userData['img2'] = r[6]
-                userData['img3'] = r[7]
-                userData['img4'] = r[8]
-                userData['img5'] = r[9]
-                userData['img6'] = r[10]
+                userData['img1'] = r[5] + '?slim'
+                userData['img2'] = r[6] + '?slim'
+                userData['img3'] = r[7] + '?slim'
+                userData['img4'] = r[8] + '?slim'
+                userData['img5'] = r[9] + '?slim'
+                userData['img6'] = r[10] + '?slim'
                 that.setData({
                   userData: userData
                 })

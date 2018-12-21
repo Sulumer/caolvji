@@ -358,5 +358,10 @@ Page({
     setTimeout(function() {
       wx.hideLoading()
     }, 1500)
+  },
+  batch: function() {
+    wx.navigateTo({
+      url: '/pages/photo/batch',
+    })
   }
 })

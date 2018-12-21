@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/user/user",
+    
     "pages/login/login",
     "pages/index/index",
     "pages/map/map",
     "pages/post/post",
     "pages/photo/photo",
-    
+    "pages/photo/batch",
+    "pages/user/user",
     "pages/user/fankui/fankui",
     "pages/model/model",
     "pages/model_test/model_test"

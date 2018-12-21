@@ -35,7 +35,7 @@
 
 }
 .chengjiu{
-  margin-top: 50rpx;
+  margin-top: 20rpx;
   display: flex;
   flex-direction:row;
   justify-content: space-around;
@@ -47,7 +47,7 @@
 }
 .chengjiu1{
   width: 33.3%;
-  margin-top: 30rpx;
+  margin-top: 70rpx;
 }
 .left{
   margin-left: 55rpx;
@@ -59,4 +59,8 @@
   display:flex;
   width:100%;
   justify-content:center;
+}
+
+.footer text{
+  font-size: 12px;
 }

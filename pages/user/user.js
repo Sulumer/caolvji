@@ -6,46 +6,46 @@ Page({
   data: {
     nickName: '',
     avatarUrl: '',
-    country: "1",
-    province: "5",
-    city: "33",
+    countryNum: 0,
+    proNum: 0,
+    cityNum: 0,
     autoplay: false,
-    achieve: [
+    achievement:[
       {
-        id: 1,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '说走就走',
+        status:0,
+        icon_up:"https://foot.yyf-blog.com/userstory/ac/说走就走.png?slim",
+        icon_down:"https://foot.yyf-blog.com/userstory/ac/说走就走暗.png?slim"
       },
       {
-        id: 2,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '拉帮结派',
+        status: 0,
+        icon_up: "https://foot.yyf-blog.com/userstory/ac/拉帮结派.png?slim",
+        icon_down: "https://foot.yyf-blog.com/userstory/ac/拉帮结派暗.png?slim"
       },
       {
-        id: 3,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '尽兴而归',
+        status: 0,
+        icon_up: "https://foot.yyf-blog.com/userstory/ac/尽兴而归.png?slim",
+        icon_down: "https://foot.yyf-blog.com/userstory/ac/尽兴而归暗.png?slim"
       },
       {
-        id: 4,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '壕无人性',
+        status: 0,
+        icon_up: "https://foot.yyf-blog.com/userstory/ac/壕无人性.png?slim",
+        icon_down: "https://foot.yyf-blog.com/userstory/ac/壕无人性暗.png?slim"
       },
       {
-        id: 5,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '行万里路',
+        status: 0,
+        icon_up: "https://foot.yyf-blog.com/userstory/ac/行万里路.png?slim",
+        icon_down: "https://foot.yyf-blog.com/userstory/ac/行万里路暗.png?slim"
       },
       {
-        id: 6,
-        url: 'fankui/fankui',
-        src: '/images/achievement.png',
-        content: '说走就走'
+        name: '游出天外',
+        status: 0,
+        icon_up: "https://foot.yyf-blog.com/userstory/ac/游出天外.png?slim",
+        icon_down: "https://foot.yyf-blog.com/userstory/ac/游出天外暗.png?slim"
       },
     ],
     //ctx=wx.createCanvasContext('firstCanvas')
@@ -120,7 +120,22 @@ Page({
                 'content-type': 'application/json' // 默认值
               },
               success(result) {
-                console.log("result", result)
+                console.log("result", result.data.data)
+                var r = result.data.data
+                that.setData({
+                  countryNum: 1,
+                  cityNum: r.cityNum,
+                  proNum: r.proNum
+                })
+                var achievement = that.data.achievement
+                for(var i=0;i<6;i++)
+                {
+                  achievement[i].status = r.achievement[i]
+                }
+                that.setData({
+                  achievement: achievement
+                })
+                console.log("achievement", that.data.achievement)
               }
             })
           },
