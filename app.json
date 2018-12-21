@@ -1,5 +1,6 @@
 {
-  "pages":[
+  "pages": [
+    "pages/model_test/model1",
     "pages/login/login",
     "pages/index/index",
     "pages/map/map",
@@ -8,6 +9,8 @@
     "pages/user/user",
     "pages/user/fankui/fankui",
     "pages/model/model"
+    
+
   ],
   "window": {
     "backgroundTextStyle": "light",

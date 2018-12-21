@@ -69,7 +69,12 @@ Page({
                 'content-type': 'application/json' // 默认值
               },
               success(result) {
-                console.log("result", result)
+                console.log("result", result.data.data)
+                var r = result.data.data
+                that.setData({
+                  story1_2: r[1],
+                  story3_2: r[4]
+                })
               }
             })
           },
