@@ -15,6 +15,7 @@ Page({
     homeActionLeftDistance:'100rpx',
     windowWidth:'',
     d:0,
+    amarkers:[],
     // markers: [{
     //   iconPath: "/images/1542206356985.png",
     //   id: 0,
@@ -137,7 +138,7 @@ Page({
     })
   },
   onLoad: function (options) {
-
+    // var amarkers = new Array()
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -195,7 +196,8 @@ Page({
           success(res) {
             console.log("nnd", res.data.data);
             dataArray = res.data.data;
-            var markers = new Array()
+            // var amarkers = new Array()
+            var am=that.data.amarkers
             var d = that.data.d
             for (var i = d; i < (dataArray == undefined ? 0 : dataArray.length); i++) {
               d++;
@@ -237,12 +239,15 @@ Page({
                   }
                 };
                 console.log("经纬度", laa, lonn);
-                markers.push(marker);
+                am.push(marker);
               }
               that.setData(
-                { markers: markers }
+                { markers: am }
               )
             }
+            // that.setData({
+            //   amarkers: am
+            // })
             console.log("markers", that.data.markers);
             that.setData({
               d: d
