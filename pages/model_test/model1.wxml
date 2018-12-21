@@ -43,6 +43,7 @@
        <text class='story1_10'>{{story1_10}}</text>
     </view>
     
+    <view class='fg'/>
 
      <view class='preview-box2'>
   <view class='storytext2'>
@@ -57,6 +58,34 @@
       
   </view>
 
+<view class='fg'/>
+  <!-- </view> -->
+  <view class='preview-box'>
+    <!-- <view class='preview-warp' wx:if="{{urls1}}">
+        <image  src='{{urls1}}' />
+      </view> -->
+      <image class='photo2' model='scaleToFill' src="/images/model/model3.jpg"></image>
+      <view class='storytext2'>
+      <text class='story3_1'>{{story3_1}}</text><text class="story3_2">{{story3_2}}</text>
+      <view class='kg'></view>
+      <text class='story3_3'>{{story3_3}}</text>
+      </view>
+  </view>
+<view class='fg'/>
+
+       <view class='preview-box2'>
+  <view class='storytext2'>
+    <text class='story4_1'>{{story4_1}}</text><text class="story4_2">{{story4_2}}</text>
+    <view class='kg'></view>
+    <text class='story4_3'>{{story4_3}}</text>
+  </view>
+    <!-- <view class='preview-warp1' wx:if="{{urls2}}">
+        <image  src='{{urls2}}' />
+      </view> -->
+    <image class='photo3' model='scaleToFill' src="/images/model/model4.jpg"></image>
+      
+  </view>
+<view class='fg'/>
 
   <!-- </view> -->
   <view class='preview-box'>
@@ -64,8 +93,34 @@
         <image  src='{{urls1}}' />
       </view> -->
       <image class='photo2' model='scaleToFill' src="/images/model/model3.jpg"></image>
-      <text class='storytext2'>{{story2}}</text>
+      <view class='storytext2'>
+         <text class='story5_1'>{{story5_1}}</text><text class="story5_2">{{story5_2}}</text>
+    <view class='kg'></view>
+    <text class='story5_3'>{{story5_3}}</text>
+      </view>
   </view>
+  <view class='fg'/>
+
+  <view class='preview-box2'>
+  <view class='storytext2'>
+    <text class='story6_1'>{{story6_1}}</text><text class="story6_2">{{story6_2}}</text>
+    <view class='kg'></view>
+    <text class='story6_3'>{{story6_3}}</text>
+  </view>
+    <!-- <view class='preview-warp1' wx:if="{{urls2}}">
+        <image  src='{{urls2}}' />
+      </view> -->
+    <image class='photo3' model='scaleToFill' src="/images/model/model4.jpg"></image>
+      
+  </view>
+
+  <image class='photo6' model='scaleToFill' src="/images/model/model3.jpg"></image>
+
+  <view class='storytext1'>
+        <!-- <text class='storytext1'>{{story1}}</text> -->
+        <text class='story7'>{{story7}}</text>
+  </view>
+
 <!-- 
 
    <view class="label-box">

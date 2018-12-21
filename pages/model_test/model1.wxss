@@ -211,6 +211,26 @@
   font-weight:700;
   font-size:23px;
 }
+.story3_2{
+  font-style:oblique;
+  font-weight:700;
+  font-size:23px;
+}
+.story4_2{
+  font-style:oblique;
+  font-weight:700;
+  font-size:23px;
+}
+.story5_2{
+  font-style:oblique;
+  font-weight:700;
+  font-size:23px;
+}
+.story6_2{
+  font-style:oblique;
+  font-weight:700;
+  font-size:23px;
+}
 .storytext2{
   margin-top:50rpx;
   height:550rpx;
@@ -232,8 +252,10 @@
 
 .preview-box2{
   display: flex;
-  margin-left: 5%;
+  margin-left: 2%;
+  padding-right: 30rpx;
   margin-top:20rpx;
+  margin-bottom: 50rpx;
 }
 .label2{
   width: 200rpx;
@@ -265,7 +287,7 @@
   height:70rpx;
 }
 
-.photo1{
+.photo6{
   padding-top: 50rpx;
   padding-left: 4%;
   padding-right: 4%;
@@ -296,7 +318,9 @@
 .kg{
   height: 20rpx;
 }
-
+.fg{
+  height: 80rpx;
+}
 
 
 .story1_1{
@@ -310,4 +334,33 @@
 }
 .story2_4{
   padding-left: 40rpx;
+}
+.story3_1{
+  padding-left: 40rpx;
+}
+.story3_3{
+  padding-left: 40rpx;
+}
+.story4_1{
+  padding-left: 40rpx;
+}
+.story4_3{
+  padding-left: 40rpx;
+}
+.story5_1{
+  padding-left: 40rpx;
+}
+.story5_3{
+  padding-left: 40rpx;
+}
+.story6_1{
+  padding-left: 40rpx;
+}
+.story6_3{
+  padding-left: 40rpx;
+}
+.story7{
+  padding-left: 40rpx;
+  font-style:oblique;
+  font-weight:400;
 }
