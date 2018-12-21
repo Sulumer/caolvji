@@ -12,7 +12,7 @@
   <cover-view class="bt3">
     <cover-image src="/images/icon/plus.png" class="img-plus-style" animation="{{animPlus}}"  bindtap="plus"  />
   </cover-view>
-    <cover-image bindtap="navi" data-path="model" src="/images/icon/story.png" class="img-style" animation="{{animCollect}}"/>
+    <cover-image bindtap="navi" data-path="model_test" src="/images/icon/story.png" class="img-style" animation="{{animCollect}}"/>
     <cover-image bindtap="navi" data-path="user" src="/images/icon/me.png" class="img-style" animation="{{animInput}}"/>
     <!-- <cover-image src="/images/icon/me.png" class="img-style" animation="{{animTranspond}}" bindtap="transpond"/> -->
     <!-- <cover-image src="/images/icon/me.png" class="img-style" animation="{{animInput}}" bindtap="input"/> -->
