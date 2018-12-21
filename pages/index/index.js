@@ -273,9 +273,9 @@ Page({
   onShareAppMessage: function () {
     // 用户点击右上角分享
     return {
-      title: 'title', // 分享标题
-      desc: 'desc', // 分享描述
-      path: 'path' // 分享路径
+      title: '听说你还没用过它？', // 分享标题
+      desc: '一款可以记录足迹，分享旅游故事的产品', // 分享描述
+      path: '/pages/login/login' // 分享路径
     }
   },
   oilConfirm: function () {
