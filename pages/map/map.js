@@ -187,6 +187,161 @@ Page({
       }
     })
   },
+
+  /*onReady: function () {
+    // 绘制主背景图
+    context.drawImage("/images/ma.jpg", 0, 0, 40, 40)*/
+    /*// 绘制底部背景
+    context.setFillStyle("#fff")
+    context.setGlobalAlpha(0.5)
+    context.fillRect(0, 800 * rate, 600 * rate, 800 * rate)
+    context.setGlobalAlpha(1)*/
+    // 绘制 二维码
+   /* context.drawImage("/images/ma.jpg", 430 * rate, 810 * rate, 130 * rate, 130 * rate)*/
+   /* // 处理 提示文字
+    var className = "高等数学哈哈哈"
+    var nickName = that.slice(that.data.userInfo.nickName)
+    className = that.slice(className)
+
+    // 绘制 提示文字
+    context.setFillStyle("#000")
+    context.setFontSize(28 * rate)
+    context.fillText(nickName + " 在 " + className + " 课堂上", 30 * rate, 920 * rate)
+    context.fillText("手速超过了 ", 30 * rate, 970 * rate)
+    context.setFillStyle("#f00")
+    context.setFontSize(33 * rate)
+    context.fillText("100%", 180 * rate, 970 * rate)
+    context.setFillStyle("#000")
+    context.setFontSize(28 * rate)
+    context.fillText("的同学！", 280 * rate, 970 * rate)
+
+    context.setFontSize(20 * rate)
+    context.fillText("长按二维码", 445 * rate, 965 * rate)
+    context.fillText("了解E点课堂", 440 * rate, 990 * rate)
+
+    // 下载 微信头像（原官方Url在手机上无法绘制）
+    var downloadTask = wx.downloadFile({
+      url: that.data.userInfo.avatarUrl,
+      success: function (res) {
+
+        // 切割 圆形画布
+        context.save()
+        context.beginPath()
+        context.arc(130 * rate, 800 * rate, 65 * rate, 0, 2 * Math.PI)
+        context.closePath()
+        context.setStrokeStyle("#fff")
+        context.setLineWidth(1)
+        context.stroke()
+        context.clip()
+
+        // 绘制 微信头像
+        context.drawImage(res.tempFilePath, 65 * rate, 735 * rate, 130 * rate, 130 * rate)
+        context.restore()
+      }
+    })*/
+    /*downloadTask.onProgressUpdate(function (res) {
+      console.log(res)
+      if (res.progress == 100) {
+        // 绘制
+        setTimeout(function () {
+          context.draw()
+          setTimeout(function () {
+            wx.canvasToTempFilePath({
+              canvasId: 'canvas',
+              success: function (res) {
+                console.log("canvas", res)
+                that.setData({
+                  canvasPic: res.tempFilePath
+                })
+                if (typeof (callback) == "function") {
+                  callback(res.tempFilePath)
+                }
+              }
+            }, this)
+          }, 100)
+
+        }, 100)
+      }
+    })*/
+/*},*/
+  onSaveImg: function () {
+    const ctx = wx.createCanvasContext('canvas');         //看回wxml里的canvas标签，这个的Canvas要和标签里的canvas-id一致
+    console.log("123")
+    ctx.clearRect(0, 0, 300, 300);
+    ctx.drawImage("/images/ma.jpg", 0, 0, 300, 300);
+    /*ctx.setFillStyle("#02446e");
+    ctx.setFontSize(26);
+    ctx.fillText("亲爱的" + this.data.testName + this.data.testId, 100, 610 - 60);
+    ctx.setTextAlign("center");
+    ctx.fillText("你的有入扔有人不迷", 435, 790 - 60);
+
+    ctx.setTextAlign("left");
+    ctx.setFillStyle("black");
+    ctx.setFontSize(18);
+    ctx.fillText("我等你", 330, 825 - 60);
+    ctx.setFontSize(22);
+
+    ctx.drawImage("/images/test.png", 0, 936 - 60, 646, 30);*/
+    var self = this;
+
+    ctx.draw(true, setTimeout(function () {     //为什么要延迟100毫秒？大家测试一下
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        width: 646,
+        height: 966,
+        destWidth: 646,
+        destHeight: 966,
+        canvasId: 'canvas',
+        success: function (res) {
+          self.data.savedImgUrl = res.tempFilePath;
+          self.saveImageToPhoto();
+        }
+      })
+    }, 100))
+  },
+  //保存图片到相册
+  saveImageToPhoto: function () {
+    if (this.data.savedImgUrl != "") {
+      wx.saveImageToPhotosAlbum({
+        filePath: this.data.savedImgUrl,
+        success: function () {
+          wx.showModal({
+            title: '保存图片成功',
+            content: '足迹地图到相册，您可以手动分享到朋友圈！',
+            showCancel: false
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+          if (res.errMsg == "saveImageToPhotosAlbum:fail cancel") {
+            wx.showModal({
+              title: '保存图片失败',
+              content: '您已取消保存图片到相册！',
+              showCancel: false
+            });
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: '保存图片失败，您可以点击确定设置获取相册权限后再尝试保存！',
+              complete: function (res) {
+                console.log(res);
+                if (res.confirm) {
+                  wx.openSetting({})      //打开小程序设置页面，可以设置权限
+                } else {
+                  wx.showModal({
+                    title: '保存图片失败',
+                    content: '您已取消保存图片到相册！',
+                    showCancel: false
+                  });
+                }
+              }
+            });
+          }
+        }
+      })
+    }
+  }
 })
 
 
