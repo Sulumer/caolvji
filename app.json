@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/login/login",
     "pages/index/index",
     "pages/map/map",
@@ -7,7 +7,9 @@
     "pages/photo/photo",
     "pages/user/user",
     "pages/user/fankui/fankui",
-    "pages/model/model"
+    "pages/model/model",
+    "pages/model_test/model1"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

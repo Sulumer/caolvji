@@ -13,14 +13,27 @@ Page({
     url: '',
     count: '',
     story1: '在你的旅游生活中，你去过了N个城市，是一个旅游大魔王',
-    story1_1: '在你的旅游生活中，你去过了',
+    story1_1: '到现在你走过了',
     story1_2: '3',
-    story1_3: '个城市，是一个旅游大魔王',
+    story1_3: '个省份，走过',
+    story1_4: '3',
+    story1_5: '座城市',
+    story1_6: '路再长，长不过你的脚步。',
+    story1_7: '你一共拍下了',
+    story1_8: '3',
+    story1_9: '张照片',
+    story1_10: '悄悄的将记忆写下，静静的躺在梦的口袋里。',
     story2: '你经常去往东方，是不是海岸线的风景深深地吸引了你',
+    story2_1: '走走停停，看过千山万水只有',
+    story2_2: '福建',
+    story2_3: '最得你的偏爱。',
+    story2_4: '流连于风的轨迹，只有',
+    story2_5: '福州',
+    story2_6: '最引你驻足。',
     story3_1: '你热衷的口味成迷，但是你最近好像爱上了',
     story3_2: '福州',
     story3_3: ',我猜你定是在那儿找到了属于自己的羁绊。',
-    top: '我的故事',
+    top: '故事足迹',
   },
 
 
@@ -36,7 +49,7 @@ Page({
     // var url = options.url
     // var title = options.title
     var id = 4
-    var url = '/images/model/model4.jpg'
+    var url = '/images/model/model2.jpg'
     var title = '草履记'
     var back_img = "background-image: url(" + url + ")";
     console.log("za", back_img)
