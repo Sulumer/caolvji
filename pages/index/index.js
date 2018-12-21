@@ -52,9 +52,9 @@ Page({
   //点击弹出
   ct: function (e) {
     var data = this.data.markers[e.markerId]
-    wx.navigateTo({
-      url: '/pages/post/post?id=' + e.markerId + '&address=' + data.callout.content + '&img=' + data.iconPath
-    })
+    // wx.navigateTo({
+    //   url: '/pages/post/post?id=' + e.markerId + '&address=' + data.callout.content + '&img=' + data.iconPath
+    // })
     console.log("头上文字被点击", e.markerId)
     console.log("this.maker", data)
   },
@@ -139,13 +139,26 @@ Page({
   },
   onLoad: function (options) {
     // var amarkers = new Array()
+    var that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var la = (res.latitude).toFixed(6);
+        var lon = (res.longitude).toFixed(6);
+        that.setData({
+          latitude: la,
+          longitude: lon,
+        });
+        console.log("当前位置", res.latitude, res.longitude);
+      },
+      fail: function (res) {
+        console.log("wu当前位置")
+      }
+    })
   },
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
   },
-
-
-
   onShow: function () {
     var that = this
     wx.showLoading({
@@ -169,21 +182,6 @@ Page({
     wx.getStorage({
       key: 'S-TOKEN',
       success(resStorage) {
-        wx.getLocation({
-          type: 'wgs84',
-          success: function (res) {
-            var la = (res.latitude).toFixed(6);
-            var lon = (res.longitude).toFixed(6);
-            that.setData({
-              latitude: la,
-              longitude: lon,
-            });
-            console.log("当前位置", res.latitude, res.longitude);
-          },
-          fail: function (res) {
-            console.log("wu当前位置")
-          }
-        })
         wx.request({
           url: app.globalData.Service + 'photo/map',
           method: "GET",
@@ -238,7 +236,7 @@ Page({
                     textAlign: "center"
                   }
                 };
-                console.log("经纬度", laa, lonn);
+                // console.log("经纬度", laa, lonn);
                 am.push(marker);
               }
               that.setData(

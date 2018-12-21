@@ -1,4 +1,5 @@
 // pages/muban1/muban1.js
+var app = getApp()
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
     title: '',
     url: '',
     count: '',
-    story1: '在你的旅游生活中，你去过了N个城市，是一个旅游大魔王',
+    startTime: 0,
+    endTime: 999,
+    story1: '在旅游世界中，你是一个旅游大魔王',
     story1_1: '到现在你走过了',
     story1_2: '3',
     story1_3: '个省份，走过',
@@ -44,6 +47,17 @@ Page({
     story6_3: '风的寒冷，顶不住你的热情。',
     story7: '时间，让油漆起褶皱，让皮肤起褶皱，让衣服起褶皱，但每天被拿出来的擦拭的回忆，却总是光滑如初。',
     top: '故事足迹',
+    userData: {
+      // story1_2: '3',
+      // story1_4: '3',
+      // story1_8: '3',
+      // story2_2: '福建',
+      // story2_5: '福州',
+      // story3_2: '福州',
+      // story4_2: '福州',
+      // story5_2: '福州',
+      // story6_2: '福州',
+    },
   },
 
 
@@ -61,12 +75,62 @@ Page({
     var id = 4
     var url = '/images/model/model2.jpg'
     var title = '草履记'
+    var startTime = 0
+    var endTime = 0
     var back_img = "background-image: url(" + url + ")";
     console.log("za", back_img)
     that.setData({
       id: id,
       title: title,
       url: back_img
+    })
+    wx.getStorage({
+      key: 'S-TOKEN',
+      success(resStorage) {
+        console.log("S-TOKEN", resStorage.data)
+        wx.getStorage({
+          key: 'userinfo',
+          success: function (res) {
+            console.log("res", res.data)
+            that.setData({
+              avatarUrl: res.data.avatarUrl,
+              nickName: res.data.nickName
+            });
+            wx.request({
+              url: app.globalData.Service + 'photo/count?startTime=' + startTime + '&endTime=' + endTime,
+              method: 'GET',
+              data: {},
+              header: {
+                'S-TOKEN': resStorage.data,
+                'content-type': 'application/json' // 默认值
+              },
+              success(result) {
+                var userData = that.data.userData
+                console.log("result", result.data.data)
+                var r = result.data.data
+                userData['story1_2'] = r[0]
+                userData['story1_4'] = r[1]
+                userData['story1_8'] = r[2]
+                userData['story2_2'] = r[3]
+                userData['story2_5'] = r[4]
+                userData['story3_2'] = r[15]
+                userData['story4_2'] = r[17]
+                userData['story5_2'] = r[16]
+                userData['story6_2'] = r[18]
+                userData['img1'] = r[5]
+                userData['img2'] = r[6]
+                userData['img3'] = r[7]
+                userData['img4'] = r[8]
+                userData['img5'] = r[9]
+                userData['img6'] = r[10]
+                that.setData({
+                  userData: userData
+                })
+              }
+            })
+          },
+        })
+      }
     })
   },
 
@@ -201,8 +265,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
 
+  click_share: function() {
+    console.log("分享故事")
+  }
 
 
 })

@@ -23,6 +23,9 @@ Page({
     that = this;
     var objectId = options.objectId;
     // console.log(objectId);
+    that.setData({
+      flag: false
+    })
   },
   chooseImage: function() {
     that = this;
@@ -44,6 +47,9 @@ Page({
         that.analysis()
       }
     })
+  },
+  get_token: function(){
+    //获取上传凭证
   },
   analysis: function() {
     var that = this
@@ -71,7 +77,12 @@ Page({
           success(res_oos) {
             console.log("res_oos", res_oos.data)
             if (res_oos.data.error == "None") {
-              that.retry()
+              wx.showLoading({
+                title: '获取凭证失败',
+              })
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 1000)
             } else {
               console.log("uploadToken", res_oos.data.data.uploadToken)
               console.log("key", res_oos.data.data.key)
@@ -88,13 +99,13 @@ Page({
                   'token': res_oos.data.data.uploadToken
                 },
                 success: function(r) {
-                  that.setData({
-                    up_flag: true
-                  })
+                  // that.setData({
+                  //   up_flag: true
+                  // })
                   console.log("r", r)
-                  setTimeout(function() {
-                    wx.hideLoading()
-                  }, 2)
+                  // setTimeout(function() {
+                  //   wx.hideLoading()
+                  // }, 2)
                   wx.showLoading({
                     title: '正在获取照片信息',
                   })
@@ -108,9 +119,9 @@ Page({
                     success(pos_res) {
                       console.log("pos_res", pos_res.data)
                       if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
-                        that.setData({
-                          try: 0
-                        })
+                        // that.setData({
+                        //   try: 0
+                        // })
                         // setTimeout(function () {
                         //   wx.hideLoading()
                         // }, 2)
@@ -150,7 +161,7 @@ Page({
                               }, 500)
                               that.setData({
                                 flag: true,
-                                try: 0,
+                                // try: 0,
                                 photoid: res_oos.data.data.id,
                                 latitude: position.data.latitude,
                                 longitude: position.data.longitude,
@@ -165,11 +176,17 @@ Page({
                               // console.log("province", position.data.result.address_component.province)
                               // console.log("city", position.data.result.address_component.city)
                             } else {
-                              that.retry();
+                              // that.retry();
+                              wx.showLoading({
+                                title: '获取信息失败',
+                              })
+                              setTimeout(function () {
+                                wx.hideLoading()
+                              }, 1000)
                             }
                           },
                           fail: function() {
-                            that.retry();
+                            // that.retry();
                           }
                         })
                       }
@@ -177,60 +194,66 @@ Page({
                   })
                 },
                 fail: function() {
-                  that.setData({
-                    up_flag: true
-                  })
+                  // that.setData({
+                  //   up_flag: true
+                  // })
                   console.log("upfail")
+                  wx.showLoading({
+                    title: '获取信息失败',
+                  })
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 1000)
                   // setTimeout(function () {
                   //   wx.hideLoading()
                   // }, 2)
-                  that.retry();
+                  // that.retry();
                 },
-                complete: function() {
-                  console.log("up_false:", that.data.up_flag)
-                  if (that.data.up_flag == false) {
-                    that.retry();
-                  } else {
-                    that.setData({
-                      up_flag: false
-                    })
-                  }
-                }
+                // complete: function() {
+                //   console.log("up_false:", that.data.up_flag)
+                //   if (that.data.up_flag == false) {
+                //     that.retry();
+                //   } else {
+                //     that.setData({
+                //       up_flag: false
+                //     })
+                //   }
+                // }
               })
             }
           },
           fail: function() {
-            that.retry();
+            // that.retry();
           }
         })
       }
     })
   },
-  retry: function() {
-    if (that.try > 3) {
-      wx.showLoading({
-        title: '加载失败',
-      })
-      setTimeout(function() {
-        wx.hideLoading()
-      }, 500)
-      that.setData({
-        try: 0
-      })
-      // that.analysis()
-    } else {
-      that.setData({
-        try: that.try+1
-      })
-      wx.showLoading({
-        title: '正在为您重试',
-      })
-      setTimeout(function() {
-        wx.hideLoading()
-      }, 500)
-      that.analysis()
-    }
-  },
+  // retry: function() {
+  //   if (that.try > 3) {
+  //     wx.showLoading({
+  //       title: '加载失败',
+  //     })
+  //     setTimeout(function() {
+  //       wx.hideLoading()
+  //     }, 500)
+  //     that.setData({
+  //       try: 0
+  //     })
+  //     // that.analysis()
+  //   } else {
+  //     that.setData({
+  //       try: that.try+1
+  //     })
+  //     wx.showLoading({
+  //       title: '正在为您重试',
+  //     })
+  //     setTimeout(function() {
+  //       wx.hideLoading()
+  //     }, 500)
+  //     that.analysis()
+  //   }
+  // },
   // 图片预览
   previewImage: function(e) {
     //console.log(this.data.images);
