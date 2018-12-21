@@ -4,8 +4,11 @@
   <view> 
     <open-data class="icon" type="userAvatarUrl"></open-data>
     <open-data  class="name" type="userNickName"></open-data>
+    <view><image class='ma' src='/images/ma.jpg'></image></view>
     <view class="rank">足迹超越<text>{{percentage}}%</text>的用户</view>
-    <view class="senten">世界这么大，多出门走走</view>    
-    <button open-type='share' class='button'><image class='pic' src="/images/share.png"></image></button>
+    <view class="senten">世界这么大，多出门走走</view>   
+    <button open-type='share' class='share'>发给好友</button>
+    <canvas class="canvas2" canvas-id="canvas" style="position:fixed;right:2000px"></canvas>
+    <button class='tips' bindtap='onSaveImg'>保存程序码</button>
   </view>
 </view>
