@@ -16,8 +16,8 @@
 
 <view class='chengjiu'>
   <view wx:for='{{achieve}}' class='chengjiu1'>
-    <image src='{{item.src}}' bindtap='link'></image>
-    <view>说走就走</view>
+    <image src='{{item.src}}' bindtap='link' class='left'></image>
+    <view class='left'>{{item.content}}</view>
   </view>
 </view>
 <!-- <view class='chengjiu'>

@@ -45,7 +45,13 @@
   height: 140rpx;
   width: 140rpx;
 }
-
+.chengjiu1{
+  width: 33.3%;
+  margin-top: 30rpx;
+}
+.left{
+  margin-left: 55rpx;
+}
 .footer{
   position: fixed;
   bottom: 50rpx;
