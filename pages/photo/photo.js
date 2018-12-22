@@ -62,6 +62,7 @@ Page({
             success(resStorage) {
               console.log("S-TOKEN", resStorage.data)
               //获取上传凭证
+              console.log("获取上传凭证")
               wx.request({
                     url: app.globalData.Service + 'photo/upload', //仅为示例，并非真实的接口
                     method: 'POST',
@@ -76,6 +77,7 @@ Page({
                       "S-TOKEN": resStorage.data
                     },
                     success(res_oos) {
+                      console.log("获取上传凭证sucess")
                       console.log("res_oos", res_oos.data)
                       if (res_oos.data.error == "None") {
                         wx.showLoading({
@@ -87,9 +89,10 @@ Page({
                       } else {
                         console.log("uploadToken", res_oos.data.data.uploadToken)
                         console.log("key", res_oos.data.data.key)
+                        console.log("上传照片")
                         //上传照片
                         wx.uploadFile({
-                              url: 'https://up.qbox.com',
+                              url: 'http://up.qiniu.com',
                               filePath: that.data.images[0],
                               name: 'file',
                               header: {
@@ -100,6 +103,7 @@ Page({
                                 'token': res_oos.data.data.uploadToken
                               },
                               success: function(r) {
+                                console.log("up success")
                                 that.setData({
                                   up_flag: true
                                 })
@@ -118,6 +122,7 @@ Page({
                                       'content-type': 'application/json', // 默认值
                                     },
                                     success(pos_res) {
+                                      console.log("foot")
                                       console.log("pos_res", pos_res.data)
                                       if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
                                         that.setData({
@@ -129,10 +134,13 @@ Page({
                                         wx.showLoading({
                                           title: '查无位置信息！',
                                         })
+                                        console.log("查无位置信息！")
                                         setTimeout(function() {
                                           wx.hideLoading()
                                         }, 1500)
                                       } else {
+                                        console.log("foot success")
+                                        console.log("cstdio")
                                         //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
                                         //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
                                         // that.setData({
@@ -152,8 +160,9 @@ Page({
                                                 'content-type': 'application/json', // 默认值
                                               },
                                               success(position) {
+                                                console.log("cstdio success")
                                                 console.log("position", position.data)
-                                                if (position.data.code == 200) {
+                                                // if (position.data.code == 200) {
                                                 wx.showLoading({
                                                   title: '获取信息成功',
                                                 })
@@ -176,17 +185,18 @@ Page({
                                                 // console.log("nation", position.data.result.address_component.nation)
                                                 // console.log("province", position.data.result.address_component.province)
                                                 // console.log("city", position.data.result.address_component.city)
-                                                } else {
-                                                  that.retry();
-                                                  wx.showLoading({
-                                                    title: '获取信息失败',
-                                                  })
-                                                  setTimeout(function () {
-                                                    wx.hideLoading()
-                                                  }, 1000)
-                                            }
+                                                // } else {
+                                                //   that.retry();
+                                                //   wx.showLoading({
+                                                //     title: '获取信息失败',
+                                                //   })
+                                                //   setTimeout(function () {
+                                                //     wx.hideLoading()
+                                                //   }, 1000)
+                                            // }
                                           },
                                           fail: function() {
+                                            console.log("cstdio fail")
                                             that.retry();
                                           }
                                       })
@@ -195,6 +205,7 @@ Page({
                               })
                           },
                           fail: function() {
+                            console.log("上传照片失败")
                             that.setData({
                               up_flag: true
                             })
@@ -207,27 +218,31 @@ Page({
                             }, 1000)
                             that.retry();
                           },
-                          complete: function() {
-                            console.log("up_false:", that.data.up_flag)
-                            if (that.data.up_flag == false) {
-                              that.retry();
-                            } else {
-                              that.setData({
-                                up_flag: false
-                              })
-                              wx.showLoading({
-                                title: '连接失败',
-                              })
-                              setTimeout(function () {
-                                wx.hideLoading()
-                              }, 1000)
-                              that.retry();
-                            }
-                          }
+                          // complete: function() {
+                            // console.log("complete")
+                            // console.log("up_false:", that.data.up_flag)
+                            // if (that.data.up_flag == false) {
+                            //   console.log("up diushi")
+                            //   that.retry();
+                            // } else {
+                            //   that.setData({
+                            //     up_flag: false
+                            //   })
+                            //   wx.showLoading({
+                            //     title: '连接失败',
+                            //   })
+                            //   setTimeout(function () {
+                            //     wx.hideLoading()
+                            //   }, 1000)
+                            //   console.log("连接失败")
+                            //   that.retry();
+                            // }
+                          // }
                       })
                   }
                 },
                 fail: function() {
+                  console.log("获取凭证失败")
                   that.retry();
                 }
             })
@@ -248,12 +263,14 @@ Page({
       })
       // that.analysis()
     } else {
+      console.log("retrypre",that.data.try)
       that.setData({
         try: that.data.try + 1
       })
       wx.showLoading({
         title: '正在为您重试',
       })
+      console.log("retryaft", that.data.try)
       setTimeout(function() {
         wx.hideLoading()
       }, 2000)
