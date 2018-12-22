@@ -2,258 +2,266 @@ var that;
 var time = require('../../utils/util.js');
 var app = getApp()
 Page({
-  data: {
-    labelcount: 0,
-    content: "",
-    latitude: "",
-    longitude: "",
-    address: "所在位置",
-    photoid: "",
-    phototime: "",
-    city: "",
-    province: "",
-    flag: false,
-    up_flag: false,
-    images: [],
-    try: 0,
-    uploadedImages: [],
-    //imageWidth: getApp().screenWidth / 4 - 10
-  },
-  onLoad: function(options) {
-    that = this;
-    var objectId = options.objectId;
-    // console.log(objectId);
-    that.setData({
-      flag: false
-    })
-  },
-  chooseImage: function() {
-    that = this;
-    // 选择图片
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['origin'],
-      sourceType: ['album', 'camera'],
-      // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        console.log("tempFilePaths", tempFilePaths[0]);
+      data: {
+        labelcount: 0,
+        content: "",
+        latitude: "",
+        longitude: "",
+        address: "所在位置",
+        photoid: "",
+        phototime: "",
+        city: "",
+        province: "",
+        flag: false,
+        up_flag: false,
+        images: [],
+        try: 0,
+        uploadedImages: [],
+        //imageWidth: getApp().screenWidth / 4 - 10
+      },
+      onLoad: function(options) {
+        that = this;
+        var objectId = options.objectId;
+        // console.log(objectId);
         that.setData({
-          images: that.data.images.concat(tempFilePaths)
-        });
-        console.log("images", that.data.images[0])
-        //获取S-TOKEN
-        that.analysis()
-      }
-    })
-  },
-  get_token: function(){
-    //获取上传凭证
-  },
-  analysis: function() {
-    var that = this
-    wx.showLoading({
-      title: '正在上传照片',
-    })
-    wx.getStorage({
-      key: 'S-TOKEN',
-      success(resStorage) {
-        console.log("S-TOKEN", resStorage.data)
+          flag: false,
+          up_flag: false
+        })
+      },
+      chooseImage: function() {
+        that = this;
+        // 选择图片
+        wx.chooseImage({
+          count: 1, // 默认9
+          sizeType: ['origin'],
+          sourceType: ['album', 'camera'],
+          // 可以指定来源是相册还是相机，默认二者都有
+          success: function(res) {
+            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+            var tempFilePaths = res.tempFilePaths;
+            console.log("tempFilePaths", tempFilePaths[0]);
+            that.setData({
+              images: that.data.images.concat(tempFilePaths)
+            });
+            console.log("images", that.data.images[0])
+            //获取S-TOKEN
+            that.analysis()
+          }
+        })
+      },
+      get_token: function() {
         //获取上传凭证
-        wx.request({
-          url: app.globalData.Service + 'photo/upload', //仅为示例，并非真实的接口
-          method: 'POST',
-          data: {
-            "label": "福州大学",
-            "latitude": "",
-            "longitude": "",
-            "province": ""
-          },
-          header: {
-            'content-type': 'application/json', // 默认值
-            "S-TOKEN": resStorage.data
-          },
-          success(res_oos) {
-            console.log("res_oos", res_oos.data)
-            if (res_oos.data.error == "None") {
-              wx.showLoading({
-                title: '获取凭证失败',
-              })
-              setTimeout(function () {
-                wx.hideLoading()
-              }, 1000)
-            } else {
-              console.log("uploadToken", res_oos.data.data.uploadToken)
-              console.log("key", res_oos.data.data.key)
-              //上传照片
-              wx.uploadFile({
-                url: 'http://up.qiniu.com',
-                filePath: that.data.images[0],
-                name: 'file',
-                header: {
-                  "Content-Type": "multipart/form-data"
-                },
-                formData: {
-                  'key': res_oos.data.data.key,
-                  'token': res_oos.data.data.uploadToken
-                },
-                success: function(r) {
-                  // that.setData({
-                  //   up_flag: true
-                  // })
-                  console.log("r", r)
-                  // setTimeout(function() {
-                  //   wx.hideLoading()
-                  // }, 2)
-                  wx.showLoading({
-                    title: '正在获取照片信息',
-                  })
-                  wx.request({
-                    url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
-                    method: 'GET',
-                    data: {},
+      },
+      analysis: function() {
+        var that = this
+        wx.showLoading({
+          title: '正在上传照片',
+        })
+        wx.getStorage({
+            key: 'S-TOKEN',
+            success(resStorage) {
+              console.log("S-TOKEN", resStorage.data)
+              //获取上传凭证
+              wx.request({
+                    url: app.globalData.Service + 'photo/upload', //仅为示例，并非真实的接口
+                    method: 'POST',
+                    data: {
+                      "label": "福州大学",
+                      "latitude": "",
+                      "longitude": "",
+                      "province": ""
+                    },
                     header: {
                       'content-type': 'application/json', // 默认值
+                      "S-TOKEN": resStorage.data
                     },
-                    success(pos_res) {
-                      console.log("pos_res", pos_res.data)
-                      if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
-                        // that.setData({
-                        //   try: 0
-                        // })
-                        // setTimeout(function () {
-                        //   wx.hideLoading()
-                        // }, 2)
+                    success(res_oos) {
+                      console.log("res_oos", res_oos.data)
+                      if (res_oos.data.error == "None") {
                         wx.showLoading({
-                          title: '查无位置信息！',
+                          title: '获取凭证失败',
                         })
                         setTimeout(function() {
                           wx.hideLoading()
-                        }, 1500)
+                        }, 1000)
                       } else {
-                        //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
-                        //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
-                        // that.setData({
-                        //   photoid: res_oos.data.data.id,
-                        //   latitude: pos_res.data.GPSLatitude.val,
-                        //   longitude: pos_res.data.GPSLongitude.val,
-                        // })
-                        // console.log("photoid", that.data.photoid)
-                        // console.log("latitude", that.data.latitude)
-                        // console.log("longitude", that.data.longitude)
-                        console.log("datetime", pos_res.data.DateTime.val)
-                        wx.request({
-                          url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
-                          method: 'GET',
-                          data: {},
-                          header: {
-                            'content-type': 'application/json', // 默认值
+                        console.log("uploadToken", res_oos.data.data.uploadToken)
+                        console.log("key", res_oos.data.data.key)
+                        //上传照片
+                        wx.uploadFile({
+                              url: 'https://up.qbox.com',
+                              filePath: that.data.images[0],
+                              name: 'file',
+                              header: {
+                                "Content-Type": "multipart/form-data"
+                              },
+                              formData: {
+                                'key': res_oos.data.data.key,
+                                'token': res_oos.data.data.uploadToken
+                              },
+                              success: function(r) {
+                                that.setData({
+                                  up_flag: true
+                                })
+                                console.log("r", r)
+                                setTimeout(function() {
+                                  wx.hideLoading()
+                                }, 2)
+                                wx.showLoading({
+                                  title: '正在获取照片信息',
+                                })
+                                wx.request({
+                                    url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
+                                    method: 'GET',
+                                    data: {},
+                                    header: {
+                                      'content-type': 'application/json', // 默认值
+                                    },
+                                    success(pos_res) {
+                                      console.log("pos_res", pos_res.data)
+                                      if (pos_res.data.error != null || pos_res.data.GPSLongitude == null) {
+                                        that.setData({
+                                          try: 0
+                                        })
+                                        // setTimeout(function () {
+                                        //   wx.hideLoading()
+                                        // }, 2)
+                                        wx.showLoading({
+                                          title: '查无位置信息！',
+                                        })
+                                        setTimeout(function() {
+                                          wx.hideLoading()
+                                        }, 1500)
+                                      } else {
+                                        //   console.log("GPSLatitude", pos_res.data.GPSLatitude.val)
+                                        //   console.log("GPSLongitude", pos_res.data.GPSLongitude.val)
+                                        // that.setData({
+                                        //   photoid: res_oos.data.data.id,
+                                        //   latitude: pos_res.data.GPSLatitude.val,
+                                        //   longitude: pos_res.data.GPSLongitude.val,
+                                        // })
+                                        // console.log("photoid", that.data.photoid)
+                                        // console.log("latitude", that.data.latitude)
+                                        // console.log("longitude", that.data.longitude)
+                                        console.log("datetime", pos_res.data.DateTime.val)
+                                        wx.request({
+                                              url: 'https://cstdio.cn/caolvji/location.php?latitude=' + pos_res.data.GPSLatitude.val + '&longitude=' + pos_res.data.GPSLongitude.val,
+                                              method: 'GET',
+                                              data: {},
+                                              header: {
+                                                'content-type': 'application/json', // 默认值
+                                              },
+                                              success(position) {
+                                                console.log("position", position.data)
+                                                if (position.data.code == 200) {
+                                                wx.showLoading({
+                                                  title: '获取信息成功',
+                                                })
+                                                setTimeout(function() {
+                                                  wx.hideLoading()
+                                                }, 500)
+                                                that.setData({
+                                                  flag: true,
+                                                  try: 0,
+                                                  photoid: res_oos.data.data.id,
+                                                  latitude: position.data.latitude,
+                                                  longitude: position.data.longitude,
+                                                  phototime: new Date((pos_res.data.DateTime.val.replace(/:/, "/")).replace(/:/, "/")).getTime(),
+                                                  address: position.data.address,
+                                                  city: position.data.city,
+                                                  province: position.data.province
+                                                })
+                                                // console.log("phototime", that.data.phototime)
+                                                // console.log("address", position.data.result.address)
+                                                // console.log("nation", position.data.result.address_component.nation)
+                                                // console.log("province", position.data.result.address_component.province)
+                                                // console.log("city", position.data.result.address_component.city)
+                                                } else {
+                                                  that.retry();
+                                                  wx.showLoading({
+                                                    title: '获取信息失败',
+                                                  })
+                                                  setTimeout(function () {
+                                                    wx.hideLoading()
+                                                  }, 1000)
+                                            }
+                                          },
+                                          fail: function() {
+                                            that.retry();
+                                          }
+                                      })
+                                  }
+                                }
+                              })
                           },
-                          success(position) {
-                            console.log("position", position.data)
-                            if (position.data.code == 200) {
-                              wx.showLoading({
-                                title: '获取信息成功',
-                              })
-                              setTimeout(function() {
-                                wx.hideLoading()
-                              }, 500)
-                              that.setData({
-                                flag: true,
-                                // try: 0,
-                                photoid: res_oos.data.data.id,
-                                latitude: position.data.latitude,
-                                longitude: position.data.longitude,
-                                phototime: new Date((pos_res.data.DateTime.val.replace(/:/, "/")).replace(/:/, "/")).getTime(),
-                                address: position.data.address,
-                                city: position.data.city,
-                                province: position.data.province
-                              })
-                              // console.log("phototime", that.data.phototime)
-                              // console.log("address", position.data.result.address)
-                              // console.log("nation", position.data.result.address_component.nation)
-                              // console.log("province", position.data.result.address_component.province)
-                              // console.log("city", position.data.result.address_component.city)
+                          fail: function() {
+                            that.setData({
+                              up_flag: true
+                            })
+                            console.log("upfail")
+                            wx.showLoading({
+                              title: '获取信息失败',
+                            })
+                            setTimeout(function() {
+                              wx.hideLoading()
+                            }, 1000)
+                            that.retry();
+                          },
+                          complete: function() {
+                            console.log("up_false:", that.data.up_flag)
+                            if (that.data.up_flag == false) {
+                              that.retry();
                             } else {
-                              // that.retry();
+                              that.setData({
+                                up_flag: false
+                              })
                               wx.showLoading({
-                                title: '获取信息失败',
+                                title: '连接失败',
                               })
                               setTimeout(function () {
                                 wx.hideLoading()
                               }, 1000)
+                              that.retry();
                             }
-                          },
-                          fail: function() {
-                            // that.retry();
                           }
-                        })
-                      }
-                    }
-                  })
+                      })
+                  }
                 },
                 fail: function() {
-                  // that.setData({
-                  //   up_flag: true
-                  // })
-                  console.log("upfail")
-                  wx.showLoading({
-                    title: '获取信息失败',
-                  })
-                  setTimeout(function () {
-                    wx.hideLoading()
-                  }, 1000)
-                  // setTimeout(function () {
-                  //   wx.hideLoading()
-                  // }, 2)
-                  // that.retry();
-                },
-                // complete: function() {
-                //   console.log("up_false:", that.data.up_flag)
-                //   if (that.data.up_flag == false) {
-                //     that.retry();
-                //   } else {
-                //     that.setData({
-                //       up_flag: false
-                //     })
-                //   }
-                // }
-              })
-            }
-          },
-          fail: function() {
-            // that.retry();
-          }
-        })
-      }
-    })
+                  that.retry();
+                }
+            })
+        }
+      })
   },
-  // retry: function() {
-  //   if (that.try > 3) {
-  //     wx.showLoading({
-  //       title: '加载失败',
-  //     })
-  //     setTimeout(function() {
-  //       wx.hideLoading()
-  //     }, 500)
-  //     that.setData({
-  //       try: 0
-  //     })
-  //     // that.analysis()
-  //   } else {
-  //     that.setData({
-  //       try: that.try+1
-  //     })
-  //     wx.showLoading({
-  //       title: '正在为您重试',
-  //     })
-  //     setTimeout(function() {
-  //       wx.hideLoading()
-  //     }, 500)
-  //     that.analysis()
-  //   }
-  // },
+  retry: function() {
+    var that = this
+    if (that.data.try > 3) {
+      wx.showLoading({
+        title: '加载失败',
+      })
+      setTimeout(function() {
+        wx.hideLoading()
+      }, 2000)
+      that.setData({
+        try: 0
+      })
+      // that.analysis()
+    } else {
+      that.setData({
+        try: that.data.try + 1
+      })
+      wx.showLoading({
+        title: '正在为您重试',
+      })
+      setTimeout(function() {
+        wx.hideLoading()
+      }, 2000)
+      setTimeout(function () {
+      that.analysis()
+      }, 1500)
+    }
+  },
   // 图片预览
   previewImage: function(e) {
     //console.log(this.data.images);

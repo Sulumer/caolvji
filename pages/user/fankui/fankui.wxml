@@ -2,16 +2,16 @@
 
 <view class='wenti'>
   <text class='wenti1'>您的问题 ：</text>
-  <input class='wenti2' placeholder='您要反馈什么问题' placeholder-class='ziti' ></input>
+  <input data-id='0' bindblur='gettxt' class='wenti2' placeholder='您要反馈什么问题' placeholder-class='ziti' ></input>
 </view>
 
 <view class='contact'>
   <text>联系方式 ：</text>
-  <input placeholder='请填写手机号/微信号/邮箱/QQ' placeholder-class='ziti'></input>
+  <input data-id='1' bindblur='gettxt' placeholder='请填写手机号/微信号/邮箱/QQ' placeholder-class='ziti'></input>
 </view>
 
 <view class='xiangxiwenti'>
-  <textarea class="test" placeholder='请详细描述您的问题' placeholder-class='ziti1' maxlength='100' bindinput="handleContentInput"></textarea>
+  <textarea data-id='2' bindblur='gettxt' class="test" placeholder='请详细描述您的问题' placeholder-class='ziti1' maxlength='100' bindinput="handleContentInput"></textarea>
 </view>
 <view class="weui-textarea-counter">可输入字数{{contentCount}}/100</view>
 

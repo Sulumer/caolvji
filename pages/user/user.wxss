@@ -53,8 +53,10 @@
   margin-left: 55rpx;
 }
 .footer{
-  position: fixed;
-  bottom: 50rpx;
+  /* position: fixed; */
+  /* bottom: 50rpx; */
+  margin-top: 70rpx;
+  margin-bottom: 30rpx;
   font-size: 15px;
   display:flex;
   width:100%;

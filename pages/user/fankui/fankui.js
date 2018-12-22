@@ -9,7 +9,28 @@ Page({
     contentCount: 0,
     left: 40,
   },
-
+  gettxt:function(e){
+    var that = this
+    var id = e.target.dataset.id
+    console.log('id',id)
+    console.log("value", e.detail.value)
+    if(id == 0)
+    {
+      that.setData({
+        question: e.detail.value
+      })
+    }
+    else if (id == 1) {
+      that.setData({
+        contact: e.detail.value
+      })
+    }
+    else if (id == 2) {
+      that.setData({
+        txt: e.detail.value
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,16 +42,39 @@ Page({
     });
   },
   fankui: function() {
-    wx.showToast({
-      title: '谢谢您的支持!',
-      icon: 'success',
-      duration: 2000
-    })
-    setTimeout(function () {
-      wx.navigateBack({
-        delta: 1
+    var that = this
+    if(this.data.imgs != ''){
+      wx.request({
+        url: 'https://cstdio.cn/caolvji/feedback.php?question=' + that.data.question + '&contact=' + that.data.contact + '&txt=' + that.data.txt + '&imgs=' + that.data.imgs,
+        method: 'GET',
+        data: {},
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(result) {
+          console.log("result", result.data.data)
+
+        }
       })
-    }, 1000)
+      wx.showToast({
+        title: '谢谢您的支持!',
+        icon: 'success',
+        duration: 2000
+      })
+      setTimeout(function () {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 1000)
+    }
+    else{
+      wx.showLoading({
+        title: '请上传截图！',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+    }
   },
   xuanzezhaopian: function() {
     var that = this;

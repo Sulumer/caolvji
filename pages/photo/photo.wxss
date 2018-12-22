@@ -108,8 +108,10 @@
 }
 
 .footer{
-  position: fixed;
-  bottom: 50rpx;
+  /* position: fixed; */
+  /* bottom: 50rpx; */
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
   font-size: 15px;
   display:flex;
   width:100%;
