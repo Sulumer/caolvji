@@ -158,6 +158,6 @@
 
   <!-- </view> -->
   <view class='fg' />
-  <button class='sub-button'>分 享 故 事</button>
+  <button class='sub-button' bindtap="click_share">分 享 故 事</button>
   <view class='bottom'></view>
 </view>

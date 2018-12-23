@@ -3,8 +3,8 @@ var that;
 var app = getApp()
 Page({
   data: {
-    latitude: "",
-    longitude: "",
+    latitude: 39.8085360414,
+    longitude: 116.6748046875,
     flag: true,
     showUpload: true,
     isPopping: false,//是否已经弹出
@@ -139,6 +139,7 @@ Page({
   },
   onLoad: function (options) {
     // var amarkers = new Array()
+    console.log("onLoad")
     var that = this
     wx.getLocation({
       type: 'wgs84',
@@ -160,6 +161,7 @@ Page({
     // 生命周期函数--监听页面初次渲染完成
   },
   onShow: function () {
+    console.log("onShoe")
     var that = this
     wx.showLoading({
       title: '加载中',

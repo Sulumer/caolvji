@@ -4,6 +4,7 @@ Page({
     
   },
   userinfo: function(e){
+    console.log("e",e)
     console.log("userinfo",e.detail.userInfo)
     wx.setStorage({
       key: 'userinfo',
@@ -15,10 +16,10 @@ Page({
         success(res) {
           if (res.code) {
             //发起网络请求
-            // console.log(res)
-            // console.log("res.code:", res.code)
-            // console.log("e.detail.encryptedData:", e.detail.encryptedData)
-            // console.log("e.detail.iv:", e.detail.iv)
+            console.log(res)
+            console.log("res.code:", res.code)
+            console.log("e.detail.encryptedData:", e.detail.encryptedData)
+            console.log("e.detail.iv:", e.detail.iv)
             wx.request({
               url: app.globalData.Service + 'user/oauth', //仅为示例，并非真实的接口地址
               method: 'POST',
@@ -58,6 +59,11 @@ Page({
                       key: "userId",
                       data: resme.data.data.userId
                     })
+                    // console.log("userinfo", e.detail.userInfo)
+                    // wx.setStorage({
+                    //   key: 'userinfo',
+                    //   data: e.detail.userInfo,
+                    // })
                   }
                 })
                 wx.redirectTo({

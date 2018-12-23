@@ -46,7 +46,7 @@ Page({
     story6_2: '福州',
     story6_3: '风的寒冷，顶不住你的热情。',
     story7: '时间，让油漆起褶皱，让皮肤起褶皱，让衣服起褶皱，但每天被拿出来的擦拭的回忆，却总是光滑如初。',
-    top: '故事足迹',
+    top: '旅游故事',
     userData: {
       // story1_2: '3',
       // story1_4: '3',
@@ -118,11 +118,11 @@ Page({
                 userData['story5_2'] = r[16]
                 userData['story6_2'] = r[18]
                 userData['img1'] = r[5] + '?slim'
-                userData['img2'] = r[6] + '?slim'
-                userData['img3'] = r[7] + '?slim'
+                userData['img2'] = r[7] + '?slim'
+                userData['img3'] = r[9] + '?slim'
                 userData['img4'] = r[8] + '?slim'
-                userData['img5'] = r[9] + '?slim'
-                userData['img6'] = r[10] + '?slim'
+                userData['img5'] = r[10] + '?slim'
+                userData['img6'] = r[6] + '?slim'
                 that.setData({
                   userData: userData
                 })
@@ -269,6 +269,12 @@ Page({
 
   click_share: function() {
     console.log("分享故事")
+    wx.showLoading({
+      title: '敬请期待',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
   }
 
 

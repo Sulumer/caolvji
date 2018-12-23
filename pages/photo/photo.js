@@ -92,7 +92,7 @@ Page({
                         console.log("上传照片")
                         //上传照片
                         wx.uploadFile({
-                              url: 'http://up.qiniu.com',
+                              url: 'https://up.qbox.me',
                               filePath: that.data.images[0],
                               name: 'file',
                               header: {
@@ -251,7 +251,7 @@ Page({
   },
   retry: function() {
     var that = this
-    if (that.data.try > 3) {
+    if (that.data.try > 1) {
       wx.showLoading({
         title: '加载失败',
       })
