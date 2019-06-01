@@ -34,10 +34,26 @@ Page({
               success(res) {
                 console.log("res",res)
                 //缓存S-TOKEN
-                wx.setStorage({
-                  key: "S-TOKEN",
-                  data: res.header["S-TOKEN"]
-                })
+                // wx.getSystemInfo({
+                //   success(res) {
+                //     console.log("system", res)
+                //   }
+                // })
+                if (res.header['S-TOKEN'] != null){
+                  wx.setStorage({
+                    key: "S-TOKEN",
+                    data: res.header["S-TOKEN"]
+                  })
+                  var stoken = res.header["S-TOKEN"]
+                }
+                else{
+                  wx.setStorage({
+                    key: "S-TOKEN",
+                    data: res.header["s-token"]
+                  })
+                  var stoken = res.header["s-token"]
+                }
+                
                 //换取userid
                 wx.request({
                   url: app.globalData.Service + 'user/me', //仅为示例，并非真实的接口地址
@@ -45,7 +61,7 @@ Page({
                   data: {
                   },
                   header: {
-                    "S-TOKEN" : res.header["S-TOKEN"],
+                    "S-TOKEN": stoken,
                     'content-type': 'application/json' // 默认值
                   },
                   success(resme) {

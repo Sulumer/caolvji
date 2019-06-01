@@ -12,13 +12,15 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.2",
+	"libVersion": "2.7.1",
 	"appid": "wxcf8e298028850573",
 	"projectname": "clj",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -37,12 +39,54 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
 					"name": "map",
-					"pathName": "pages/map/map"
+					"pathName": "pages/map/map",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "model",
+					"pathName": "pages/model/model",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "photo",
+					"pathName": "pages/photo/photo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "post",
+					"pathName": "pages/post/post",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "batch",
+					"pathName": "pages/photo/batch",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "photograllery",
+					"pathName": "pages/photograllery/photograllery"
 				}
 			]
 		}

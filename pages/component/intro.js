@@ -58,8 +58,7 @@ Component({
               },
               fail: function () {
                 wx.showModal({
-                  title: 'lxGG写的好辛苦',
-                  content: '授权一个吧',
+                 
                 })
               }
             })

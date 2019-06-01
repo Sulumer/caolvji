@@ -1,8 +1,19 @@
 <!-- <view class='mask' hidden='{{maskFlag}}' catchtap='oilConfirm' ></view> -->
-<view class="bg"  >
+
+<modal title="提示" class="modal" hidden="{{modalHidden}}" confirmText="我知道了" cancelText="" bindconfirm="modalConfirm">
+  <image class="tips" src="/images/1.jpg" mode='aspectFill'></image>
+</modal>
+
+<view hidden='{{check}}' class="bg">
 <map class="mapcontainer" longitude="{{longitude}}" latitude="{{latitude}}" markers='{{markers}}' bindcallouttap="ct">
   
 </map>
+
+  <cover-image class='help' src='/images/icon/help.png' bindtap='buttonTap'></cover-image>
+   
+
+  <cover-image class="photos" src='/images/icon/photos.png' bindtap="navi" data-path="photograllery"></cover-image>
+
   <cover-view class="bt1">
     <cover-image bindtap="navi" data-path="map" src="/images/icon/switch.png" class="img-plus-style"/>
   </cover-view>
@@ -12,7 +23,7 @@
   <cover-view class="bt3">
     <cover-image src="/images/icon/plus.png" class="img-plus-style" animation="{{animPlus}}"  bindtap="plus"  />
   </cover-view>
-    <cover-image bindtap="navi" data-path="model_test" src="/images/icon/story.png" class="img-style" animation="{{animCollect}}"/>
+    <cover-image bindtap="navi" data-path="model" src="/images/icon/story.png" class="img-style" animation="{{animCollect}}"/>
     <cover-image bindtap="navi" data-path="user" src="/images/icon/me.png" class="img-style" animation="{{animInput}}"/>
     <!-- <cover-image src="/images/icon/me.png" class="img-style" animation="{{animTranspond}}" bindtap="transpond"/> -->
     <!-- <cover-image src="/images/icon/me.png" class="img-style" animation="{{animInput}}" bindtap="input"/> -->

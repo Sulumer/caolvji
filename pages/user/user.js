@@ -14,38 +14,38 @@ Page({
       {
         name: '说走就走',
         status:0,
-        icon_up:"https://foot.yyf-blog.com/userstory/ac/说走就走.png?slim",
-        icon_down:"https://foot.yyf-blog.com/userstory/ac/说走就走暗.png?slim"
+        icon_up:"https://qiniu.cstdio.cn/userstory/ac/说走就走.png?slim",
+        icon_down:"https://qiniu.cstdio.cn/userstory/ac/说走就走暗.png?slim"
       },
       {
         name: '拉帮结派',
         status: 0,
-        icon_up: "https://foot.yyf-blog.com/userstory/ac/拉帮结派.png?slim",
-        icon_down: "https://foot.yyf-blog.com/userstory/ac/拉帮结派暗.png?slim"
+        icon_up: "https://qiniu.cstdio.cn/userstory/ac/拉帮结派.png?slim",
+        icon_down: "https://qiniu.cstdio.cn/userstory/ac/拉帮结派暗.png?slim"
       },
       {
         name: '尽兴而归',
         status: 0,
-        icon_up: "https://foot.yyf-blog.com/userstory/ac/尽兴而归.png?slim",
-        icon_down: "https://foot.yyf-blog.com/userstory/ac/尽兴而归暗.png?slim"
+        icon_up: "https://qiniu.cstdio.cn/userstory/ac/尽兴而归.png?slim",
+        icon_down: "https://qiniu.cstdio.cn/userstory/ac/尽兴而归暗.png?slim"
       },
       {
         name: '壕无人性',
         status: 0,
-        icon_up: "https://foot.yyf-blog.com/userstory/ac/壕无人性.png?slim",
-        icon_down: "https://foot.yyf-blog.com/userstory/ac/壕无人性暗.png?slim"
+        icon_up: "https://qiniu.cstdio.cn/userstory/ac/壕无人性.png?slim",
+        icon_down: "https://qiniu.cstdio.cn/userstory/ac/壕无人性暗.png?slim"
       },
       {
         name: '行万里路',
         status: 0,
-        icon_up: "https://foot.yyf-blog.com/userstory/ac/行万里路.png?slim",
-        icon_down: "https://foot.yyf-blog.com/userstory/ac/行万里路暗.png?slim"
+        icon_up: "https://qiniu.cstdio.cn/userstory/ac/行万里路.png?slim",
+        icon_down: "https://qiniu.cstdio.cn/userstory/ac/行万里路暗.png?slim"
       },
       {
         name: '游出天外',
         status: 0,
-        icon_up: "https://foot.yyf-blog.com/userstory/ac/游出天外.png?slim",
-        icon_down: "https://foot.yyf-blog.com/userstory/ac/游出天外暗.png?slim"
+        icon_up: "https://qiniu.cstdio.cn/userstory/ac/游出天外.png?slim",
+        icon_down: "https://qiniu.cstdio.cn/userstory/ac/说走就走暗.png?slim"
       },
     ],
     //ctx=wx.createCanvasContext('firstCanvas')

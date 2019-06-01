@@ -1,12 +1,12 @@
-<view class='toptop'>
+<view class='top'>
 
-  <view class='touxiang'>
+  <view class='avar'>
     <image src='{{avatarUrl}}'></image>
   </view>
 
-  <text class='mingzi'>{{nickName}}</text>
+  <text class='nickname'>{{nickName}}</text>
 
-  <view class="text1">
+  <view class="top-txt">
     <text>国家：{{countryNum}}</text>
     <text>省份：{{proNum}}</text>
     <text>城市：{{cityNum}}</text>
@@ -14,25 +14,20 @@
 
 </view>
 
-<view class='chengjiu'>
-  <view wx:for='{{achievement}}' class='chengjiu1'>
+<view class='achievement'>
+  <view wx:for='{{achievement}}' class='achievement-box'>
     <image wx:if="{{item.status}}" src='{{item.icon_up}}' bindtap='link' class='left'></image>
     <image wx:if="{{!item.status}}" src='{{item.icon_down}}' bindtap='link' class='left'></image>
     <view class='left'>{{item.name}}</view>
   </view>
 </view>
-<!-- <view class='chengjiu'>
-  <view wx:for='{{achieve1}}' class='chengjiu1'>
-    <image src='{{item.src}}' bindtap='link'></image>
-    <view>说走就走</view>
-  </view>
-</view> -->
 
 <view class='footer'>
   <navigator url='fankui/fankui' hover-class='changestyle'>
-    <text>产品反馈|</text>
+    <text style="margin-right:10rpx">产品反馈</text>
   </navigator>
+  <text style="margin-top:5rpx">|</text>
   <navigator url='guanyuwomen/guanyuwomen' hover-class='changestyle'>
-    <text>关于我们?</text>
+    <text style="margin-left:10rpx">关于我们?</text>
   </navigator>
 </view>

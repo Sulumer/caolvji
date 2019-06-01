@@ -18,6 +18,7 @@ page{
   width: 100%;
   height:100vh;
   top:0;
+  z-index: -1;
 }
 .img-plus-style {
   height: 30px;
@@ -90,13 +91,42 @@ page{
   align-items: center;
 }
 
-
-.bt4{
-  height: 100rpx;
-  width: 100rpx;
+.help
+{
+  position: absolute;
+  height: 70rpx;
+  width: 70rpx;
+  top: 5%;
+  right: 3%;
+  bottom: 70px;
   border-radius: 40px;
-  background-color: white;
+  background-color: rgb(243, 237, 237);
   display: flex;
   justify-content:center; 
   align-items: center;
+}
+.tips
+{
+  height: 700rpx;
+  width: 500rpx;
+  padding-top: 50rpx;
+  padding-left: 40rpx;
+}
+.photos
+{
+  position: absolute;
+  height: 70rpx;
+  width: 70rpx;
+  top: 13%;
+  right: 3%;
+  bottom: 70px;
+  background-color: rgb(243, 237, 237);
+  display: flex;
+  justify-content:center; 
+  align-items: center;
+}
+.modal
+{
+  position:relative;
+  z-index:9999999999999;
 }

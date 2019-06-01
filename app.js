@@ -1,7 +1,7 @@
 //app.js
 App({
   globalData: {
-    Service: "https://demo.yyf-blog.com/footprint/",
+    Service: "https://clj.cstdio.cn/",
     scence: 0
   }
 })

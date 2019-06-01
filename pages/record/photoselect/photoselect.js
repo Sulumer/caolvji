@@ -99,7 +99,7 @@ Page({
                     title: '正在获取照片信息',
                   })
                   wx.request({
-                    url: 'https://foot.yyf-blog.com/' + res_oos.data.data.key + '?exif',
+                    url: 'https://qiniu.cstdio.cn/' + res_oos.data.data.key + '?exif',
                     method: 'GET',
                     data: {},
                     header: {

@@ -1,16 +1,14 @@
 {
   "pages": [
-    
     "pages/login/login",
     "pages/index/index",
     "pages/map/map",
-    "pages/post/post",
     "pages/photo/photo",
     "pages/photo/batch",
     "pages/user/user",
     "pages/user/fankui/fankui",
     "pages/model/model",
-    "pages/model_test/model_test"
+    "pages/photograllery/photograllery"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,8 +25,10 @@
       ]
     }
   },
-  "networdkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
-  }
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于优化小程序中心化"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
 }

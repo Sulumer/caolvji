@@ -1,6 +1,7 @@
 var dataArray = new Array()
 var that;
-var app = getApp()
+var app = getApp();
+var check;
 Page({
   data: {
     latitude: 39.8085360414,
@@ -15,7 +16,8 @@ Page({
     homeActionLeftDistance:'100rpx',
     windowWidth:'',
     d:0,
-    amarkers:[],
+    amarkers:[],  
+    modalHidden: true,
     // markers: [{
     //   iconPath: "/images/1542206356985.png",
     //   id: 0,
@@ -41,6 +43,23 @@ Page({
 
   },
   //页面跳转
+  buttonTap: function () {
+    this.setData({
+      modalHidden: false,
+      check: true,
+    })
+  },
+
+  /**
+   *  点击确认
+   */
+  modalConfirm: function () {
+    // do something
+    this.setData({
+      modalHidden: true,
+      check: false
+    })
+  },
   navi: function(e){
     console.log(e.currentTarget.dataset.path)
     var path = e.currentTarget.dataset.path
@@ -142,7 +161,6 @@ Page({
     console.log("onLoad")
     var that = this
     wx.getLocation({
-      type: 'wgs84',
       success: function (res) {
         var la = (res.latitude).toFixed(6);
         var lon = (res.longitude).toFixed(6);
