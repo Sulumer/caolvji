@@ -1,50 +1,56 @@
 .photograph {
   background: #f5f5f5;
-  width: 100%;
+  /* width: 100%; */
   /* height: 100%; */
   display: flex;
   flex-direction: column;
 } 
 
-.swiper{
-  zoom: 5;
-  display: flex;
-  flex-direction: column;
-  /* line-height: 20%; */
+.card {
+  margin-top: 50rpx;
+  width: 94%;
+  height: 100%;
+  margin-left: 3%;
+  background: #fff;
+  box-shadow: 0rpx 0rpx 25rpx gray;
+  align-items: center;
 }
 
 .img-box{
-  padding-left: 2%;
-  padding-top: 2%;
-  width: 96%;
-  /* height: 80%; */
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+  width: 94%;
+  height: 75%;
 }
 
 .img-box image{
-  height: 620rpx;
-  width: 780rpx;
-  border: 1px gray solid;
+  /* height: 100%; */
+  width: 100%;
+  /* border: 1px gray solid; */
 }
 
 .content{
-  padding-left: 2%;
-  padding-top: 2%;
-  width: 92%;
-  height: 20rpx;
+  padding-left: 3%;
+  padding-top: 3%;
+  width: 94%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
   /* border: 1px gray solid; */
 }
 
 .icon{
-  width: 15rpx;
-  height: 15rpx;
-  padding-top: 1rpx;
+  width: 50rpx;
+  height: 50rpx;
+  /* align-items: center; */
 }
 
 .text{
-  font-size: 20%;
-  line-height: 1rpx;
-  padding-left: 3rpx;
-  padding-top: 9rpx;
+  font-size: 15px;
+  margin-left: 15rpx;
+  width: 90%;
+  word-wrap: break-word;
+  /* align-items: center; */
 }

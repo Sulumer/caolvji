@@ -6,7 +6,7 @@
     "pages/photo/photo",
     "pages/photo/batch",
     "pages/user/user",
-    "pages/user/fankui/fankui",
+    "pages/user/feedback/feedback",
     "pages/model/model",
     "pages/photograllery/photograllery"
   ],

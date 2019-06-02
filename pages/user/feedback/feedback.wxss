@@ -1,10 +1,10 @@
-input{
+input {
   border:1px solid gray;
   width: 60%;
   border-radius: 8rpx;
 }
 
-.wenti{
+.question {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,58 +12,60 @@ input{
   margin-top: 50rpx;
 }
 
-.contact{
+.contact {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.ziti{
+.font {
   font-size: 25rpx;
-  margin-left: 10rpx;
+  margin-left: 15rpx;
 }
-.ziti1{
-  font-size: 25rpx;
-}
-.xiangxiwenti{
+
+.detail {
   margin-top: 40rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .test{
   padding: 15rpx;
 }
-textarea{
+
+textarea {
   width: 85%;
   border: 1px gray solid;
   border-radius: 8rpx;
   height: 400rpx;
 }
 
-.shangchuan image{
+.upload image {
   width: 200rpx;
   height: 200rpx;
 }
-.shangchuan{
+
+.upload {
   display: flex;
   flex-direction: row;
   margin-top: 20rpx;
-  margin-left: 5%;
   margin-bottom: 20rpx;
 }
-.tupian{
+
+.img {
   width: 200rpx;
   padding-left: 5%;
   height: 200rpx;
 }
-.buttonstyle{
+
+.buttonstyle {
   margin-top: 30rpx;
   width: 90%;
 }
 
 
-.weui-textarea-counter{
+.weui-textarea-counter {
   color: #b3b3b3;
   font-size: 14px;
   margin-top: 10rpx;

@@ -80,8 +80,8 @@ Page({
               // console.log("99",data[i].address.length)
               if (data[i].address == null)
                 data[i].address = "无位置信息";
-              else if(data[i].address.length > 12)
-                data[i].address = (data[i].address).substring(0,12) + "...";
+              // else if(data[i].address.length > 15)
+              //   data[i].address = (data[i].address).substring(0,15) + "...";
               data[i].imgUrl = data[i].imgUrl + "?slim";
             }
             that.setData({
@@ -105,10 +105,10 @@ Page({
     //获取图片的原始宽度和高度
     let originalWidth = e.detail.width;
     let originalHeight = e.detail.height;
-    //let imageSize = util.Util.imageZoomHeightUtil(originalWidth,originalHeight);
+    // let imageSize = util.Util.imageZoomHeightUtil(originalWidth,originalHeight);
 
-    //let imageSize = util.Util.imageZoomHeightUtil(originalWidth,originalHeight,375);
-    let imageSize = util.Util.imageZoomWidthUtil(originalWidth, originalHeight, 80, 250);
+    // let imageSize = util.Util.imageZoomHeightUtil(originalWidth,originalHeight,375);
+    let imageSize = util.Util.imageZoomWidthUtil(originalWidth, originalHeight, 81);
     that.setData({
       imageWidth: imageSize.imageWidth, 
       imageHeight: imageSize.imageHeight

@@ -8,6 +8,7 @@ Page({
     imgs: [],
     contentCount: 0,
     left: 40,
+    three: false
   },
   gettxt:function(e){
     var that = this
@@ -41,9 +42,27 @@ Page({
       contentCount: value.length
     });
   },
-  fankui: function() {
+  feedback: function() {
     var that = this
-    if(this.data.imgs != ''){
+    var imgs = that.data.imgs
+    if (imgs != ''){
+      for (var i = 0; i < imgs.length; i++){
+        console.log("img", imgs[i]);
+        wx.uploadFile({
+          url: 'https://cstdio.cn/caolvji/upload.php', //仅为示例，非真实的接口地址
+          filePath: imgs[i],
+          name: 'file',
+          formData: {
+            'user': 'SLM'
+          },
+          success(res) {
+            const data = res.data
+            //do something
+            console.log("php",data)
+          }
+        })
+      }
+
       wx.request({
         url: 'https://cstdio.cn/caolvji/feedback.php?question=' + that.data.question + '&contact=' + that.data.contact + '&txt=' + that.data.txt + '&imgs=' + that.data.imgs,
         method: 'GET',
@@ -76,25 +95,26 @@ Page({
       }, 2000)
     }
   },
-  xuanzezhaopian: function() {
+  choosePhoto: function() {
     var that = this;
     wx.chooseImage({
       success: function(res) {
         var tempFilePaths = res.tempFilePaths;
+        var three = false
         var imgs = that.data.imgs.concat(tempFilePaths);
-         if (imgs.length > 2) imgs=imgs.pop;
+        if (imgs.length > 2)
+          three = true;
         that.setData({
-          imgs: imgs
+          imgs: imgs,
+          three: three
         });
         console.log(imgs);
       },
     })
-    
   },
   previewImg: function(e) {
     var current = e.target.id;
     console.log("curent:", e)
-   
     wx.previewImage({
       urls: this.data.imgs,
       current: current,

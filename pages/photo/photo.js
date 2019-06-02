@@ -7,7 +7,7 @@ Page({
     content: "",
     latitude: "",
     longitude: "",
-    address: "所在位置",
+    address: "暂无位置信息",
     photoid: "",
     phototime: "",
     city: "",
@@ -329,7 +329,10 @@ Page({
     var images = that.data.images;
     images.splice(index, 1);
     that.setData({
-      images: images
+      images: images,
+      address: "暂无位置信息",
+      flag: false,
+      up_flag: false
     });
   },
   delete_photo: function() {
@@ -344,7 +347,7 @@ Page({
           method: 'POST',
           data: {},
           header: {
-            'content-type': 'application/json', // 默认值
+            'Content-Type': 'application/json', // 默认值
             "photoId": that.data.photoid,
             'S-TOKEN': s.data
           },

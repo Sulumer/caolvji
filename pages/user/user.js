@@ -50,15 +50,9 @@ Page({
     ],
     //ctx=wx.createCanvasContext('firstCanvas')
   },
-  link: function() {
+  feedback: function() {
     wx.navigateTo({
-      url: 'fankui/fankui',
-    })
-  },
-  btfankui: function() {
-    //console.log(res),
-    wx.navigateTo({
-      url: '/pages/user/fankui/fankui',
+      url: 'feedback/feedback',
     })
   },
   canvasIdErrorCallback: function(e) {

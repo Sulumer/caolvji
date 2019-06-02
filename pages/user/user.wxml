@@ -16,14 +16,14 @@
 
 <view class='achievement'>
   <view wx:for='{{achievement}}' class='achievement-box'>
-    <image wx:if="{{item.status}}" src='{{item.icon_up}}' bindtap='link' class='left'></image>
-    <image wx:if="{{!item.status}}" src='{{item.icon_down}}' bindtap='link' class='left'></image>
+    <image wx:if="{{item.status}}" src='{{item.icon_up}}' class='left'></image>
+    <image wx:if="{{!item.status}}" src='{{item.icon_down}}' class='left'></image>
     <view class='left'>{{item.name}}</view>
   </view>
 </view>
 
 <view class='footer'>
-  <navigator url='fankui/fankui' hover-class='changestyle'>
+  <navigator bindtap='feedback' hover-class='changestyle'>
     <text style="margin-right:10rpx">产品反馈</text>
   </navigator>
   <text style="margin-top:5rpx">|</text>

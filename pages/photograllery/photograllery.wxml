@@ -1,19 +1,19 @@
-<!--index.wxml-->
 <view class="photograph">
-  <swiper class="swiper">
-    <swiper-item wx:for="{{photoData}}">
-      <view class="img-box">
-        <image bindload="" style="width:{{imageWidth}}px;;height:{{imageHeight}}px;" src='{{item.imgUrl}}' ></image>
-      </view>
-      <view class="content">
-        <image class="icon" mode='widthFix' src='/images/icon/degree.png'></image>
-        <text class="text">经纬度：{{item.latitude}}°,{{item.longitude}}°</text>
-      </view>
-      <view class="content">
-        <image class="icon" mode='widthFix' src='/images/icon/address.png'></image>
-        <text class="text">地址：{{item.address}}</text>
-      </view>
-    </swiper-item>
-  </swiper>
-
+  <view class="card" wx:for="{{photoData}}">
+    <view class="img-box">
+      <!-- <image bindload="imageLoad" style="width:{{imageWidth}}rpx;;height:{{imageHeight}}rpx;" src='{{item.imgUrl}}'></image> -->
+      <image src='{{item.imgUrl}}'>
+      </image>
+    </view>
+    <view class="content">
+      <image class="icon" mode='widthFix' src='/images/icon/degree.png'></image>
+      <text class="text">经纬度：{{item.latitude}}°,{{item.longitude}}°</text>
+    </view>
+    <view class="content">
+      <image class="icon" mode='widthFix' src='/images/icon/address.png'></image>
+      <text class="text">地址：{{item.address}}</text>
+    </view>
+    <view style="height: 25rpx;"></view>
+  </view>
+  <view style="height: 50rpx;"></view>
 </view>

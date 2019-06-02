@@ -1,0 +1,24 @@
+<!--pages/fankui/fankui.wxml-->
+<view>
+  <view class='question'>
+    <text>您的问题 ：</text>
+    <input data-id='0' bindblur='gettxt' placeholder='您要反馈什么问题' placeholder-class='font'></input>
+  </view>
+  <view class='contact'>
+    <text>联系方式 ：</text>
+    <input data-id='1' bindblur='gettxt' placeholder='请填写手机号/微信号/邮箱/QQ' placeholder-class='font'></input>
+  </view>
+  <view class='detail'>
+    <textarea style="margin-left: 10rpx;" data-id='2' bindblur='gettxt' class="test" placeholder='请详细描述您的问题' placeholder-class='font' maxlength='100' bindinput="handleContentInput"></textarea>
+  </view>
+  <view class="weui-textarea-counter">可输入字数{{contentCount}}/100</view>
+  <view class="upload">
+    <view wx:for='{{imgs}}' wx:for-key='item' wx:for-index='id' class='img' mode="aspectFill">
+      <image src='{{item}}' id='{{item}}' ii='1' bindtap='previewImg'></image>
+    </view>
+    <image wx:if="{{!three}}" class='img' src='/images/upload.png' bindtap='choosePhoto'></image>
+  </view>
+  <view>
+    <button class='buttonstyle' type='primary' bindtap='feedback'>提     交</button>
+  </view>
+</view>
